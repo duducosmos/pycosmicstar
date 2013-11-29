@@ -23,6 +23,21 @@ in the way that return  sigma_8 = 0,84.
 The fraction of mass of dark halos is obtained by the work of
 Sheth e Tormen (MNRAS 308, 119, 1999).
 All models consider Omega_Total = Omega_M + Omega_L = 1,0
+
+This file is part of cosmicstar.
+copyright : Eduardo dos Santos Pereira
+
+cosmicstar is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License.
+cosmicstar is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
 """
 
 from numpy import sqrt, pi, log, log10, exp, array, abs

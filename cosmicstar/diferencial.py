@@ -1,5 +1,13 @@
 # -*- coding: utf-8 -*-
-'''
+__author__ = "Eduardo dos Santos Pereira"
+__email__ = "pereira.somoza@gmail.com"
+__credits__ = ["Eduardo dos Santos Pereira"]
+__license__ = "GPLV3"
+__version__ = "1.0.1"
+__maintainer__ = "Eduardo dos Santos Pereira"
+__status__ = "Stable"
+"""
+
     This file is part of PyGraWC.
     copyright : Eduardo dos Santos Pereira
     31 mar. 2011.
@@ -14,23 +22,20 @@
 
     You should have received a copy of the GNU General Public License
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-    
-Fornce as funcoes locate(xx,n,x), dfridr(func,x,h,err) e int_simples(func,a,b,dx =0.001)
-'''
 
-'''
-Modulos e pacotes extras como numpy, scipy, math, os, matplotlib.pyplot
-'''
-
+Fornce as funcoes locate(xx,n,x), dfridr(func,x,h,err) e
+int_simples(func,a,b,dx =0.001)
+"""
 
 def locate(xx,n,x):
-    '''Localiza a posicao de dado ponto a partir de dois adjacentes.
+    """Localiza a posicao de dado ponto a partir de dois adjacentes.
+
 argumentos:  func --- funcao ou tabela de entrada
 xx   --- tabela de entrada
 n    --- numero de pontos da tabela
 x    --- valor de x que se deseja determinar y
 j    --- posicao de saida
-'''
+"""
     jl=0
     ju=n+1
     while(ju-jl > 1):
@@ -80,10 +85,7 @@ def dfridr(func,x,h,err):
             	#if(abs(a[i,i]-a[i-1,i-1]) >= SAFE*err):
             	#	return
     return
-        
 
-def int_simples(func,a,b,dx =0.001):
-    return sum(map(lambda x:dx*x,func(np.arange(a,b,dx))))
 
 def neville(xData,yData,x):
     '''P=neville(xData,yData,x)

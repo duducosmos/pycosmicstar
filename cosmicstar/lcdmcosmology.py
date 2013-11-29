@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # *-* Coding: UTF-8 *-*
 
+__author__ = "Eduardo dos Santos Pereira"
+__email__ = "pereira.somoza@gmail.com"
+__credits__ = ["Eduardo dos Santos Pereira"]
+__license__ = "GPLV3"
+__version__ = "1.0.1"
+__maintainer__ = "Eduardo dos Santos Pereira"
+__status__ = "Stable"
+
 """The Cold Dark Matter plus Cosmological constant Module (LCDM)
 
 Na atual versao usamos a normalizacao do WMAP (sem ondas gravitacionais)
@@ -17,6 +25,21 @@ Conjunto de dados: WMAP-3: omega_m = 0,238, omega_b = 0,042, omega_l = 0,762
 h = 0,734, sigma_8 = 0,84
 WMAP-1: omega_m = 0,29, omega_b = 0,44, omega_l = 0,71
 h = 0,72, sigma_8 = 0,9
+
+This file is part of cosmicstar.
+copyright : Eduardo dos Santos Pereira
+
+cosmicstar is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License.
+cosmicstar is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
 """
 
 from cosmology import cosmology
