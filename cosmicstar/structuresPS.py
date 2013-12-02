@@ -63,6 +63,12 @@ class structuresPS:
         """
         raise NotImplementedError('I need to be implemented!')
 
+    def cosmicStarFormationRate(self, z):
+        raise NotImplementedError("I need to be implemented!")
+
+    def gasDensityInStructures(self, z):
+        raise NotImplementedError("I need to be implemented!")
+
     def getCacheDir(self):
         """Return True if the cache directory existe and false else.
         """

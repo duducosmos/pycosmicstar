@@ -27,7 +27,8 @@ Fornce as funcoes locate(xx,n,x), dfridr(func,x,h,err) e
 int_simples(func,a,b,dx =0.001)
 """
 
-def locate(xx,n,x):
+
+def locate(xx, n, x):
     """Localiza a posicao de dado ponto a partir de dois adjacentes.
 
 argumentos:  func --- funcao ou tabela de entrada
@@ -36,17 +37,17 @@ n    --- numero de pontos da tabela
 x    --- valor de x que se deseja determinar y
 j    --- posicao de saida
 """
-    jl=0
-    ju=n+1
-    while(ju-jl > 1):
-        jm=int((ju+jl)/2)
+    jl = 0
+    ju = n + 1
+    while(ju - jl > 1):
+        jm = int((ju + jl) / 2)
         if(xx[n] > xx[1] and x > xx[jm]):
-            jl=jm
+            jl = jm
         else:
-                ju=jm
-    return jl+1
+            ju = jm
+    return jl
 
-def dfridr(func,x,h,err):
+def dfridr(func,x , h, err):
     '''Fornece a derivada de y em relacao a x.
            argumentos:  func --- funcao a ser integrada
                         x    --- dlog10 m ou z
@@ -80,7 +81,7 @@ def dfridr(func,x,h,err):
             errt=max(np.abs(a1),np.abs(a2))
             if (errt >= err):
                 err=errt
-                dfit =a[j,i]
+                dfit = a[j, i]
                 return a[j,i]
             	#if(abs(a[i,i]-a[i-1,i-1]) >= SAFE*err):
             	#	return

@@ -81,25 +81,25 @@ class structures(structuresPS):
                 omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
                 cacheDir=None):
 
-        self.__cosmology = cosmology(omegam, omegab, omegal, h)
+        self._cosmology = cosmology(omegam, omegab, omegal, h)
 
         if(cacheDir is None):
-            self.__cacheDir = self. __creatCachDiretory()[0]
+            self._cacheDir = self. __creatCachDiretory()[0]
         else:
-            self.__cacheDir = cacheDir
+            self._cacheDir = cacheDir
 
-        arq = str(self.__cacheDir) + "/structures_cache_" + str(omegab) + "_" \
+        arq = str(self._cacheDir) + "/structures_cache_" + str(omegab) + "_" \
               + str(omegam) + "_" + str(omegal) + "_" \
               + str(h) + "_" + str(lmin) + "_" + str(zmax)
 
-        self.__cache_dict = filedict.FileDict(filename=arq + ".cache")
+        self._cache_dict = filedict.FileDict(filename=arq + ".cache")
 
         self.__mmin = 1.0e+4
         self.__mmax = 1.0e+18
         self.__lmax = log10(self.__mmax / 10.0)
-        self.__zmax = zmax
+        self._zmax = zmax
         self.__lmin = lmin
-        self.__deltac = self.__cosmology.getDeltaC()
+        self.__deltac = self._cosmology.getDeltaC()
         self.__pst = 0.3
 
         h2 = h * h
@@ -113,17 +113,17 @@ class structures(structuresPS):
         self.__ast1 = 0.322
         self.__ast2 = 0.707
         self.__pst = 0.3
-        self.__tilt2 = self.__cosmology.getTilt() / log(10.0)
+        self.__tilt2 = self._cosmology.getTilt() / log(10.0)
         self.__ctst = self.__ast1 * sqrt(2.0 * self.__ast2 / pi)
 
         self.__startingSigmaAccretion()
 
     def __creatCachDiretory(self):
         HOME = os.path.expanduser('~')
-        if not os.path.exists(HOME + '/.scc-strarsFormation'):
-            print(('Creating .scc-strarsFormation cache diretory in %s' % HOME))
-            os.makedirs(HOME + '/.scc-strarsFormation')
-        return os.path.expanduser('~') + '/.scc-strarsFormation', True
+        if not os.path.exists(HOME + '/.cosmicstarformation'):
+            print(('Creating .cosmicstarformation cache diretory in %s' % HOME))
+            os.makedirs(HOME + '/.cosmicstarformation')
+        return os.path.expanduser('~') + '/.cosmicstarformation', True
 
     def __ifSigmaNotInCache(self):
         """Calculate the values necessaries to initialize the
@@ -134,7 +134,7 @@ class structures(structuresPS):
         kls = log10(kscale)
         numk = numk * kls
         kls1 = kls / numk
-        deltaz = self.__zmax / (numk)
+        deltaz = self._zmax / (numk)
 
         def CalculaKm(i):
             kmass = (10.0 ** ((i + 1) * kls1)) * self.__mmin
@@ -146,22 +146,22 @@ class structures(structuresPS):
 
         self.__kmass = array([CalculaKm(i) for i in range(int(numk))])
         self.__scale = array([CalculaScale(i) for i in range(int(numk))])
-        self.__zred = array([self.__zmax - i * deltaz
+        self.__zred = array([self._zmax - i * deltaz
                                   for i in range(int(numk))])
 
-        e, f = self.__cosmology.sigma(self.__kmass)
+        e, f = self._cosmology.sigma(self.__kmass)
 
         self.__km = array([ei for ei in e])
         self.__sg = array([FI for FI in f])
-        self.__t_z = array([self.__cosmology.age(zi) for zi in self.__zred])
+        self.__t_z = array([self._cosmology.age(zi) for zi in self.__zred])
         self.__d_c2 = array([
-            self.__deltac / self.__cosmology.growthFunction(zi)
+            self.__deltac / self._cosmology.growthFunction(zi)
                             for zi in self.__zred
                             ])
-        self.__rdm2 = array([self.__cosmology.rodm(zi)[0]
+        self.__rdm2 = array([self._cosmology.rodm(zi)[0]
                             for zi in self.__zred
                             ])
-        self.__rbr2 = array([self.__cosmology.robr(zi) for zi in self.__zred])
+        self.__rbr2 = array([self._cosmology.robr(zi) for zi in self.__zred])
 
     def __startingSigmaAccretion(self):
         """
@@ -170,17 +170,17 @@ class structures(structuresPS):
 
         try:
 
-            self.__km = self.__cache_dict['km']
-            self.__scale = self.__cache_dict['scale']
-            self.__zred = self.__cache_dict['zred']
-            self.__sg = self.__cache_dict['sg']
-            self.__t_z = self.__cache_dict['t_z']
-            self.__d_c2 = self.__cache_dict['d_c2']
-            self.__rdm2 = self.__cache_dict['rdm2']
-            self.__rbr2 = self.__cache_dict['rbr2']
-            self.__abt2 = self.__cache_dict['abt2']
-            self.__ascale = self.__cache_dict['ascale']
-            self.__tck_ab = self.__cache_dict['tck_ab']
+            self.__km = self._cache_dict['km']
+            self.__scale = self._cache_dict['scale']
+            self.__zred = self._cache_dict['zred']
+            self.__sg = self._cache_dict['sg']
+            self.__t_z = self._cache_dict['t_z']
+            self.__d_c2 = self._cache_dict['d_c2']
+            self.__rdm2 = self._cache_dict['rdm2']
+            self.__rbr2 = self._cache_dict['rbr2']
+            self._abt2 = self._cache_dict['abt2']
+            self._ascale = self._cache_dict['ascale']
+            self._tck_ab = self._cache_dict['tck_ab']
 
             print("Data in Cache")
 
@@ -192,17 +192,17 @@ class structures(structuresPS):
     def __cachingAtribut(self):
         """Caching the values
         """
-        self.__cache_dict['km'] = self.__km
-        self.__cache_dict['scale'] = self.__scale
-        self.__cache_dict['zred'] = self.__zred
-        self.__cache_dict['sg'] = self.__sg
-        self.__cache_dict['t_z'] = self.__t_z
-        self.__cache_dict['d_c2'] = self.__d_c2
-        self.__cache_dict['rdm2'] = self.__rdm2
-        self.__cache_dict['rbr2'] = self.__rbr2
-        self.__cache_dict['abt2'] = self.__abt2
-        self.__cache_dict['ascale'] = self.__ascale
-        self.__cache_dict['tck_ab'] = self.__tck_ab
+        self._cache_dict['km'] = self.__km
+        self._cache_dict['scale'] = self.__scale
+        self._cache_dict['zred'] = self.__zred
+        self._cache_dict['sg'] = self.__sg
+        self._cache_dict['t_z'] = self.__t_z
+        self._cache_dict['d_c2'] = self.__d_c2
+        self._cache_dict['rdm2'] = self.__rdm2
+        self._cache_dict['rbr2'] = self.__rbr2
+        self._cache_dict['abt2'] = self._abt2
+        self._cache_dict['ascale'] = self._ascale
+        self._cache_dict['tck_ab'] = self._tck_ab
 
     def funcMassST(self, lm, z):
         """Return the mass function of dark halos of
@@ -212,9 +212,9 @@ class structures(structuresPS):
             lm -- log10 of the mass of the dark halo
             z -- redshift
         """
-        gte = self.__cosmology.growthFunction(z)
-        #gte2 = self.__cosmology.dgrowth_dt(z)
-        rdmt, drdmt = self.__cosmology.rodm(z)
+        gte = self._cosmology.growthFunction(z)
+        #gte2 = self._cosmology.dgrowth_dt(z)
+        rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
@@ -276,7 +276,7 @@ class structures(structuresPS):
         Keyword arguments:
             z -- redshift
         """
-        rdm, drdm_dt = self.__cosmology.rodm(z)
+        rdm, drdm_dt = self._cosmology.rodm(z)
         fb = self.halos_n(z) / rdm
         return fb
 
@@ -304,20 +304,20 @@ class structures(structuresPS):
         Keyword arguments:
             a -- scala factor (1.0 / (1.0 + z))
         """
-        i = locate(self.__ascale, len(self.__ascale) - 1, a)
-        return self.__abt2[i]
+        i = locate(self._ascale, len(self._ascale) - 1, a)
+        return self._abt2[i]
 
     def __startBarionicAccretionRate(self):
 
         np = 1000
-        deltaz = self.__zmax / float(np)
+        deltaz = self._zmax / float(np)
 
-        z = [self.__zmax - i * deltaz for i in range(np)]
+        z = [self._zmax - i * deltaz for i in range(np)]
         z.append(0)
         z = array(z)
         fbt2 = array([self.fbstruc(zi) for zi in z])
         ascale = array([1.0 / (1.0 + zi) for zi in z])
-        self.__ascale = ascale
+        self._ascale = ascale
 
         tck = spint.splrep(ascale, fbt2)
         ab3 = spint.splev(ascale, tck, der=1)
@@ -327,17 +327,18 @@ class structures(structuresPS):
             a2 = a * a
             a3 = -1.0 * ab3[i] * a2
             a4 = a3
-            a5 = self.__cosmology.getRobr0() * abs(a4) \
-                 / self.__cosmology.dt_dz(z)
+            a5 = self._cosmology.getRobr0() * abs(a4) \
+                 / self._cosmology.dt_dz(z)
             return a5
 
-        self.__abt2 = array([a5(z[i], i) for i in range(z.size)])
-        self.__tck_ab = spint.splrep(self.__ascale, self.__abt2)
+        self._abt2 = array([a5(z[i], i) for i in range(z.size)])
+        self._tck_ab = spint.splrep(self._ascale, self._abt2)
 
     def getCacheDir(self):
-        """Return True if the cache directory existe and false else.
+        """Return True and cache name if the cache directory existe
+        and false else.
         """
-        if(self.__cacheDir is not None):
-            return True
+        if(self._cacheDir is not None):
+            return True, self._cacheDir
         else:
             return False
