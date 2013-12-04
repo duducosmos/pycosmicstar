@@ -34,8 +34,8 @@ class test_structures(unittest.TestCase):
 
     myStructures = structures(lcdmcosmology)
 
-    def test_funcMassST(self):
-        self.assertEquals(round(self.myStructures.funcMassST(9.0, 1.0), 11),
+    def test_massFunction(self):
+        self.assertEquals(round(self.myStructures.massFunction(9.0, 1.0), 11),
                           8.45e-09)
 
     def test_fstm(self):
@@ -63,6 +63,9 @@ class test_structures(unittest.TestCase):
         self.assertTrue(self.myStructures.getCacheDir()[0],
         "The directory not Exist")
 
+    def test_setDeltaHTinker(self):
+        self.myStructures = structures(lcdmcosmology, massFunctionType="TK")
+        self.assertTrue(self.myStructures.setDeltaHTinker(200))
 
 if(__name__ == "__main__"):
     unittest.main()

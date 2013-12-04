@@ -3,7 +3,8 @@
 
 
 # metadata
-" The Cosmic Start Formation Rate is a software to study the star formation history for diferents cosmological models "
+""" The Cosmic Start Formation Rate is a software to study the star
+formation history for diferents cosmological models """
 __version__ = " 0.1 "
 __license__ = " GNU GENERAL PUBLIC LICENSE V3 "
 __author__ = " Eduardo dos Santo Pereira "

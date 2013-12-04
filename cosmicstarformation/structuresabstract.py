@@ -28,11 +28,10 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-class structuresPS:
+class structuresabstract:
 
-    def funcMassST(self, lm, z):
-        """Return the mass function of dark halos of
-        Sheth e Tormen (MNRAS 308, 119, 1999).
+    def massFunction(self, lm, z):
+        """Return the mass function of dark halos
         """
         raise NotImplementedError('I need to be implemented!')
 

@@ -63,17 +63,29 @@ class cosmicstarformation(structures):
         omegal -- (default 0.73) - The dark energy parameter
 
         h -- (default 0.7) - The h of the Hubble constant (H = h * 100)
+
+        massFunctionType -- (default \"ST\") The type of mass
+        function of dark matter halos used. Possibles values:
+             \"ST\" for Seth and Thormen mass function.
+             \"TK\" for Tinker et al. mass function.
     """
 
     def __init__(self, cosmology,
-                     tau=2.5, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
+                     tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
                      omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
-                     cacheDir=None
+                     cacheDir=None, cacheFile=None, massFunctionType="ST"
                 ):
+
+        if(cacheFile is None):
+            cacheFile = "/structures_cache_" + massFunctionType + "_"\
+                        + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
+                        + "_" + str(omegab) + "_" \
+                        + str(omegam) + "_" + str(omegal) + "_" \
+                        + str(h) + "_" + str(lmin) + "_" + str(zmax)
 
         structures.__init__(self, cosmology, lmin, zmax,
                             omegam, omegab, omegal, h,
-                            cacheDir)
+                            cacheDir, cacheFile, massFunctionType)
 
         tau = tau * 1.0e9
         self._cc = self._tck_ab[1]
@@ -273,7 +285,7 @@ class cosmicstarformation(structures):
                        + (self.__csfr[j] * (a - self.__astar[j + 1])
                        - self.__csfr[j + 1] * (a - self.__astar[j])) / \
                         (self.__astar[j] - self.__astar[j + 1])
-                return resp
+                return resp[0]
 
             elif(j >= (len(self.__astar) - 2) and j <= len(self.__astar)):
                 return self.__csfr[j]

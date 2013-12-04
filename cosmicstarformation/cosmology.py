@@ -84,15 +84,18 @@ class cosmology:
         raise NotImplementedError('I need to be implemented!')
 
     def setCosmologicalParameter(self):
-        return False
+        raise NotImplementedError('I need to be implemented!')
 
     def getCosmologicalParameter(self):
-        return False
+        raise NotImplementedError('I need to be implemented!')
 
     def getTilt(self):
-        return False
+        raise NotImplementedError('I need to be implemented!')
 
     def getRobr0(self):
-        return False
+        raise NotImplementedError('I need to be implemented!')
+
+    def getRodm0(self):
+        raise NotImplementedError('I need to be implemented!')
 
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # *-* Coding: UTF-8 *-*
+from __future__ import print_function
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -42,14 +43,17 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 from numpy import sqrt, pi, log, log10, exp, array, abs
 import scipy.interpolate as spint
-from structuresPS import structuresPS
+from scipy.interpolate import InterpolatedUnivariateSpline as spline
+
+from structuresabstract import structuresabstract
 
 import filedict
 import os
+import sys
 from diferencial import dfridr, locate
 
 
-class structures(structuresPS):
+class structures(structuresabstract):
     """This class was contructed based in the like Press-Schechter formalism
     that provides characteristis like numerical density of dark matter halos
     into the range m_h, m_h + dm_h, the fraction of barionic matter,
@@ -79,7 +83,7 @@ class structures(structuresPS):
 
     def __init__(self, cosmology, lmin=6.0, zmax=20.0,
                 omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
-                cacheDir=None):
+                cacheDir=None, cacheFile=None, massFunctionType="ST"):
 
         self._cosmology = cosmology(omegam, omegab, omegal, h)
 
@@ -88,11 +92,15 @@ class structures(structuresPS):
         else:
             self._cacheDir = cacheDir
 
-        arq = str(self._cacheDir) + "/structures_cache_" + str(omegab) + "_" \
-              + str(omegam) + "_" + str(omegal) + "_" \
-              + str(h) + "_" + str(lmin) + "_" + str(zmax)
+        if(cacheFile is None):
+            cacheFile = str(self._cacheDir) + "/structures_cache_"\
+                  + massFunctionType + "_" + str(omegab) + "_" \
+                  + str(omegam) + "_" + str(omegal) + "_" \
+                  + str(h) + "_" + str(lmin) + "_" + str(zmax)
+        else:
+            cacheFile = str(self._cacheDir) + cacheFile
 
-        self._cache_dict = filedict.FileDict(filename=arq + ".cache")
+        self._cache_dict = filedict.FileDict(filename=cacheFile + ".cache")
 
         self.__mmin = 1.0e+4
         self.__mmax = 1.0e+18
@@ -115,6 +123,11 @@ class structures(structuresPS):
         self.__pst = 0.3
         self.__tilt2 = self._cosmology.getTilt() / log(10.0)
         self.__ctst = self.__ast1 * sqrt(2.0 * self.__ast2 / pi)
+
+        self.__massFunctionType = massFunctionType
+        self.__delta_halo = 200
+
+        print(self.__massFunctionType)
 
         self.__startingSigmaAccretion()
 
@@ -204,7 +217,107 @@ class structures(structuresPS):
         self._cache_dict['ascale'] = self._ascale
         self._cache_dict['tck_ab'] = self._tck_ab
 
-    def funcMassST(self, lm, z):
+    def massFunction(self, lm, z):
+        """Return the mass function of dark halos.
+
+        Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+        if(self.__massFunctionType == "ST"):
+            return self.__massFunctionST(lm, z)
+        elif(self.__massFunctionType == "TK"):
+            return self.__massFunctionTinker(lm, z)
+        else:
+            print("Mass function not defined")
+            sys.existe()
+
+    def __massFunctionTinker(self, lm, z):
+        """Return the mass function of dark halos of
+    Tinker mass function (Tinker et al. 2008)
+
+    This function was adapted from the work of:
+        S.G. Murray et al. 2013. Astronomy and Computing. 3-4. 23-34.
+        source of the original (https://github.com/steven-murray/hmf)
+
+    Keyword arguments:
+        lm -- log10 of the mass of the dark halo
+        z -- redshift
+        """
+
+        #The Tinker function is a bit tricky - we use the code from
+        #http://cosmo.nyu.edu/~tinker/massfunction/MF_code.tar
+        #to aid us.
+        delta_virs = array([200, 300, 400, 600, 800, 1200, 1600, 2400, 3200])
+        A_array = array([1.858659e-01,
+                            1.995973e-01,
+                            2.115659e-01,
+                            2.184113e-01,
+                            2.480968e-01,
+                            2.546053e-01,
+                            2.600000e-01,
+                            2.600000e-01,
+                            2.600000e-01])
+
+        a_array = array([1.466904e+00,
+                            1.521782e+00,
+                            1.559186e+00,
+                            1.614585e+00,
+                            1.869936e+00,
+                            2.128056e+00,
+                            2.301275e+00,
+                            2.529241e+00,
+                            2.661983e+00])
+
+        b_array = array([2.571104e+00,
+                            2.254217e+00,
+                            2.048674e+00,
+                            1.869559e+00,
+                            1.588649e+00,
+                            1.507134e+00,
+                            1.464374e+00,
+                            1.436827e+00,
+                            1.405210e+00])
+
+        c_array = array([1.193958e+00,
+                            1.270316e+00,
+                            1.335191e+00,
+                            1.446266e+00,
+                            1.581345e+00,
+                            1.795050e+00,
+                            1.965613e+00,
+                            2.237466e+00,
+                            2.439729e+00])
+        A_func = spline(delta_virs, A_array)
+        a_func = spline(delta_virs, a_array)
+        b_func = spline(delta_virs, b_array)
+        c_func = spline(delta_virs, c_array)
+
+        A_0 = A_func(self.__delta_halo)
+        a_0 = a_func(self.__delta_halo)
+        b_0 = b_func(self.__delta_halo)
+        c_0 = c_func(self.__delta_halo)
+
+        A = A_0 * (1 + z) ** (-0.14)
+        a = a_0 * (1 + z) ** (-0.06)
+        alpha = exp(-(0.75 / log(self.__delta_halo / 75)) ** 1.2)
+        b = b_0 * (1 + z) ** (-alpha)
+        c = c_0
+
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = A * ((sgm / b) ** (-a) + 1) * exp(-c / sgm ** 2)
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
+
+    def __massFunctionST(self, lm, z):
         """Return the mass function of dark halos of
         Sheth e Tormen (MNRAS 308, 119, 1999).
 
@@ -245,7 +358,7 @@ class structures(structuresPS):
         """
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
-        frst = self.funcMassST(lm, z) * kmass
+        frst = self.massFunction(lm, z) * kmass
         kmassa2 = self.__tilt2 * kmass
         mdn_dm = kmassa2 * frst
         return mdn_dm
@@ -291,7 +404,7 @@ class structures(structuresPS):
         deltal = (self.__lmax - self.__lmin) / 50.0
         Lm = [self.__lmin + i * deltal for i in range(50)]
 
-        Fm = [self.funcMassST(lm, z) for lm in Lm]
+        Fm = [self.massFunction(lm, z) for lm in Lm]
 
         tck = spint.splrep(Lm, Fm)
         Inte = spint.splint(self.__lmin, self.__lmax, tck)
@@ -342,3 +455,12 @@ class structures(structuresPS):
             return True, self._cacheDir
         else:
             return False
+
+    def setDeltaHTinker(self, delta_halo):
+        if(self.__massFunctionType == "TK"):
+            self.__delta_halo = delta_halo
+            return True
+        else:
+            return False
+
+

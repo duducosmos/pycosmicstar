@@ -255,16 +255,25 @@ class lcdmcosmology(cosmology):
         return True
 
     def getCosmologicalParameter(self):
-        """Get the cosmological parameter
+        """Return the cosmological parameter
         """
         return self.__omegab, self.__omegam, self.__omegal, self.__h
 
     def getDeltaC(self):
+        """Return the critical density
+        """
         return self.__deltac
 
     def getTilt(self):
         return self.__tilt
 
     def getRobr0(self):
+        """Return the barionic matter density at the present day.
+        """
         return self.__robr0
+
+    def getRodm0(self):
+        """Return the dark matter density at the present day.
+        """
+        return self.__rodm0
 
