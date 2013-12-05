@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python
 # *-* Coding: UTF-8 *-*
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -35,28 +35,28 @@ class test_structures(unittest.TestCase):
     myStructures = structures(lcdmcosmology)
 
     def test_massFunction(self):
-        self.assertEqual(round(self.myStructures.massFunction(9.0, 1.0), 11),
+        self.assertEquals(round(self.myStructures.massFunction(9.0, 1.0), 11),
                           8.45e-09)
 
     def test_fstm(self):
-        self.assertEqual(round(self.myStructures.fstm(6.0), 2),
+        self.assertEquals(round(self.myStructures.fstm(6.0), 2),
                           515.94)
 
     def test_halos_n(self):
-        self.assertEqual(round(self.myStructures.halos_n(0.0), 2),
+        self.assertEquals(round(self.myStructures.halos_n(0.0), 2),
                           23581005304.07)
 
     def test_fbstruc(self):
-        self.assertEqual(round(self.myStructures.fbstruc(0.0), 2),
+        self.assertEquals(round(self.myStructures.fbstruc(0.0), 2),
                           0.73)
 
     def test_numerical_density_halos(self):
-        self.assertEqual(
+        self.assertEquals(
             round(self.myStructures.numerical_density_halos(0.0), 7),
                           6.76e-05)
 
     def test_abt(self):
-        self.assertEqual(round(self.myStructures.abt(1.0), 4),
+        self.assertEquals(round(self.myStructures.abt(1.0), 4),
                             0.0082)
 
     def test_creatCachDiretory(self):

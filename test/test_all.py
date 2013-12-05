@@ -1,5 +1,5 @@
-#!/usr/bin/env python3.3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+# *-* Coding : UTF-8 *-*
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -25,5 +25,9 @@ You should have received a copy of the GNU General Public License
 along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 """
+import unittest
 
-__all__ = ['cosmology', 'lcdmcosmology', 'structures', 'structuresPS']
+if(__name__ == "__main__"):
+    testsuite = unittest.TestLoader().discover('.')
+    unittest.TextTestRunner(verbosity=1).run(testsuite)
+

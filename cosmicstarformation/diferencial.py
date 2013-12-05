@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.3
 # -*- coding: utf-8 -*-
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -27,6 +28,8 @@ Fornce as funcoes locate(xx,n,x), dfridr(func,x,h,err) e
 int_simples(func,a,b,dx =0.001)
 """
 
+from numpy.numarray import zeros,Float64,array,sum
+from numpy import abs
 
 def locate(xx, n, x):
     """Localiza a posicao de dado ponto a partir de dois adjacentes.
@@ -47,58 +50,38 @@ j    --- posicao de saida
             ju = jm
     return jl
 
-def dfridr(func,x , h, err):
+
+def dfridr(func, x, h, err):
     '''Fornece a derivada de y em relacao a x.
            argumentos:  func --- funcao a ser integrada
                         x    --- dlog10 m ou z
                         h    --- passo para a diferencicao
                         err  --- parametro interno de erro da function
-'''
-    import numpy as np
-    from numpy.numarray import zeros,Float64,array,sum
-
-    CON=1.4
-    CON2=CON*CON
-    BIG=1.0e30
-    NTAB=10
-    SAFE=2.0
-    dfit=0.0
-    a= zeros((NTAB,NTAB),type=Float64)
+    '''
+    CON = 1.4
+    CON2 = CON * CON
+    #BIG = 1.0e30
+    NTAB = 10
+    #SAFE = 2.0
+    dfit = 0.0
+    a = zeros((NTAB, NTAB), type=Float64)
     if(h == 0):
-        print 'h tem que ser diferente de zero'
+        print('h tem que ser diferente de zero')
         return
-    hh=h
-    a[0,0]=(func(x+hh)-func(x-hh))/(2.0*hh)
-    for i in range(1,NTAB):
-        hh=hh/CON
-        a[0,i]=(func(x+hh)-func(x-hh))/(2.0*hh)
-        fac= CON2
-        for j in range(1,i):
-            a[j,i]=(a[j-1,i]*fac-a[j-1,i-1])/(fac-1.0)
-            fac=CON2*fac
-            a1=a[j,i]-a[j-1,i]
-            a2 = a[j,i]-a[j-1,i-1]
-            errt=max(np.abs(a1),np.abs(a2))
+    hh = h
+    a[0, 0] = (func(x + hh) - func(x - hh)) / (2.0 * hh)
+    for i in range(1, NTAB):
+        hh = hh / CON
+        a[0, i] = (func(x + hh) - func(x - hh)) / (2.0 * hh)
+        fac = CON2
+        for j in range(1, i):
+            a[j, i] = (a[j - 1, i] * fac - a[j - 1, i - 1]) / (fac - 1.0)
+            fac = CON2 * fac
+            a1 = a[j, i] - a[j - 1, i]
+            a2 = a[j, i] - a[j - 1, i - 1]
+            errt = max(abs(a1), abs(a2))
             if (errt >= err):
-                err=errt
+                err = errt
                 dfit = a[j, i]
-                return a[j,i]
-            	#if(abs(a[i,i]-a[i-1,i-1]) >= SAFE*err):
-            	#	return
-    return
-
-
-def neville(xData,yData,x):
-    '''P=neville(xData,yData,x)
-       xData: Tabela de valores de x
-       yData: Tabela de valores de y=f(x)
-       x: ponto onde se deseja avaliar a funcao interpolada
-       Avalia a interpolacao polinomial P(x) que passa através de um ponto específico
-       dos dados usando o método de Neville'''
-    m = len(xData) #Numero de pontos
-    y=yData
-    for k in range(1,m):
-        y[0:m-k] = ((x-xData[k:m])*y[0:m-k]+ \
-                    (xData[0:m-k]-x)*y[1:m-k+1])/ \
-                    (xData[0:m-k]-xData[k:m])
-    return y[0]
+                return dfit
+    return None

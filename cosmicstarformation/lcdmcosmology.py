@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.3
 # *-* Coding: UTF-8 *-*
 
 __author__ = "Eduardo dos Santos Pereira"
@@ -42,11 +42,11 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-from cosmology import cosmology
+from .cosmology import cosmology
 from numpy import sqrt, pi, log, exp
 from scipy.integrate import romberg
 
-import lcdmlib
+from .cosmolib import lcdmlib
 
 
 class lcdmcosmology(cosmology):
@@ -276,4 +276,3 @@ class lcdmcosmology(cosmology):
         """Return the dark matter density at the present day.
         """
         return self.__rodm0
-

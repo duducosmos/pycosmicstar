@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.3
 # *-* Coding: UTF-8 *-*
 
 __author__ = "Eduardo dos Santos Pereira"
@@ -36,19 +36,19 @@ from cosmicstarformation.lcdmcosmology import lcdmcosmology
 
 class test_cosmicstarformation(unittest.TestCase):
 
-    myCosmicStar = cosmicstarformation(cosmology=lcdmcosmology)
+    myCosmicStar = cosmicstarformation(cosmology=lcdmcosmology, tau=2.5)
 
     def test_cosmicStarsDensity(self):
-        self.assertEquals(
+        self.assertEqual(
             round(self.myCosmicStar.cosmicStarFormationRate(4.5), 3), 0.16)
 
     def test_gasDensityInStructures(self):
-        self.assertEquals(
+        self.assertEqual(
             round(self.myCosmicStar.gasDensityInStructures(4.5)[0], 2),
             398788601.13)
 
     def test_phi(self):
-        self.assertEquals(round(self.myCosmicStar.phi(1e3), 11), 1.513e-08)
+        self.assertEqual(round(self.myCosmicStar.phi(1e3), 11), 1.513e-08)
 
 if(__name__ == "__main__"):
     unittest.main()

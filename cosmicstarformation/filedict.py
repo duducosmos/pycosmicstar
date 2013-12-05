@@ -6,7 +6,7 @@ Date  : 24-May-2009
 """
 
 import sqlite3
-import cPickle as pickle
+import pickle
 
 class DefaultArg:
     pass

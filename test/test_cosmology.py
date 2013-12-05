@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python
 # *-* Coding: UTF-8 *-*
 
 __author__ = "Eduardo dos Santos Pereira"

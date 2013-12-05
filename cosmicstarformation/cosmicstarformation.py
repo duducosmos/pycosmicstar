@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # *-* Coding: UTF-8 *-*
+from __future__ import print_function
+from __future__ import division
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -30,9 +32,9 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 from numpy import log10, sqrt, array
 from numpy.numarray import zeros, Float64
-from structures import structures
+from .structures import structures
 import scipy.interpolate as spint
-from run_kut4 import rk4_int
+from .run_kut4 import rk4_int
 import sys
 
 
@@ -290,7 +292,7 @@ class cosmicstarformation(structures):
             elif(j >= (len(self.__astar) - 2) and j <= len(self.__astar)):
                 return self.__csfr[j]
             elif(a < self.__astar[0]):
-                print"Error in spline csfr"
+                print("Error in spline csfr")
                 sys.exit()
                 break
 
@@ -324,6 +326,6 @@ class cosmicstarformation(structures):
             elif(j >= (len(self.__astar) - 2) and j <= len(self.__astar)):
                 return self.__rho_gas[j]
             elif(a < self.__astar[0]):
-                print "Error spline gas density"
+                print("Error spline gas density")
                 sys.exit()
                 break

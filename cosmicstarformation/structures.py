@@ -1,6 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.3
 # *-* Coding: UTF-8 *-*
-from __future__ import print_function
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -45,12 +44,11 @@ from numpy import sqrt, pi, log, log10, exp, array, abs
 import scipy.interpolate as spint
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
 
-from structuresabstract import structuresabstract
+from .structuresabstract import structuresabstract
 
-import filedict
+from . import filedict
 import os
-import sys
-from diferencial import dfridr, locate
+from .diferencial import dfridr, locate
 
 
 class structures(structuresabstract):
@@ -95,7 +93,7 @@ class structures(structuresabstract):
         if(cacheFile is None):
             cacheFile = str(self._cacheDir) + "/structures_cache_"\
                   + massFunctionType + "_" + str(omegab) + "_" \
-                  + str(omegam) + "_" + str(omegal) + "_" \
+                  + str(omegam) + "_" + str(omegal) + "_ " \
                   + str(h) + "_" + str(lmin) + "_" + str(zmax)
         else:
             cacheFile = str(self._cacheDir) + cacheFile
@@ -127,7 +125,11 @@ class structures(structuresabstract):
         self.__massFunctionType = massFunctionType
         self.__delta_halo = 200
 
-        print(self.__massFunctionType)
+        self.__massFunctionDict = {"ST": self.__massFunctionST,
+                                   "TK": self.__massFunctionTinker,
+                                   "PS": self.__massFunctionPressSchechter,
+                                   "JK": self.__massFunctionJenkins
+                                   }
 
         self.__startingSigmaAccretion()
 
@@ -224,13 +226,51 @@ class structures(structuresabstract):
             lm -- log10 of the mass of the dark halo
             z -- redshift
         """
-        if(self.__massFunctionType == "ST"):
-            return self.__massFunctionST(lm, z)
-        elif(self.__massFunctionType == "TK"):
-            return self.__massFunctionTinker(lm, z)
-        else:
-            print("Mass function not defined")
-            sys.existe()
+        try:
+            return self.__massFunctionDict[self.__massFunctionType](lm, z)
+        except:
+            raise NameError("No Defined Mass Function")
+
+    def __massFunctionJenkins(self, lm, z):
+        """Return the mass function of Jenkins et al. (2003).
+         Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = 0.315 * exp(- abs(log(sgm) + 0.61) ** 3.8)
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
+
+    def __massFunctionPressSchechter(self, lm, z):
+        """Return the value of Press-Schechter (1974) mass function.
+        Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+
+        gte = self._cosmology.growthFunction(z)
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+        sigma1 = self.__deltac / (sgm * gte)
+        sigma2 = sigma1 ** 2.0
+        fst = sqrt(2.0 / pi) * (sigma1) * exp(-0.5 * sigma2)
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
 
     def __massFunctionTinker(self, lm, z):
         """Return the mass function of dark halos of
@@ -371,7 +411,7 @@ class structures(structuresabstract):
             z -- redshift
         """
 
-        fmassM = lambda ln: self.__fmassM(lm, z)
+        fmassM = lambda lm: self.__fmassM(lm, z)
 
         deltal = (self.__lmax - self.__lmin) / 50.0
 
@@ -462,5 +502,3 @@ class structures(structuresabstract):
             return True
         else:
             return False
-
-

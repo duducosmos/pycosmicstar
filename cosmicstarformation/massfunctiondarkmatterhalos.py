@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.3
-# -*- coding: utf-8 -*-
+# *-* Coding: UTF-8 *-*
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -9,7 +9,10 @@ __version__ = "1.0.1"
 __maintainer__ = "Eduardo dos Santos Pereira"
 __status__ = "Stable"
 
-"""
+
+"""Mass Function of dark matter halos.
+A colection of mass function of dark matter halos
+
 This file is part of cosmicstar.
 copyright : Eduardo dos Santos Pereira
 
@@ -26,4 +29,14 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-__all__ = ['cosmology', 'lcdmcosmology', 'structures', 'structuresPS']
+from numpy import sqrt, exp, pi
+
+
+def pressSchechterMassFunction(nu):
+    """Return the value of Press-Schechter (1974) mass function.
+    Keyword arguments:
+        nu - S{delta}_{c}/S{sigma}
+    """
+
+    fmass = sqrt(2.0 / pi) * (nu) * exp(-0.5 * (nu) ** 2)
+    return fmass

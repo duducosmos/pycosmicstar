@@ -41,14 +41,16 @@ Initialization:
    myUniverse = cosmolib.init(omegab,omegam,omegal,h)
 
 FUNCTIONS:
-    dtdz(z) : Time and Redshift Relation for \LambdaCDM Universe
+    dtdz(z) : Time and Redshift Relation for S{Lambda}CDM Universe
     dtdzCG : Time and Redshift Relation for  Chaplygin Gas
-    rz(z): comove distancy  for \LambdaCDM Universe
+    rz(z): comove distancy  for S{Lambda}CDM Universe
     rzGC(z) : comove distancy  for  Chaplygin Gas
-    dr_dz(z) : variation of comove distance with redshift for \LambdaCDM Universe
+    dr_dz(z) : variation of comove distance with redshift for
+    S{Lambda}CDM Universe
     drGC_dz(z) : variation of comove distance with redshift  for  Chaplygin Gas
-    dV_dz(z) : variation of comove volume with redshift for \LambdaCDM Universe
-    age(z):  Age of the Universe for \LambdaCDM Universe
+    dV_dz(z) : variation of comove volume with redshift for S{Lambda}CDM
+    Universe
+    age(z):  Age of the Universe for S{Lambda}CDM Universe
     ageCG(z) : Age of the Universe for  Chaplygin Gas
 
     sigma: the variance of the linear density field.
