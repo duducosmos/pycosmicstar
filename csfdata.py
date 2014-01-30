@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # *-* Coding: UTF-8 *-*
+from __future__ import division, absolute_import
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -86,6 +87,20 @@ class csfdata:
 
         return yn - yt
 
+    def funcMinimizeTinker(self, p, x, yn):
+        tau = p[0]
+
+        #DHs = [200, 300, 400, 600, 800, 1200, 1600, 2400]
+
+        myCSFR = cosmicstarformation(cosmology=lcdmcosmology,
+                                     tau=tau,
+                                     massFunctionType="TK",
+                                     delta_halo=400)
+
+        yt = array([myCSFR.cosmicStarFormationRate(zi) for zi in x])
+
+        return yn - yt
+
     def fitTauPereiraMiranda(self):
         x, yn = self.csfredshift()
         xerr, yerr = self.errorData()
@@ -93,6 +108,14 @@ class csfdata:
         p = 2.29090099
         p, sucess = leastsq(self.funcMinimize, p, args=(x, yn))
         return p[0]
+
+    def fitTauTinker(self):
+        x, yn = self.csfredshift()
+        xerr, yerr = self.errorData()
+
+        p = [0.5]
+        p, sucess = leastsq(self.funcMinimizeTinker, p, args=(x, yn))
+        return p
 
     def plotTauBestFit(self):
 
@@ -118,15 +141,22 @@ class csfdata:
     def plotCSFR(self):
         myCSFR_ST = cosmicstarformation(cosmology=lcdmcosmology)
         myCSFR_TK = cosmicstarformation(cosmology=lcdmcosmology,
-                                        massFunctionType="TK")
+                                        massFunctionType="TK",
+                                        tau=0.64014971,
+                                        delta_halo=400)
+        myCSFR_TK.setDeltaHTinker(2400)
         z = arange(0, 7.1, 0.1)
 
         csfrST = array([myCSFR_ST.cosmicStarFormationRate(zi) for zi in z])
 
         csfrTK = array([myCSFR_TK.cosmicStarFormationRate(zi) for zi in z])
 
+        x, yn = self.csfredshift()
+        xerr, yerr = self.errorData()
+
         plt.plot(z, csfrST, label="ST")
         plt.plot(z, csfrTK, label="TK")
+        plt.errorbar(x, yn, yerr=yerr, xerr=xerr, fmt='.')
         plt.legend(loc=4)
         plt.show()
 
@@ -134,4 +164,4 @@ class csfdata:
 if(__name__ == "__main__"):
     myCSF = csfdata()
     myCSF.plotCSFR()
-
+    #print((myCSF.fitTauTinker()))

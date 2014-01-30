@@ -1,5 +1,6 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python3
 # *-* Coding: UTF-8 *-*
+from __future__ import division, absolute_import
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -46,9 +47,18 @@ from scipy.interpolate import InterpolatedUnivariateSpline as spline
 
 from .structuresabstract import structuresabstract
 
-from . import filedict
+import sys
+pyversion = sys.version_info
+if pyversion[0] >= 3:
+    from . import filedict
+else:
+    print("Importing filedict for python2.7")
+    from . import filedict_old as filedict
+
 import os
 from .diferencial import dfridr, locate
+
+from .paralleloverlist import parallel_list
 
 
 class structures(structuresabstract):
@@ -81,7 +91,8 @@ class structures(structuresabstract):
 
     def __init__(self, cosmology, lmin=6.0, zmax=20.0,
                 omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
-                cacheDir=None, cacheFile=None, massFunctionType="ST"):
+                cacheDir=None, cacheFile=None, massFunctionType="ST",
+                delta_halo=200):
 
         self._cosmology = cosmology(omegam, omegab, omegal, h)
 
@@ -91,10 +102,20 @@ class structures(structuresabstract):
             self._cacheDir = cacheDir
 
         if(cacheFile is None):
-            cacheFile = str(self._cacheDir) + "/structures_cache_"\
-                  + massFunctionType + "_" + str(omegab) + "_" \
-                  + str(omegam) + "_" + str(omegal) + "_ " \
+            if(massFunctionType == "TK"):
+
+                cacheFile = str(self._cacheDir) + "/structures_cache_"\
+                  + massFunctionType + str(delta_halo) + "_" + "_" +\
+                   str(omegab) + "_" \
+                  + str(omegam) + "_" +\
+                   str(omegal) + "_ " \
                   + str(h) + "_" + str(lmin) + "_" + str(zmax)
+
+            else:
+                cacheFile = str(self._cacheDir) + "/structures_cache_"\
+                      + massFunctionType + "_" + str(omegab) + "_" \
+                      + str(omegam) + "_" + str(omegal) + "_ " \
+                      + str(h) + "_" + str(lmin) + "_" + str(zmax)
         else:
             cacheFile = str(self._cacheDir) + cacheFile
 
@@ -123,7 +144,7 @@ class structures(structuresabstract):
         self.__ctst = self.__ast1 * sqrt(2.0 * self.__ast2 / pi)
 
         self.__massFunctionType = massFunctionType
-        self.__delta_halo = 200
+        self.__delta_halo = delta_halo
 
         self.__massFunctionDict = {"ST": self.__massFunctionST,
                                    "TK": self.__massFunctionTinker,
@@ -136,7 +157,8 @@ class structures(structuresabstract):
     def __creatCachDiretory(self):
         HOME = os.path.expanduser('~')
         if not os.path.exists(HOME + '/.cosmicstarformation'):
-            print(('Creating .cosmicstarformation cache diretory in %s' % HOME))
+            print(('Creating .cosmicstarformation cache diretory in %s'
+                     % HOME))
             os.makedirs(HOME + '/.cosmicstarformation')
         return os.path.expanduser('~') + '/.cosmicstarformation', True
 
@@ -168,15 +190,32 @@ class structures(structuresabstract):
 
         self.__km = array([ei for ei in e])
         self.__sg = array([FI for FI in f])
-        self.__t_z = array([self._cosmology.age(zi) for zi in self.__zred])
-        self.__d_c2 = array([
-            self.__deltac / self._cosmology.growthFunction(zi)
-                            for zi in self.__zred
-                            ])
-        self.__rdm2 = array([self._cosmology.rodm(zi)[0]
-                            for zi in self.__zred
-                            ])
-        self.__rbr2 = array([self._cosmology.robr(zi) for zi in self.__zred])
+
+        self.__t_z = parallel_list(self._cosmology.age, self.__zred)
+
+        self.__d_c2 = parallel_list(self.__deltaCz, self.__zred)
+
+        self.__rdm2 = parallel_list(self.__rodmz, self.__zred)
+
+        self.__rbr2 = parallel_list(self._cosmology.robr, self.__zred)
+
+        #self.__t_z = array([self._cosmology.age(zi) for zi in self.__zred])
+
+        #self.__d_c2 = array([
+            #self.__deltac / self._cosmology.growthFunction(zi)
+                            #for zi in self.__zred
+                            #])
+        #self.__rdm2 = array([self._cosmology.rodm(zi)[0]
+                            #for zi in self.__zred
+                            #])
+        #self.__rbr2 = array([self._cosmology.robr(zi)
+                                #for zi in self.__zred])
+
+    def __rodmz(self, z):
+        return self._cosmology.rodm(z)[0]
+
+    def __deltaCz(self, z):
+        return self.__deltac / self._cosmology.growthFunction(z)
 
     def __startingSigmaAccretion(self):
         """
@@ -502,3 +541,9 @@ class structures(structuresabstract):
             return True
         else:
             return False
+
+    def getDeltaHTinker(self):
+        if(self.__massFunctionType == "TK"):
+            return self.__delta_halo
+        else:
+            raise NameError("TinkerNotDefined")

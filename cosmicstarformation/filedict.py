@@ -2,27 +2,34 @@
 a Persistent Dictionary in Python
 
 Author: Erez Shinan
-Date  : 24-May-2009
+Date  : 31-May-2009
 """
 
-import sqlite3
+from collections import UserDict
 import pickle
-
-class DefaultArg:
-    pass
+import sqlite3
+import hashlib
 
 class Solutions:
     Sqlite3 = 0
 
-class FileDict(object):
-    "A dictionary that stores its data persistantly in a file"
+class FileDict(UserDict):
+    """A dictionary that stores its data persistantly in a file
 
-    def __init__(self, solution=Solutions.Sqlite3, **options):
-        assert solution == Solutions.Sqlite3
+    Options:
+        filename - which file to use
+        connection - use an existing connection instead of a filename (overrides filename)
+        table - which table name to use for storing data (default: 'dict')
+
+    """
+
+    def __init__(self, filename=None, solution=Solutions.Sqlite3, **options):
+        assert solution == Solutions.Sqlite3, "Only sqlite3 is supported right now"
         try:
             self.__conn = options.pop('connection')
         except KeyError:
-            filename = options.pop('filename')
+            if not filename:
+                raise ValueError("Must provide 'connection' or 'filename'")
             self.__conn = sqlite3.connect(filename)
 
         self.__tablename = options.pop('table', 'dict')
@@ -31,8 +38,8 @@ class FileDict(object):
 
         assert not options, "Unrecognized options: %s" % options
 
-        self.__conn.execute('create table if not exists %s (hash integer, key blob, value blob);'%self.__tablename)
-        self.__conn.execute('create index if not exists %s_index ON %s(hash);' % (self.__tablename, self.__tablename))
+        self.__conn.execute('CREATE TABLE IF NOT EXISTS %s (id integer primary key, hash integer, key blob, value blob);'%self.__tablename)
+        self.__conn.execute('CREATE INDEX IF NOT EXISTS %s_index ON %s(hash);' % (self.__tablename, self.__tablename))
         self.__conn.commit()
 
     def _commit(self):
@@ -41,104 +48,82 @@ class FileDict(object):
 
         self.__conn.commit()
 
-    def __pack_key(self, key):
-        return sqlite3.Binary(pickle.dumps(key, 1))
-    def __pack_value(self, value):
-        return sqlite3.Binary(pickle.dumps(value, -1))
-    def __unpack_value(self, value):
-        return pickle.loads(str(value))
+    def __pack(self, value):
+        return pickle.dumps(value, 3)
+    def __unpack(self, value):
+        return pickle.loads(value)
 
-    def get(self, key, default=None):
-        try:
-            return self.__getitem__(key)
-        except KeyError:
-            return default
+    def __hash(self, data):
+        binary_data = self.__pack(data)
+        hash = int(hashlib.md5(binary_data).hexdigest(),16)
+        # We need a 32bit hash:
+        return hash % 0x7FFFFFFF
+
+    def __get_id(self, key):
+        cursor = self.__conn.execute('SELECT key,id FROM %s WHERE hash=?;'%self.__tablename, (self.__hash(key),))
+        for k,id in cursor:
+            if self.__unpack(k) == key:
+                return id
+
+        raise KeyError(key)
 
     def __getitem__(self, key):
-        tbl = self.__tablename
-        key_hash = hash(key)
-        key_pickle = self.__pack_key(key)
-        c = self.__conn.execute('select value from %s where hash=? and key=?;'%tbl, (key_hash, key_pickle))
-        res = c.fetchone()
-        if res is None:
-            raise KeyError(key)
+        cursor = self.__conn.execute('SELECT key,value FROM %s WHERE hash=?;'%self.__tablename, (self.__hash(key),))
+        for k,v in cursor:
+            if self.__unpack(k) == key:
+                return self.__unpack(v)
 
-        [value_pickle] = res
-        return self.__unpack_value(value_pickle)
+        raise KeyError(key)
 
     def __setitem(self, key, value):
-        tbl = self.__tablename
-        key_hash = hash(key)
-        key_pickle = self.__pack_key(key)
-        value_pickle = self.__pack_value(value)
+        value_pickle = self.__pack(value)
 
-        res = self.__conn.execute('update %s set value=? where hash=? and key=?;'%tbl, (value_pickle, key_hash, key_pickle) )
-        if res.rowcount <= 0:
-            res = self.__conn.execute('insert into %s values (?, ?, ?);'%tbl, (key_hash, key_pickle, value_pickle) )
+        try:
+            id = self.__get_id(key)
+            cursor = self.__conn.execute('UPDATE %s SET value=? WHERE id=?;'%self.__tablename, (value_pickle, id) )
+        except KeyError:
+            key_pickle = self.__pack(key)
+            cursor = self.__conn.execute('INSERT INTO %s (hash, key, value) values (?, ?, ?);'
+                    %self.__tablename, (self.__hash(key), key_pickle, value_pickle) )
 
-        assert res.rowcount == 1
+        assert cursor.rowcount == 1
 
     def __setitem__(self, key, value):
         self.__setitem(key, value)
         self._commit()
 
     def __delitem__(self, key):
-        tbl = self.__tablename
-        key_hash = hash(key)
-        key_pickle = self.__pack_key(key)
-
-        res = self.__conn.execute('delete from %s where hash=? and key=?;'%tbl, (key_hash, key_pickle))
-        if res.rowcount <= 0:
+        id = self.__get_id(key)
+        cursor = self.__conn.execute('DELETE FROM %s WHERE id=?;'%self.__tablename, (id,))
+        if cursor.rowcount <= 0:
             raise KeyError(key)
 
         self._commit()
 
+
     def update(self, d):
-        for k,v in d.iteritems():
+        for k,v in d.items():
             self.__setitem(k, v)
         self._commit()
 
-    def pop(self, key, default=DefaultArg):
-        try:
-            value = self[key]
-        except KeyError:
-            if default is DefaultArg:
-                raise
-            else:
-                value = self.get(key, default)
-        else:
-            del self[key]
-        return value
-
+    def __iter__(self):
+        return (self.__unpack(x[0]) for x in self.__conn.execute('SELECT key FROM %s;'%self.__tablename) )
     def keys(self):
-        return (self.__unpack_value(x[0]) for x in self.__conn.execute('select key from %s;'%self.__tablename) )
+        return iter(self)
     def values(self):
-        return (self.__unpack_value(x[0]) for x in self.__conn.execute('select value from %s;'%self.__tablename) )
+        return (self.__unpack(x[0]) for x in self.__conn.execute('SELECT value FROM %s;'%self.__tablename) )
     def items(self):
-        return (map(self.__unpack_value, x) for x in self.__conn.execute('select key,value from %s;'%self.__tablename) )
-    def iterkeys(self):
-        return self.keys()
-    def itervalues(self):
-        return self.values()
-    def iteritems(self):
-        return self.items()
-
-    def has_key(self, key):
-        tbl = self.__tablename
-        key_hash = hash(key)
-        key_pickle = self.__pack_key(key)
-        c = self.__conn.execute('select count(*) from %(tbl)s where hash=%(key_hash)d and key=%(key_pickle)r;' % locals())
-        res = c.fetchone()
-        assert res
-        assert 0 <= res[0] <= 1
-
-        return bool(res[0])
+        return (list(map(self.__unpack, x)) for x in self.__conn.execute('SELECT key,value FROM %s;'%self.__tablename) )
 
     def __contains__(self, key):
-        return self.has_key(key)
+        try:
+            self.__get_id(key)
+            return True
+        except KeyError:
+            return False
 
     def __len__(self):
-        return self.__conn.execute('select count(*) from %s;' % self.__tablename).fetchone()[0]
+        return self.__conn.execute('SELECT COUNT(*) FROM %s;' % self.__tablename).fetchone()[0]
 
     def __del__(self):
         try:
@@ -147,7 +132,6 @@ class FileDict(object):
             pass
         else:
             self.__conn.commit()
-            self.__conn.close()
 
     @property
     def batch(self):
@@ -158,10 +142,11 @@ class FileDict(object):
             self.__d = d
 
         def __enter__(self):
+            self.__old_nocommit = self.__d._nocommit
             self.__d._nocommit = True
             return self.__d
 
         def __exit__(self, type, value, traceback):
-            self.__d._nocommit = False
+            self.__d._nocommit = self.__old_nocommit
             self.__d._commit()
             return True

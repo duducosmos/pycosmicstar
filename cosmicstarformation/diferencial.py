@@ -1,5 +1,7 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from __future__ import division, absolute_import
+
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
 __credits__ = ["Eduardo dos Santos Pereira"]
@@ -28,8 +30,9 @@ Fornce as funcoes locate(xx,n,x), dfridr(func,x,h,err) e
 int_simples(func,a,b,dx =0.001)
 """
 
-from numpy.numarray import zeros,Float64,array,sum
+from numpy.numarray import zeros, Float64
 from numpy import abs
+
 
 def locate(xx, n, x):
     """Localiza a posicao de dado ponto a partir de dois adjacentes.

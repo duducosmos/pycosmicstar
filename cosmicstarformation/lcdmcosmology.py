@@ -1,5 +1,6 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python3
 # *-* Coding: UTF-8 *-*
+from __future__ import division, absolute_import
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -43,10 +44,18 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 from .cosmology import cosmology
-from numpy import sqrt, pi, log, exp
+from numpy import sqrt, pi, log, log10, exp, sin, cos
+from numpy.numarray import zeros, Float64
 from scipy.integrate import romberg
 
-from .cosmolib import lcdmlib
+cosmolibImportStatus = None
+try:
+    from .cosmolib import lcdmlib
+    cosmolibImportStatus = True
+    print('lcdmlib imported')
+except:
+    cosmolibImportStatus = False
+    print('lcdmlib not imported, using pure python version of sigma')
 
 
 class lcdmcosmology(cosmology):
@@ -72,8 +81,11 @@ class lcdmcosmology(cosmology):
         #m / s
         self.__speedOfLight = 3.0e+8
 
-        self.__lcdmlib = lcdmlib
-        self.__lcdmlib.init(omegab, omegam, omegal, h)
+        self.__cosmolibImportStatus = cosmolibImportStatus
+
+        if(self.__cosmolibImportStatus is True):
+            self.__lcdmlib = lcdmlib
+            self.__lcdmlib.init(omegab, omegam, omegal, h)
 
         if(self.__omegal >= 0.73):
             tilt = 1.92
@@ -206,12 +218,54 @@ class lcdmcosmology(cosmology):
         Keyword arguments:
             kmass -- mass scale
         """
-        return self.__lcdmlib.sigma(self.__anorm,
+
+        if(self.__cosmolibImportStatus is not True):
+            return self.__sigma(kmass)
+        else:
+            return self.__lcdmlib.sigma(self.__anorm,
                                     self.__alfa,
                                     self.__beta,
                                     self.__gama,
                                     self.__ct2,
                                     kmass)
+
+    def dsigma2_dk(self, kl):
+        """"Return the integrating of sigma(M,z) for a top-hat filtering.
+        In z = 0 return sigma_8, for z > 0 return sigma(M,z)
+        """
+        k = exp(kl)
+        x = self.__escala * k
+        pk1 = 1.0 + (self.__alfa * k + (self.__beta * k) ** 1.5
+                     + (self.__gama * k) ** 2.0) ** 1.13
+        pk2 = 1.0 / pk1
+        pdmk = pk2 * (k ** 3.0)
+        dsigdk = pdmk * (3.0 * (sin(x) - x * cos(x)) / (x ** 3.0)) ** 2.0
+        return dsigdk
+
+    def __sigma(self, kmass):
+
+        n = kmass.size
+        km = zeros(n, type=Float64)
+        sg = zeros(n, type=Float64)
+
+        for i in range(0, n):
+            self.__escala = (kmass[i] / self.__ct2) ** (1.0 / 3.0)
+            km[i] = log10(kmass[i])
+
+            t0 = log10(1.0e-7 / self.__escala)
+            t1 = log10(1.0e-3 / self.__escala)
+            t2 = log10(1.0e+0 / self.__escala)
+            t3 = log10(10.0e+0 / self.__escala)
+            t4 = log10(100.0e+0 / self.__escala)
+
+            sig2_1 = romberg(self.dsigma2_dk, t0, t1, tol=1.48e-09)
+            sig2_2 = romberg(self.dsigma2_dk, t1, t2, tol=1.48e-09)
+            sig2_3 = romberg(self.dsigma2_dk, t2, t3, tol=1.48e-09)
+            sig2_4 = romberg(self.dsigma2_dk, t3, t4, tol=1.48e-09)
+
+            sg[i] = sqrt(self.__anorm * (sig2_1 + sig2_2 + sig2_3 + sig2_4))
+
+        return km, sg
 
     def rodm(self, z):
         """Return the dark matter density
@@ -242,7 +296,14 @@ class lcdmcosmology(cosmology):
         Keyword arguments:
             z -- redshift
         """
-        return  self.__lcdmlib.age(z)
+        if(self.__cosmolibImportStatus is True):
+            return  self.__lcdmlib.age(z)
+        else:
+            z1 = 1.0 + z
+            ascale = 1.0 / z1
+            ascale3 = ascale ** 3.0
+            fct = self.__omegalm * ascale3
+            return 6.522916e+09 * log(sqrt(fct) + sqrt(fct + 1.0)) / self.__hsl
 
     def setCosmologicalParameter(self, omegam, omegab, omegal, h):
         """Set the cosmological parameters

@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # *-* Coding: UTF-8 *-*
-from __future__ import print_function
-from __future__ import division
+
+from __future__ import division, absolute_import
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -75,11 +75,20 @@ class cosmicstarformation(structures):
     def __init__(self, cosmology,
                      tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
                      omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
-                     cacheDir=None, cacheFile=None, massFunctionType="ST"
+                     cacheDir=None, cacheFile=None, massFunctionType="ST",
+                     delta_halo=200
                 ):
 
         if(cacheFile is None):
-            cacheFile = "/structures_cache_" + massFunctionType + "_"\
+            if(massFunctionType == "TK"):
+                cacheFile = "/structures_cache_" + \
+                        massFunctionType + "_" + str(delta_halo) + "_"\
+                        + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
+                        + "_" + str(omegab) + "_" \
+                        + str(omegam) + "_" + str(omegal) + "_" \
+                        + str(h) + "_" + str(lmin) + "_" + str(zmax)
+            else:
+                cacheFile = "/structures_cache_" + massFunctionType + "_"\
                         + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
                         + "_" + str(omegab) + "_" \
                         + str(omegam) + "_" + str(omegal) + "_" \

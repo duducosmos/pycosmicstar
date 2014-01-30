@@ -7,11 +7,7 @@ star formation history for diferents cosmological models.
 The model used to develop this software was presented by the first time
 in the article of Pereira and Miranda (2010) - (MNRAS, 401, 1924, 2010)
 
-To install:
-
-	python setup.py install
-
-cosmicstarformation is a free software: you can redistribute it and/or modify
+cosmicstar is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License.
 cosmicstar is distributed in the hope that it will be useful,

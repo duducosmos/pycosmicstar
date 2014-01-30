@@ -1,5 +1,7 @@
-#!/usr/bin/env python3.3
+#!/usr/bin/env python3
 # *-* Coding: UTF-8 *-*
+
+from __future__ import division, absolute_import
 
 __author__ = "Eduardo dos Santos Pereira"
 __email__ = "pereira.somoza@gmail.com"
@@ -64,11 +66,11 @@ class cosmology:
         """Return the growth function of the primordial perturbations"""
         raise NotImplementedError('I need to be implemented!')
 
-    #def dsigma2_dk(self, kl):
-        #""""Return the integrating of sigma(M,z) for a top-hat filtering.
-        #In z = 0 return sigma_8, for z > 0 return sigma(M,z)
-        #"""
-        #raise NotImplementedError('I need to be implemented!')
+    def dsigma2_dk(self, kl):
+        """"Return the integrating of sigma(M,z) for a top-hat filtering.
+        In z = 0 return sigma_8, for z > 0 return sigma(M,z)
+        """
+        raise NotImplementedError('I need to be implemented!')
 
     def sigma(self):
         """Return  the variance of the linear density field.
