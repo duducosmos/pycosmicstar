@@ -26,8 +26,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 import unittest
 
-from cosmicstarformation.structures import structures
-from cosmicstarformation.lcdmcosmology import lcdmcosmology
+from pystar.structures import structures
+from pystar.lcdmcosmology import lcdmcosmology
 
 
 class test_structures(unittest.TestCase):
@@ -44,7 +44,7 @@ class test_structures(unittest.TestCase):
 
     def test_halos_n(self):
         self.assertEqual(round(self.myStructures.halos_n(0.0), 2),
-                          23581005304.07)
+                          23584651682.25)
 
     def test_fbstruc(self):
         self.assertEqual(round(self.myStructures.fbstruc(0.0), 2),

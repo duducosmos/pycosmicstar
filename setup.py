@@ -11,7 +11,7 @@ __author__ = " Eduardo dos Santo Pereira "
 __email__ = " pereira.somoza@mail.com "
 __url__ = " www.cosmicstarformation.com "
 __date__ = " 2013-12-02T15:58:52 "
-__prj__ = " thecosmicstarformationrate "
+__prj__ = " pystar "
 
 
 # imports
@@ -30,11 +30,11 @@ def read(fname):
 
 
 Extensions = [Extension(name="lcdmlib",
-                        sources=["cosmicstarformation/lcdmlib.f"],)]
+                        sources=["pystar/lcdmlib.f"],)]
 
 
 setup(
-    name="cosmicstarformation",
+    name="pystar",
     version="0.1",
     url="www.cosmicstarformation.com",
     download_url="www.cosmicstarformation.com",

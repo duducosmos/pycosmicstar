@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # *-* Coding: UTF-8 *-*
 
 __author__ = "Eduardo dos Santos Pereira"
@@ -30,8 +30,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import unittest
-from cosmicstarformation.cosmicstarformation import cosmicstarformation
-from cosmicstarformation.lcdmcosmology import lcdmcosmology
+from pystar.cosmicstarformation import cosmicstarformation
+from pystar.lcdmcosmology import lcdmcosmology
 
 
 class test_cosmicstarformation(unittest.TestCase):
@@ -40,12 +40,12 @@ class test_cosmicstarformation(unittest.TestCase):
 
     def test_cosmicStarsDensity(self):
         self.assertEqual(
-            round(self.myCosmicStar.cosmicStarFormationRate(4.5), 3), 0.16)
+            round(self.myCosmicStar.cosmicStarFormationRate(4.5), 3), 0.159)
 
     def test_gasDensityInStructures(self):
         self.assertEqual(
             round(self.myCosmicStar.gasDensityInStructures(4.5)[0], 2),
-            398788601.13)
+            397760539.19)
 
     def test_phi(self):
         self.assertEqual(round(self.myCosmicStar.phi(1e3), 11), 1.513e-08)

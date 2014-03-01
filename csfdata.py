@@ -32,8 +32,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 from numpy import array, loadtxt, arange
 import matplotlib.pyplot as plt
 from scipy.optimize import leastsq
-from cosmicstarformation.lcdmcosmology import lcdmcosmology
-from cosmicstarformation.cosmicstarformation import cosmicstarformation
+from pystar.lcdmcosmology import lcdmcosmology
+from pystar.cosmicstarformation import cosmicstarformation
 
 
 class csfdata:
