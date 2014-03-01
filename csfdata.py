@@ -164,4 +164,4 @@ class csfdata:
 if(__name__ == "__main__"):
     myCSF = csfdata()
     myCSF.plotCSFR()
-    #print((myCSF.fitTauTinker()))
+    print((myCSF.fitTauTinker()))
