@@ -30,8 +30,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import unittest
-from pystar.cosmicstarformation import cosmicstarformation
-from pystar.lcdmcosmology import lcdmcosmology
+from pycosmicstar.cosmicstarformation import cosmicstarformation
+from pycosmicstar.lcdmcosmology import lcdmcosmology
 
 
 class test_cosmicstarformation(unittest.TestCase):

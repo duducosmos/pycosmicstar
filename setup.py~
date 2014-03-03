@@ -37,7 +37,7 @@ setup(
     name="pycosmicstar",
     version="1.0",
     url="http://www.cosmicstarformation.com",
-    download_url="http://www.cosmicstarformation.com",
+    download_url="www.cosmicstarformation.com",
     license="GNU GENERAL PUBLIC LICENSE V3",
     author="Eduardo dos Santo Pereira",
     author_email="pereira.somoza@mail.com",

@@ -27,13 +27,13 @@ h = 0,734, sigma_8 = 0,84
 WMAP-1: omega_m = 0,29, omega_b = 0,44, omega_l = 0,71
 h = 0,72, sigma_8 = 0,9
 
-This file is part of cosmicstar.
+This file is part of pystar.
 copyright : Eduardo dos Santos Pereira
 
-cosmicstar is free software: you can redistribute it and/or modify
+pystar is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License.
-cosmicstar is distributed in the hope that it will be useful,
+pystar is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.

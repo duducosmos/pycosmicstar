@@ -1,7 +1,7 @@
-PYSTAR: PYthon coSmic sTar formAtion Rate
+pycosmicstar: PYthon cosmic STar formAtion Rate
 ==================
 
-The Cosmic Start Formation Rate is a software to study the
+The pycosmicstar is a software to study the
 star formation history for diferents cosmological models.
 
 The model used to develop this software was presented by the first time

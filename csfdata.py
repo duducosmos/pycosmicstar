@@ -13,13 +13,13 @@ __status__ = "Stable"
 
 """Cosmic Star Formation Rate Observational Data
 
-This file is part of cosmicstar.
+This file is part of pystar.
 copyright : Eduardo dos Santos Pereira
 
-cosmicstar is free software: you can redistribute it and/or modify
+pystar is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License.
-cosmicstar is distributed in the hope that it will be useful,
+pystar is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -32,8 +32,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 from numpy import array, loadtxt, arange
 import matplotlib.pyplot as plt
 from scipy.optimize import leastsq
-from pystar.lcdmcosmology import lcdmcosmology
-from pystar.cosmicstarformation import cosmicstarformation
+from pycosmicstar.lcdmcosmology import lcdmcosmology
+from pycosmicstar.cosmicstarformation import cosmicstarformation
 
 
 class csfdata:
@@ -88,14 +88,20 @@ class csfdata:
         return yn - yt
 
     def funcMinimizeTinker(self, p, x, yn):
+        print(p)
         tau = p[0]
+        dhalo = p[1]
+        eimf = p[2]
+        lmin = p[3]
 
-        #DHs = [200, 300, 400, 600, 800, 1200, 1600, 2400]
+        DHs = [200, 300, 400, 600, 800, 1200, 1600, 2400]
 
         myCSFR = cosmicstarformation(cosmology=lcdmcosmology,
                                      tau=tau,
+                                     eimf=eimf,
+                                     lmin=lmin,
                                      massFunctionType="TK",
-                                     delta_halo=400)
+                                     delta_halo=dhalo)
 
         yt = array([myCSFR.cosmicStarFormationRate(zi) for zi in x])
 
@@ -112,8 +118,7 @@ class csfdata:
     def fitTauTinker(self):
         x, yn = self.csfredshift()
         xerr, yerr = self.errorData()
-
-        p = [0.5]
+        p = [1.5, 400, 1.35, 6.0]
         p, sucess = leastsq(self.funcMinimizeTinker, p, args=(x, yn))
         return p
 
@@ -139,29 +144,61 @@ class csfdata:
         plt.show()
 
     def plotCSFR(self):
-        myCSFR_ST = cosmicstarformation(cosmology=lcdmcosmology)
+        myCSFR_ST = cosmicstarformation(cosmology=lcdmcosmology,
+                                        tau=2.5)
+
+        # TK best fit tau = 0.85, delta_halo=400, eimf=2.67, lmin=1.50
+
         myCSFR_TK = cosmicstarformation(cosmology=lcdmcosmology,
                                         massFunctionType="TK",
-                                        tau=0.64014971,
-                                        delta_halo=400)
-        myCSFR_TK.setDeltaHTinker(2400)
+                                        #tau=0.85,
+                                        #eimf=2.67,
+                                        #lmin=1.50,
+                                        delta_halo=200)
+
+        myCSFR_W = cosmicstarformation(cosmology=lcdmcosmology,
+                                        massFunctionType="W")
+                                        #tau=1.5,
+                                        #eimf=1.35,
+                                        #lmin=5.0)
+
+        myCSFR_JK = cosmicstarformation(cosmology=lcdmcosmology,
+                                        massFunctionType="JK")
+#                                        tau=1.5,
+#                                        eimf=1.35,
+#                                        lmin=5.0)
+
+        myCSFR_PS = cosmicstarformation(cosmology=lcdmcosmology,
+                                        massFunctionType="PS")
         z = arange(0, 7.1, 0.1)
 
         csfrST = array([myCSFR_ST.cosmicStarFormationRate(zi) for zi in z])
 
         csfrTK = array([myCSFR_TK.cosmicStarFormationRate(zi) for zi in z])
 
+        csfrW = array([myCSFR_W.cosmicStarFormationRate(zi) for zi in z])
+
+        csfrJK = array([myCSFR_JK.cosmicStarFormationRate(zi) for zi in z])
+
+        csfrPS = array([myCSFR_PS.cosmicStarFormationRate(zi) for zi in z])
+
         x, yn = self.csfredshift()
         xerr, yerr = self.errorData()
 
         plt.plot(z, csfrST, label="ST")
         plt.plot(z, csfrTK, label="TK")
+        plt.plot(z, csfrW, label="W")
+        plt.plot(z, csfrJK, label="JK")
+        plt.plot(z, csfrPS, label="PS")
         plt.errorbar(x, yn, yerr=yerr, xerr=xerr, fmt='.')
         plt.legend(loc=4)
+        plt.yscale('log')
+        plt.ylabel(r'$\dot{\rho}_{*}$( M$_{\odot}$Mpc$^{-3}$yr$^{-1}$)')
+        plt.xlabel(r'$z$')
         plt.show()
 
 
 if(__name__ == "__main__"):
     myCSF = csfdata()
     myCSF.plotCSFR()
-    print((myCSF.fitTauTinker()))
+    #print((myCSF.fitTauTinker()))

@@ -1,0 +1,38 @@
+Metadata-Version: 1.1
+Name: pycosmicstar
+Version: 1.0
+Summary: The Cosmic Start Formation Rate is a software to study the
+    star formation history for diferents cosmological models
+Home-page: www.cosmicstarformation.com
+Author: Eduardo dos Santo Pereira
+Author-email: pereira.somoza@mail.com
+License: GNU GENERAL PUBLIC LICENSE V3
+Download-URL: www.cosmicstarformation.com
+Description: pycosmicstar: PYthon cosmic STar formAtion Rate
+        ==================
+        
+        The pycosmicstar is a software to study the
+        star formation history for diferents cosmological models.
+        
+        The model used to develop this software was presented by the first time
+        in the article of Pereira and Miranda (2010) - (MNRAS, 401, 1924, 2010)
+        
+        To install:
+        
+        	python setup.py install
+        
+        cosmicstarformation is a free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License.
+        cosmicstar is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+        
+        You should have received a copy of the GNU General Public License
+        along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)

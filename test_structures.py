@@ -26,8 +26,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 import unittest
 
-from pystar.structures import structures
-from pystar.lcdmcosmology import lcdmcosmology
+from pycosmicstar.structures import structures
+from pycosmicstar.lcdmcosmology import lcdmcosmology
 
 
 class test_structures(unittest.TestCase):

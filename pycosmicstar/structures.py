@@ -25,13 +25,13 @@ The fraction of mass of dark halos is obtained by the work of
 Sheth e Tormen (MNRAS 308, 119, 1999).
 All models consider Omega_Total = Omega_M + Omega_L = 1,0
 
-This file is part of cosmicstar.
+This file is part of pystar.
 copyright : Eduardo dos Santos Pereira
 
-cosmicstar is free software: you can redistribute it and/or modify
+pystar is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License.
-cosmicstar is distributed in the hope that it will be useful,
+pystar is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
@@ -149,7 +149,8 @@ class structures(structuresabstract):
         self.__massFunctionDict = {"ST": self.__massFunctionST,
                                    "TK": self.__massFunctionTinker,
                                    "PS": self.__massFunctionPressSchechter,
-                                   "JK": self.__massFunctionJenkins
+                                   "JK": self.__massFunctionJenkins,
+                                   "W": self.__massFunctionW
                                    }
 
         self.__startingSigmaAccretion()
@@ -277,14 +278,19 @@ class structures(structuresabstract):
             z -- redshift
         """
 
+        gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+        sigma1 = self.__deltac / (sgm * gte)
+        sigma2 = sigma1 ** 2.0
 
-        fst = 0.315 * exp(- abs(log(sgm) + 0.61) ** 3.8)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = 0.315 * exp(- abs(log(sigma1) + 0.61) ** 3.8)
 
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
@@ -383,14 +389,44 @@ class structures(structuresabstract):
         b = b_0 * (1 + z) ** (-alpha)
         c = c_0
 
+        gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+        sigma1 = self.__deltac / (sgm * gte)
+        sigma2 = sigma1 ** 2.0
 
-        fst = A * ((sgm / b) ** (-a) + 1) * exp(-c / sgm ** 2)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = A * ((sgm / b) ** (-a) + 1) * exp(-c / sgm ** 2.0)
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
+
+    def __massFunctionW(self, lm, z):
+        # LANL fitting function - Warren et al. 2005, astro-ph/0506395, eqtn. 5
+        A = 0.7234
+        a = 1.625
+        b = 0.2538
+        c = 1.1982
+
+        gte = self._cosmology.growthFunction(z)
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+        sigma1 = self.__deltac / (sgm * gte)
+        sigma2 = sigma1 ** 2.0
+
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = A * ((sigma1 ** (-a)) + b) * exp(-c / sigma2)
 
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
