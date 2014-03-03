@@ -30,6 +30,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import unittest
+import os
+os.chdir('../')
 
 from pycosmicstar.cosmicstarformation import cosmicstarformation
 from pycosmicstar.lcdmcosmology import lcdmcosmology
