@@ -265,6 +265,26 @@ class cosmicstarformation(structures):
 
         return rho_s, R_g, A
 
+    def remnant(self, m):
+        """
+        Return the remnant mass of the object after the colapse of the star
+        with mass m
+        """
+
+        if(m > 0 and m < 1):
+            return 0
+        elif(m >= 1 and m <= 8):
+            return 0.1156 * m + 0.4551
+        elif(m > 8 and m <= 10):
+            return 1.35
+        elif(m > 10 and m < 25):
+            return 1.4
+        elif(m >= 25 and m <= 145):
+            return (13.0 / 24.0) * (m - 20)
+        else:
+            print("Error: Out of the mass range...")
+            sys.exit()
+
     def phi(self, m):
         """Return the Initial Mass Function
         """
