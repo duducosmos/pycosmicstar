@@ -36,7 +36,14 @@ from .structures import structures
 import scipy.interpolate as spint
 from scipy.integrate import romberg
 from .run_kut4 import rk4_int
+
 import sys
+pyversion = sys.version_info
+if pyversion[0] >= 3:
+    from . import filedict
+else:
+    print("Importing filedict for python2.7")
+    from . import filedict_old as filedict
 
 
 class cosmicstarformation(structures):
@@ -89,15 +96,11 @@ class cosmicstarformation(structures):
             if(massFunctionType == "TK"):
                 cacheFile = "/structures_cache_" + \
                         massFunctionType + "_" + str(delta_halo) + "_"\
-                        + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
-                        + "_" + imfType\
                         + "_" + str(omegab) + "_" \
                         + str(omegam) + "_" + str(omegal) + "_" \
                         + str(h) + "_" + str(lmin) + "_" + str(zmax)
             else:
                 cacheFile = "/structures_cache_" + massFunctionType + "_"\
-                        + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
-                        + "_" + imfType\
                         + "_" + str(omegab) + "_" \
                         + str(omegam) + "_" + str(omegal) + "_" \
                         + str(h) + "_" + str(lmin) + "_" + str(zmax)
@@ -105,6 +108,11 @@ class cosmicstarformation(structures):
         structures.__init__(self, cosmology, lmin, zmax,
                             omegam, omegab, omegal, h,
                             cacheDir, cacheFile, massFunctionType)
+
+        cacheFile = self._cacheDir + cacheFile + "_CSFR_" + str(tau)\
+                 + "_" + str(eimf) + "_" + str(nsch) + "_" + imfType
+
+        self._cache_dictS = filedict.FileDict(filename=cacheFile + ".cache")
 
         tau = tau * 1.0e9
         self._cc = self._tck_ab[1]
@@ -130,9 +138,10 @@ class cosmicstarformation(structures):
 
         try:
 
-            self.__astar = self._cache_dict['astar']
-            self.__csfr = self._cache_dict['csfr']
-            self.__rho_gas = self._cache_dict['rho_gas']
+            self.__astar = self._cache_dictS['astar']
+            self.__csfr = self._cache_dictS['csfr']
+            self.__rho_gas = self._cache_dictS['rho_gas']
+            print("Data CSFR in Cache")
 
         except:
             self.__csfr, self.__rho_gas, self.__astar = self.__sfr()
@@ -268,9 +277,9 @@ class cosmicstarformation(structures):
 
         rho_s = self.__csfr_gas(R_g)
 
-        self._cache_dict['astar'] = A
-        self._cache_dict['csfr'] = rho_s
-        self._cache_dict['rho_gas'] = R_g
+        self._cache_dictS['astar'] = A
+        self._cache_dictS['csfr'] = rho_s
+        self._cache_dictS['rho_gas'] = R_g
 
         return rho_s, R_g, A
 
