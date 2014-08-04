@@ -286,7 +286,7 @@ class structures(structuresabstract):
         sgm = self.fstm(lm)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
         sigma1 = self.__deltac / (sgm * gte)
-        sigma2 = sigma1 ** 2.0
+        #sigma2 = sigma1 ** 2.0
 
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 

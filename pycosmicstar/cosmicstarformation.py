@@ -34,6 +34,7 @@ from numpy import log10, sqrt, array
 from numpy.numarray import zeros, Float64
 from .structures import structures
 import scipy.interpolate as spint
+from scipy.integrate import romberg
 from .run_kut4 import rk4_int
 import sys
 
@@ -52,6 +53,11 @@ class cosmicstarformation(structures):
         eimf -- (default 1.35) exponent of the Initial Mass Function
 
         nsch -- (default 1) the normalization factor in the CSFR model
+
+        imfType -- (default S - Salpeter) the Initial Mass Function Type.
+                   Possible values:
+                       S: Salpeter
+                       K: Kroupa
 
         lmin -- (default 6.0) log10 of the minal mass of the dark halo
                             where it is possible to have star formation.
@@ -76,7 +82,7 @@ class cosmicstarformation(structures):
                      tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
                      omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
                      cacheDir=None, cacheFile=None, massFunctionType="ST",
-                     delta_halo=200
+                     delta_halo=200, imfType="S"
                 ):
 
         if(cacheFile is None):
@@ -84,12 +90,14 @@ class cosmicstarformation(structures):
                 cacheFile = "/structures_cache_" + \
                         massFunctionType + "_" + str(delta_halo) + "_"\
                         + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
+                        + "_" + imfType\
                         + "_" + str(omegab) + "_" \
                         + str(omegam) + "_" + str(omegal) + "_" \
                         + str(h) + "_" + str(lmin) + "_" + str(zmax)
             else:
                 cacheFile = "/structures_cache_" + massFunctionType + "_"\
                         + str(tau) + "_" + str(eimf) + "_" + str(nsch)\
+                        + "_" + imfType\
                         + "_" + str(omegab) + "_" \
                         + str(omegam) + "_" + str(omegal) + "_" \
                         + str(h) + "_" + str(lmin) + "_" + str(zmax)
@@ -106,14 +114,19 @@ class cosmicstarformation(structures):
         self.__nsch = nsch
         self.__tau = tau
 
-        #Initial mass function normalization
-        self.__eimf = eimf
+        self.imfType = imfType
+
         self.__aminf1 = 2.5e1
         self.__amsup1 = 1.4e2
-        amin = 1.0e-1
+        self.__amin = 1.0e-1
+
+        self.__imfDict = {"S": self.__imfSalpeter,
+                          "K": self.__imfKroupa
+                          }
+
+        self.__anorm1 = None
+        self.__eimf = eimf
         self.__eimf0 = eimf - 1.0
-        self.__anorm1 = self.__eimf0 / (1.0 / amin ** self.__eimf0
-                         - 1.0 / self.__amsup1 ** self.__eimf0)
 
         try:
 
@@ -130,11 +143,26 @@ class cosmicstarformation(structures):
         tck_sg = spint.splrep(self.__astar, self.__rho_gas)
         self.__cs2 = tck_sg[1]
 
+    def getIMFDict(self):
+        """
+        Return a list with keys and functions of IMF's
+        """
+        dic = []
+        for key, value in list(self.__imfDict.items()):
+            dic.append([key, value])
+        return dic
+
+    def putIMFDict(self, key, value):
+        """
+        Put a new term in the imf Dictionary
+        """
+
+        self.__imfDict[key] = value
+
     def __spn(self, a):
         """Return the interpolated, by cubi-spline, barionic accretion
         rate into structures
         """
-
         j = -1
 
         while(1):
@@ -181,26 +209,7 @@ class cosmicstarformation(structures):
         age02 = (3.6 - sqrt(age01)) / 2.0
 
         mi_1 = 1.0e+01 ** age02
-        amexp1 = (1.0 / mi_1) ** self.__eimf0
-        amexp2 = (1.0 / self.__amsup1) ** self.__eimf0
-        amexp3 = (1.0 / 8.0) ** self.__eimf0
-        amexp4 = (1.0 / self.__aminf1) ** self.__eimf0
-        amexp5 = (1.0 / mi_1) ** self.__eimf
-        amexp6 = (1.0 / 8.0) ** self.__eimf
-        amexp7 = (1.0 / 10.0) ** self.__eimf
-        amexp8 = (1.0 / self.__aminf1) ** self.__eimf
-        amexp9 = (1.0 / self.__amsup1) ** self.__eimf
-
-        yrem1 = (amexp1 - amexp2) / self.__eimf0
-        yrem2 = 1.156e-01 * (amexp1 - amexp3) / self.__eimf0
-        yrem3 = 1.3e+01 * (amexp4 - amexp2) / self.__eimf0 / 2.4e+01
-        yrem4 = 4.551e-01 * (amexp5 - amexp6) / self.__eimf
-        yrem5 = 1.35e+00 * (amexp6 - amexp7) / self.__eimf
-        yrem6 = 1.40e+00 * (amexp7 - amexp8) / self.__eimf
-        yrem7 = 6.5e+01 * (amexp8 - amexp9) / self.__eimf / 6.0
-
-        yr = self.__anorm1 * (yrem1 - yrem2 - yrem3
-                            - yrem4 - yrem5 - yrem6 + yrem7)
+        yr = self.__massEjected(mi_1)
 
         if(self.__nsch == 1.0):
             sexp = (1.0 - yr) / self.__tau
@@ -265,6 +274,52 @@ class cosmicstarformation(structures):
 
         return rho_s, R_g, A
 
+    def __massEjectedSalpeter(self, m_min):
+        if(self.__anorm1 is None):
+            self.__imfSalpeter(10)
+        amexp1 = (1.0 / m_min) ** self.__eimf0
+        amexp2 = (1.0 / self.__amsup1) ** self.__eimf0
+        amexp3 = (1.0 / 8.0) ** self.__eimf0
+        amexp4 = (1.0 / self.__aminf1) ** self.__eimf0
+        amexp5 = (1.0 / m_min) ** self.__eimf
+        amexp6 = (1.0 / 8.0) ** self.__eimf
+        amexp7 = (1.0 / 10.0) ** self.__eimf
+        amexp8 = (1.0 / self.__aminf1) ** self.__eimf
+        amexp9 = (1.0 / self.__amsup1) ** self.__eimf
+
+        yrem1 = (amexp1 - amexp2) / self.__eimf0
+        yrem2 = 1.156e-01 * (amexp1 - amexp3) / self.__eimf0
+        yrem3 = 1.3e+01 * (amexp4 - amexp2) / self.__eimf0 / 2.4e+01
+        yrem4 = 4.551e-01 * (amexp5 - amexp6) / self.__eimf
+        yrem5 = 1.35e+00 * (amexp6 - amexp7) / self.__eimf
+        yrem6 = 1.40e+00 * (amexp7 - amexp8) / self.__eimf
+        yrem7 = 6.5e+01 * (amexp8 - amexp9) / self.__eimf / 6.0
+
+        yr = self.__anorm1 * (yrem1 - yrem2 - yrem3
+                            - yrem4 - yrem5 - yrem6 + yrem7)
+
+        return yr
+
+    def __massEjected(self, m_min):
+        """
+        Return the mass integration of the mass ejected by the collapse of the
+        star
+        """
+        if(self.imfType == "S"):
+            return self.__massEjectedSalpeter(m_min)
+
+        else:
+            mEject = (romberg(self.__mPhi, m_min, self.__amsup1, tol=1.48e-04)
+                 - romberg(self.__mrPhi, m_min, self.__amsup1, tol=1.48e-04)
+                      )
+        return mEject
+
+    def __mPhi(self, m):
+        return m * self.phi(m)
+
+    def __mrPhi(self, m):
+        return self.remnant(m) * self.phi(m)
+
     def remnant(self, m):
         """
         Return the remnant mass of the object after the colapse of the star
@@ -285,10 +340,42 @@ class cosmicstarformation(structures):
             print("Error: Out of the mass range...")
             sys.exit()
 
+    def __imfKroupa(self, m):
+        if(self.__anorm1 is None):
+            alpha1 = 1.3
+            alpha2 = 2.3
+            m1 = (1.0 / alpha1) * (0.5 ** (2.0 - alpha1)
+                                   - self.__amin ** (2.0 - alpha1)
+                                    )
+            m2 = (1.0 / alpha2) * (self.__amsup1 ** (2.0 - alpha2)
+                                   - 0.5 ** (2.0 - alpha2)
+                                    )
+
+            self.__anorm1 = 1 / (m1 + m2)
+        if(m <= 0.5):
+            return self.__anorm1 * m ** (-1.3)
+        elif(m > 0.5):
+            return self.__anorm1 * m ** (-2.3)
+        else:
+            print("Mass out of the range")
+            sys.exit()
+
+    def __imfSalpeter(self, m):
+
+        if(self.__anorm1 is None):
+            self.__amin = 1.0e-1
+            self.__anorm1 = self.__eimf0 / (1.0 / self.__amin ** self.__eimf0
+                             - 1.0 / self.__amsup1 ** self.__eimf0)
+
+        return self.__anorm1 * m ** (-(1.0 + self.__eimf))
+
     def phi(self, m):
         """Return the Initial Mass Function
         """
-        return self.__anorm1 * m ** (-(1.0 + self.__eimf))
+        try:
+            return self.__imfDict[self.imfType](m)
+        except:
+            raise NameError("No Defined Initial Mass Function")
 
     def cosmicStarFormationRate(self, z):
         """Return the Cosmic Star Formation rate as a function of z
