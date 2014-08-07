@@ -44,6 +44,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 from numpy import sqrt, pi, log, log10, exp, array, abs
 import scipy.interpolate as spint
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
+from scipy.special import gamma
 
 from .structuresabstract import structuresabstract
 
@@ -87,6 +88,20 @@ class structures(structuresabstract):
         omegal -- (default 0.73) - The dark energy parameter
 
         h -- (default 0.7) - The h of the Hubble constant (H = h * 100)
+
+        massFunctionType:
+            (Dark Haloes Mass Function)
+            default 'ST' - Sheth et al. (2001) - z=[0,2]
+            'TK' - Tinker et al. (2008) - z=[0,2.5]
+            'PS' - Press and Schechter (1974) - z=-
+            'JK' - Jenkins et al. (2001) z=[0,5]
+            'W' - Warren et al. (2006) z=0
+            'WT1' - Watson et al. (2013) - Tinker Modified - z=[0,30]
+            'WT2' - Watson et al. (2013) - Gamma times times Tinker Modified
+                                                z=[0,30]
+            'B' - Burr Distribution. Marassi and Lima (2006) - Press Schechter
+                                    modified.
+
     """
 
     def __init__(self, cosmology, lmin=6.0, zmax=20.0,
@@ -143,6 +158,9 @@ class structures(structuresabstract):
         self.__tilt2 = self._cosmology.getTilt() / log(10.0)
         self.__ctst = self.__ast1 * sqrt(2.0 * self.__ast2 / pi)
 
+        #Burr q coeficiente
+        self.__qBurr = None
+
         self.__massFunctionType = massFunctionType
         self.__delta_halo = delta_halo
 
@@ -150,7 +168,10 @@ class structures(structuresabstract):
                                    "TK": self.__massFunctionTinker,
                                    "PS": self.__massFunctionPressSchechter,
                                    "JK": self.__massFunctionJenkins,
-                                   "W": self.__massFunctionW
+                                   "W": self.__massFunctionW,
+                                   "WT1": self.__massFunctionWT1,
+                                   "WT2": self.__massFunctionWT2,
+                                   "B": self.__massFunctionBurr
                                    }
 
         self.__startingSigmaAccretion()
@@ -317,6 +338,108 @@ class structures(structuresabstract):
         dn_dm = frst
         return dn_dm
 
+    def _masFunctionWT0(self, lm, z, A, a, b, c):
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = A * ((sgm / b) ** (-a) + 1) * exp(-c / sgm ** 2.0)
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
+
+    def __massFunctionWT1(self, lm, z):
+        """
+        Return the value of Watson et al. (2013) (- Tinker Modified - z=[0,30])
+        mass function
+        Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+        A = 0.282
+        a = 2.163
+        b = 1.406
+        c = 1.21
+        return self._masFunctionWT0(lm, z, A, a, b, c)
+
+    def __massFunctionWT2(self, lm, z):
+        """
+        Return the value of Watson et al. (2013) (Gamma times
+        Tinker Modified z=[0,30]) mass function
+        Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+
+        raise NameError("Not implemented yet")
+
+        if(z < 0):
+            raise NameError("z lower than zero.")
+
+        if(z == 0):
+            A = 0.194
+            a = 2.267
+            b = 1.805
+            c = 1.287
+        elif(z > 6):
+            A = 0.563
+            a = 0.874
+            b = 3.874
+            c = 1.453
+
+        else:
+            pass
+
+        return self._masFunctionWT0(lm, z, A, a, b, c)
+
+    def _burrBq(self):
+        if(self.__qBurr > 0.0 and self.__qBurr < 1.0):
+            Bq = ((1.0 - self.__qBurr) ** 0.5) * ((3.0 - self.__qBurr) / 2.0)\
+                 * gamma(0.5 + 1.0 / (1.0 - self.__qBurr))\
+                 / gamma(1.0 / (1.0 - self.__qBurr))
+        elif(self.__qBurr >= 1.0 and self.__qBurr < 2.0):
+            Bq = ((self.__qBurr - 1.0) ** 0.5)\
+                 * gamma(1.0 / (self.__qBurr - 1.0))\
+                 / gamma(1.0 / (self.__qBurr - 1.0) - 0.5)
+        else:
+            raise NameError('q of Burr function out of valide range')
+
+        return Bq
+
+    def __massFunctionBurr(self, lm, z):
+        """
+        Return the value of the Burr Distribution (Marassi and Lima (2006))
+         - Press Schechter modified, mass function.
+        Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+        if(self.__qBurr is None):
+            raise NameError('The Burr coeficient is None.')
+
+        gte = self._cosmology.growthFunction(z)
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+        sigma1 = self.__deltac / (sgm * gte)
+        sigma2 = sigma1 ** 2.0
+        fst = self._burrBq() * sqrt(2.0 / pi) * (sigma1) * (
+              1.0 - (1.0 - self.__qBurr) * 0.5 * sigma2
+              ) ** (1.0 / (1.0 - self.__qBurr))
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
+
     def __massFunctionTinker(self, lm, z):
         """Return the mass function of dark halos of
     Tinker mass function (Tinker et al. 2008)
@@ -389,15 +512,15 @@ class structures(structuresabstract):
         b = b_0 * (1 + z) ** (-alpha)
         c = c_0
 
-        gte = self._cosmology.growthFunction(z)
+        #gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
-        sigma1 = self.__deltac / (sgm * gte)
-        sigma2 = sigma1 ** 2.0
+        #sigma1 = self.__deltac / (sgm * gte)
+        #sigma2 = sigma1 ** 2.0
 
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
@@ -583,3 +706,28 @@ class structures(structuresabstract):
             return self.__delta_halo
         else:
             raise NameError("TinkerNotDefined")
+
+    def setQBurrFunction(self, q):
+        """
+        Set the q value of dark haloes mass function derived from Burr
+        distribuction.
+        """
+        self.__qBurr = q
+
+    def getmassFunctionDict(self):
+        """
+        Return a list with key and function of implemented dark haloes
+        mass function
+        """
+        mydict = []
+        for key, value in list(self.__massFunctionDict.items()):
+            mydict.append([key, value])
+        return mydict
+
+    def setMassFunctionDict(self, key, function):
+        """
+        Add a new key and function in the dark haloes mass function dictionary
+        """
+
+        self.__massFunctionDict[key] = function
+

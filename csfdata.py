@@ -94,7 +94,7 @@ class csfdata:
         eimf = p[2]
         lmin = p[3]
 
-        DHs = [200, 300, 400, 600, 800, 1200, 1600, 2400]
+        #DHs = [200, 300, 400, 600, 800, 1200, 1600, 2400]
 
         myCSFR = cosmicstarformation(cosmology=lcdmcosmology,
                                      tau=tau,
@@ -106,6 +106,23 @@ class csfdata:
         yt = array([myCSFR.cosmicStarFormationRate(zi) for zi in x])
 
         return yn - yt
+
+    def funcMinimizeKroupa(self, p, x, yn):
+        tau = p[0]
+        myCSFR = cosmicstarformation(cosmology=lcdmcosmology,
+                                     imfType="K",
+                                     tau=tau)
+
+        yt = array([myCSFR.cosmicStarFormationRate(zi) for zi in x])
+
+        return yn - yt
+
+    def fitTauKroupa(self):
+        x, yn = self.csfredshift()
+        xerr, yerr = self.errorData()
+        p = [2.5]
+        p, sucess = leastsq(self.funcMinimizeKroupa, p, args=(x, yn))
+        return p[0]
 
     def fitTauPereiraMiranda(self):
         x, yn = self.csfredshift()
@@ -144,52 +161,64 @@ class csfdata:
         plt.show()
 
     def plotCSFR(self):
-        myCSFR_ST = cosmicstarformation(cosmology=lcdmcosmology,
-                                        tau=2.5)
 
-        # TK best fit tau = 0.85, delta_halo=400, eimf=2.67, lmin=1.50
+        z = arange(0, 20, 0.1)
+        #myCSFR_ST = cosmicstarformation(cosmology=lcdmcosmology,
+                                        #tau=2.5)
+        #tau = self.fitTauKroupa()
 
-        myCSFR_TK = cosmicstarformation(cosmology=lcdmcosmology,
-                                        massFunctionType="TK",
-                                        #tau=0.85,
-                                        #eimf=2.67,
-                                        #lmin=1.50,
-                                        delta_halo=200)
+        myCSFR_Salpeter = cosmicstarformation(cosmology=lcdmcosmology)
 
-        myCSFR_W = cosmicstarformation(cosmology=lcdmcosmology,
-                                        massFunctionType="W")
-                                        #tau=1.5,
-                                        #eimf=1.35,
-                                        #lmin=5.0)
+        csfrSalpeter = array([myCSFR_Salpeter.cosmicStarFormationRate(zi)
+                         for zi in z])
 
-        myCSFR_JK = cosmicstarformation(cosmology=lcdmcosmology,
-                                        massFunctionType="JK")
-#                                        tau=1.5,
-#                                        eimf=1.35,
-#                                        lmin=5.0)
+        myCSFR_Kroupa = cosmicstarformation(cosmology=lcdmcosmology,
+                                            imfType="K", tau=3.07)
 
-        myCSFR_PS = cosmicstarformation(cosmology=lcdmcosmology,
-                                        massFunctionType="PS")
-        z = arange(0, 7.1, 0.1)
+        #TK best fit tau = 0.85, delta_halo=400, eimf=2.67, lmin=1.50
 
-        csfrST = array([myCSFR_ST.cosmicStarFormationRate(zi) for zi in z])
+        #myCSFR_TK = cosmicstarformation(cosmology=lcdmcosmology,
+                                        #massFunctionType="TK",
+                                        ##tau=0.85,
+                                        ##eimf=2.67,
+                                        ##lmin=1.50,
+                                        #delta_halo=200)
 
-        csfrTK = array([myCSFR_TK.cosmicStarFormationRate(zi) for zi in z])
+        #myCSFR_W = cosmicstarformation(cosmology=lcdmcosmology,
+                                        #massFunctionType="W")
+                                        ##tau=1.5,
+                                        ##eimf=1.35,
+                                        ##lmin=5.0)
 
-        csfrW = array([myCSFR_W.cosmicStarFormationRate(zi) for zi in z])
+        #myCSFR_JK = cosmicstarformation(cosmology=lcdmcosmology,
+                                        #massFunctionType="JK")
+##                                        tau=1.5,
+##                                        eimf=1.35,
+##                                        lmin=5.0)
 
-        csfrJK = array([myCSFR_JK.cosmicStarFormationRate(zi) for zi in z])
+        #myCSFR_PS = cosmicstarformation(cosmology=lcdmcosmology,
+                                        #massFunctionType="PS")
 
-        csfrPS = array([myCSFR_PS.cosmicStarFormationRate(zi) for zi in z])
+        csfrKroupa = array([myCSFR_Kroupa.cosmicStarFormationRate(zi)
+                         for zi in z])
+
+        #csfrTK = array([myCSFR_TK.cosmicStarFormationRate(zi) for zi in z])
+
+        #csfrW = array([myCSFR_W.cosmicStarFormationRate(zi) for zi in z])
+
+        #csfrJK = array([myCSFR_JK.cosmicStarFormationRate(zi) for zi in z])
+
+        #csfrPS = array([myCSFR_PS.cosmicStarFormationRate(zi) for zi in z])
 
         x, yn = self.csfredshift()
         xerr, yerr = self.errorData()
 
-        plt.plot(z, csfrST, label="ST")
-        plt.plot(z, csfrTK, label="TK")
-        plt.plot(z, csfrW, label="W")
-        plt.plot(z, csfrJK, label="JK")
-        plt.plot(z, csfrPS, label="PS")
+        plt.plot(z, csfrSalpeter, label=r"Salpeter, $\tau = 2.29$Gyr")
+        plt.plot(z, csfrKroupa, label=r"Kroupa, $\tau = 3.07$Gyr")
+        #plt.plot(z, csfrTK, label="TK")
+        #plt.plot(z, csfrW, label="W")
+        #plt.plot(z, csfrJK, label="JK")
+        #plt.plot(z, csfrPS, label="PS")
         plt.errorbar(x, yn, yerr=yerr, xerr=xerr, fmt='.')
         plt.legend(loc=4)
         plt.yscale('log')

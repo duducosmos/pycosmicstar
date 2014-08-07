@@ -198,8 +198,7 @@ class cosmicstarformation(structures):
             elif(j >= (len(self._ascale) - 2) and j <= len(self._ascale)):
                 return self._abt2[j]
             elif(a < self._ascale[0]):
-                print("Error in the spline function")
-                sys.exit()
+                raise NameError("Error in the spline function")
                 break
 
     def __fcn(self, a, rho_g):
@@ -346,28 +345,37 @@ class cosmicstarformation(structures):
         elif(m >= 25 and m <= 145):
             return (13.0 / 24.0) * (m - 20)
         else:
-            print("Error: Out of the mass range...")
-            sys.exit()
+            raise NameError("Error: Out of the mass range...")
 
     def __imfKroupa(self, m):
         if(self.__anorm1 is None):
+            alpha0 = 0.3
             alpha1 = 1.3
             alpha2 = 2.3
-            m1 = (1.0 / alpha1) * (0.5 ** (2.0 - alpha1)
-                                   - self.__amin ** (2.0 - alpha1)
-                                    )
-            m2 = (1.0 / alpha2) * (self.__amsup1 ** (2.0 - alpha2)
-                                   - 0.5 ** (2.0 - alpha2)
-                                    )
+            alpha3 = alpha2
 
-            self.__anorm1 = 1 / (m1 + m2)
-        if(m <= 0.5):
+            k0 = 1
+            k1 = k0 * 0.08
+            k2 = k1 * 0.5
+            k3 = k2
+            A = [k0 * (self.__amsup1 ** (1.0 - alpha0)
+                     - self.__amin ** (1.0 - alpha0)) / (1.0 - alpha0),
+                k1 * (self.__amsup1 ** (1.0 - alpha1)
+                     - self.__amin ** (1.0 - alpha1)) / (1.0 - alpha1),
+                k2 * (self.__amsup1 ** (1.0 - alpha2)
+                     - self.__amin ** (1.0 - alpha2)) / (1.0 - alpha2),
+                k3 * (self.__amsup1 ** (1.0 - alpha3)
+                     - self.__amin ** (1.0 - alpha3)) / (1.0 - alpha3)
+                ]
+
+            self.__anorm1 = 1 / sum(A)
+
+        if(m > 0.08 and m <= 0.5):
             return self.__anorm1 * m ** (-1.3)
         elif(m > 0.5):
             return self.__anorm1 * m ** (-2.3)
         else:
-            print("Mass out of the range")
-            sys.exit()
+            raise NameError("Mass out of the range")
 
     def __imfSalpeter(self, m):
 
@@ -417,8 +425,7 @@ class cosmicstarformation(structures):
             elif(j >= (len(self.__astar) - 2) and j <= len(self.__astar)):
                 return self.__csfr[j]
             elif(a < self.__astar[0]):
-                print("Error in spline csfr")
-                sys.exit()
+                raise NameError("Error in spline csfr")
                 break
 
     def gasDensityInStructures(self, z):
@@ -451,6 +458,5 @@ class cosmicstarformation(structures):
             elif(j >= (len(self.__astar) - 2) and j <= len(self.__astar)):
                 return self.__rho_gas[j]
             elif(a < self.__astar[0]):
-                print("Error spline gas density")
-                sys.exit()
+                raise NameError("Error spline gas density")
                 break

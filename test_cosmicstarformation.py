@@ -44,8 +44,8 @@ class test_cosmicstarformation(unittest.TestCase):
 
     def test_gasDensityInStructures(self):
         self.assertEqual(
-            round(self.myCosmicStar.gasDensityInStructures(4.5)[0], 2),
-            397760539.19)
+            round(self.myCosmicStar.gasDensityInStructures(4.5)[0] / 1e8, 2),
+            3.98)
 
     def test_phi(self):
         self.assertEqual(round(self.myCosmicStar.phi(1e3), 11), 1.513e-08)
