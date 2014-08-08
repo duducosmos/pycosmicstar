@@ -343,20 +343,137 @@ called <span style="font-weight: bold;">delta_halo</span>.<br>
 f(\sigma) = 0.7234(\sigma^{1.625} +&nbsp; 0.2538)\exp(-1.1982
 \sigma^{2})<br>
 \end{equation}<br>
+</p>
+<p>The choice of the mass function to be used is passed as an string attribute, <span style="font-weight: bold;">massFunctionType</span>, and its possible values are:</p>
+<p></p>
+<ol>
+  <li> "ST" &amp; \citet{st}</li>
+  <li>&nbsp;"TK" &amp; \citet{tinker10}</li>
+  <li>&nbsp;"PS" &amp; \citet{p2} <br>
+  </li>
+  <li>&nbsp;"JK" &amp; \citet{Jenkis01} <br>
+  </li>
+  <li>&nbsp;"W" &amp; \citet{warren06}&nbsp;</li>
+</ol>
+<br>
+<p>The public methods of <span style="font-weight: bold;">structures</span> are:<br>
 <br>
 <br>
 </p>
+<ul>
+  <li><span style="font-weight: bold;">massFunction(lm, z)</span> -&nbsp; Return the dark haloes mass function, lm is the $\log_{10}$ of the mass of the dark halo;</li>
+  <li><span style="font-weight: bold;">fbstruc(z)</span> - Return the
+faction of barions into structures. Pereira &amp; Miranda (2010)
+consider that the baryon distribution traces the dark matter
+distribution without bias, also that stars can form only in structures
+with mass larger than a threshold $M_{min}$.Thus, the fraction of
+baryons at redshift $z$ that are in structures is given by:\begin{equation}\label{eq:fbary}f_{\rm
+b}(z)=\frac{\int_{M_{\rm min}}^{M_{\rm max}} {\frac{dn(\sigma,z)}{dM}
+MdM}}{\int_{0}^{\infty} {\frac{dn(\sigma,z)}{dM} MdM}};\end{equation}</li>
+  <li><span style="font-weight: bold;">halos_n(z)</span> - return the integral of the mass function of dark halos multiplied by mass in the range of $\log(M_{min})$ a $\log(M_{max})$;</li>
+  <li><span style="font-weight: bold;">numerical_density_halos(z)</span> - Return the numerial density of dark halos within the comove volume;</li>
+  <li><span style="font-weight: bold;">abt(z)</span> - return the
+accretion rate which accounts for the increase in the fraction of
+baryons in structures. From the definition of $f_{\rm b}(z)$ this
+accretion is given by \citep{pereira10,d1}:\begin{equation}a_{\rm b}(t) = \Omega_{\rm b}\rho_{\rm c}\left(\frac{dt}{dz}\right)^{-1}\left|\frac{df_{\rm b}(z)}{dz}\right|,\label{abaryon}\end{equation}</li>
+</ul>
+<div style="margin-left: 40px;">&nbsp;where $\rho_{\rm c}=3H_{0}^{2}/8\pi G$ is the critical density of the Universe.<br>
+</div>
+<p><br>
+</p>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors
-and Contributors</h3>
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a>
-a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code>
-element will link to the contributor's GitHub Profile. For example: In
-2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>),
-and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>The Cosmic Star Formation Rate<br>
+</h3><br>
+In the class <span style="font-weight: bold;">cosmicstarformation</span>, that extends the class <span style="font-weight: bold;">structures</span>, were implemented the methods:<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;"> cosmicStarFormationRate(z)</span> - returns the cosmic star formation rate, $\dot{\rho}_{*}(z)$, in M$_{\odot}$yr$^{-1}$Mpc$^{-3}$;</li>
+  <li><span style="font-weight: bold;">gasDensityInStructures(z)</span> - returns the density of gas in structures, $\rho_{g}(z)$, in M$_{\odot}$Mpc$^{-3}$;</li>
+  <li><span style="font-weight: bold;">phi(m)</span> - returns the
+Initial Mass Function (IMF), $\Phi(m)$, which gives the distribution of
+the stellar mass. Here was assumed the \citet{s1} IMF, namely:</li>
+</ul>
+<div style="margin-left: 40px;">\begin{equation}<br>
+\Phi(m) = A m^{-(1+x)},<br>
+\end{equation} <br>
+where $A$ is a normalization factor and $x$ is an input attribute
+called \textbf{eimf} (default value \textbf{eimf}=1.35). The constant
+$A$ is determined by:<br>
+\begin{equation}<br>
+\int_{m_{\rm inf}}^{m_{\rm sup}}Am^{-(1+x)}mdm = 1,<br>
+\label{norimf}<br>
+\end{equation}<br>
+and it was considered $m_{\rm inf}=0.1{\rm M}_{\odot}$ and $m_{\rm sup}=140{\rm M}_{\odot}$ as limits of the last equation.<br>
+</div>
+&nbsp;<br>
+Generally speaking, the cosmic star formation rate (CSFR) is obtained
+by the solution of the equation governing&nbsp; the total gas density
+in the haloes:<br>
+<br>
+\begin{equation}<br>
+&nbsp;\dot\rho_{\rm g}=-\frac{d^{2}M_{\star}}{dVdt}+\frac{d^{2}M_{\rm ej}}{dVdt}+a_{\rm b}(t)\label{rhogas},<br>
+\end{equation}<br>
+<br>
+where $a_{b}(t)$ is infall rate of barions into structures. The CSFR is: <br>
+<br>
+\begin{equation}<br>
+\frac{d^{2}M_{\star}}{dVdt} \equiv \dot{\rho}_{*}(t) = \frac{\rho_{g}(t)}{\tau},<br>
+\end{equation}<br>
+<br>
+being $\tau$ a parameter that represents the time-scale for star formation. In the code, $\tau$ is an input attribute, <span style="font-weight: bold;">tau</span>, in units of Gyr.<br>
+<br>
+The term $d^{2}M_{\rm ej}/dVdt$ takes into account the mass ejected
+from star that returned to the interstellar medium of the system, being:<br>
+<br>
+\begin{equation}<br>
+\frac{d^{2} M_{\rm ej}}{dVdt} = \int_{m(t)}^{\rm M_{sup}}{(m-m_{\rm r})\Phi(m)\dot{\rho}_{*}(t-\tau_{m})dm},\label{mej1}<br>
+\end{equation}<br>
+<br>
+where $m(t)$ corresponds to the stellar mass whose lifetime is equal to
+$t$, $m_{r}$ is the mass of the remnant, which depends on the
+progenitor mass, and the star formation rate is taken at the retarded
+time $(t-\tau_{m})$, where $\tau_{m}$ is the lifetime of a star of mass
+$m$. Here it was considered $\tau_{m}$, in yrs,&nbsp; given by
+the&nbsp; metallicity-independent fit of:<br>
+<br>
+\begin{equation}<br>
+&nbsp;\log_{10}(\tau_{\rm m})=10.0-3.6\,\log_{10}\left(\frac{M}{\rm M_{\odot}}\right) +\left[ \log_{10}<br>
+\left( \frac{M}{\rm M_{\odot}}\right) \right]^{2},<br>
+\end{equation}<br>
+<br>
+<br>
+The mass of remnant as a function of the progenitor mass are:<br>
+<ol>
+  <li>Objects with mass lower than 1$M_{\odot}$ have high lifetime, not contribute for M$_{\rm ej}$;</li>
+  <li>[1$M_{\odot}$ , 8$M_{\odot}$] - Carbon-oxygen- white dwarf - $m_{r} = 0.1156m +0.4551$ $M_{\odot}$</li>
+  <li>(8\msol,10\msol] - oxygen-neon-magnesium white dwarfs - $m_{r} = 1.35$$M_{\odot}$</li>
+  <li>(10\msol, 25\msol) - neutron stars - $m_{r}=1.4$$M_{\odot}$</li>
+  <li>[25\msol,140\msol] - Black Hole - $m_{r} = \frac{13}{24}(m-20{\rm M}_{\odot})$</li>
+</ol>
+<br>
+In hierarchical models for galaxy formation the first star-forming
+halos are predicted to collapse at redshift $z\gtrsim 20$, having
+masses $\sim 10^{6}{\rm M}_{\odot}$. These facts are parameterized in
+the code by choice of the redshift that start the star formation, <span style="font-weight: bold;">zmax</span>, and by changes in the value of lower limit of the superior integral of the Equation of fraction of barions into structures <span style="font-weight: bold;">lmin</span>.<br>
+<br>
+The input attributes of the class <span style="font-weight: bold;">cosmicstarformation</span> are:<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">tau&nbsp;</span> (default 2.5 ): time scale, in Gyr, of the CSFR.</li>
+  <li><span style="font-weight: bold;">eimf</span> (default 1.35): exponent of the Initial Mass Function.</li>
+  <li><span style="font-weight: bold;">nsch</span> (default  1): the normalization factor in the CSFR model.</li>
+  <li><span style="font-weight: bold;">lmin</span> (default  6.0): log10 of the minal mass of the dark halo where it is possible to have star formation.</li>
+  <li><span style="font-weight: bold;">zmax</span> (default  20.0):&nbsp; redshift that start the star formation.</li>
+  <li><span style="font-weight: bold;">omegam </span>(default 0.24): The dark matter parameter.</li>
+  <li><span style="font-weight: bold;">omegab</span> (default 0.04): The baryonic matter parameter.</li>
+  <li><span style="font-weight: bold;">omegal</span> (default 0.73): The dark energy parameter.</li>
+  <li><span style="font-weight: bold;">h</span> (default 0.7):&nbsp; The h of the Hubble constant ($H_{0} = 100h$).</li>
+  <li><span style="font-weight: bold;">massFunctionType</span> (default  "ST"): The type of mass function of dark matter halos used.</li>
+</ul>
+<br>
+<br>
+<h3><a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 <p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a>
 or contact <a href="mailto:support@github.com">support@github.com</a>
 and we’ll help you sort it out.</p>
@@ -373,11 +490,7 @@ and we’ll help you sort it out.</p>
 <footer> <span class="ribbon-outer"> <span class="ribbon-inner">
 <p>this project by <a href="https://github.com/duducosmos">duducosmos</a>
 can be found on <a href="https://github.com/duducosmos/pycosmicstar">GitHub</a></p>
-</span> <span class="left-tail"></span> <span class="right-tail"></span>
-</span> </footer>
-<p>Generated with <a href="http://pages.github.com">GitHub Pages</a>
-using Merlot</p>
-<span class="octocat"></span> </div>
+</span> <span class="left-tail"></span> <span class="right-tail"></span></span></footer><span class="octocat"></span> </div>
 
 <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
