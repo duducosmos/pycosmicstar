@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html><head>
+
+  
+  <meta charset="utf-8">
+
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+  
+  <meta name="viewport" content="width=640">
+
+  
+  <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+
+  
+  <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+
+  
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+
+  
+  <script type="text/javascript" src="javascripts/modernizr.js"></script>
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  
+  <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+  
+  <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script><title>Pycosmicstar by duducosmos</title>
+  
+
+  
+  
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+MathJax.Hub.Config({
+ extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+ jax: ["input/TeX", "output/HTML-CSS"],
+ tex2jax: {
+     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+ },
+ "HTML-CSS": { availableFonts: ["TeX"] }
+});
+  </script>
+  
+  <link rel="stylesheet" type="text/css" href="horizontalmenu.css"></head><body>
+<a id="forkme_banner" href="https://github.com/duducosmos/pycosmicstar">View
+on GitHub</a>
+<div class="shell"> <header> <span class="ribbon-outer"> <span class="ribbon-inner">
+<h1>Pycosmicstar</h1>
+<h2>Python Cosmic Star Formation Rate<br>
+</h2>
+</span> <span class="left-tail"></span> <span class="right-tail"></span>
+</span> </header> <section id="downloads"> <span class="inner"> <a href="https://github.com/duducosmos/pycosmicstar/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/duducosmos/pycosmicstar/tarball/master" class="tgz"><em>download</em> .TGZ</a> </span> </section> <span class="banner-fix"></span><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="menu2">
+<ul>
+  <li><a href="index.html"><span>Home</span></a></li>
+  <li><a href="theory.html"><span>Theory</span></a></li>
+</ul>
+</div>
+<h1 style="text-align: center; font-weight: normal; text-decoration: underline;"><font size="+3">Theory</font></h1>
+<h3><br>
+</h3>
+<h3><a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>The
+Implemented Cosmological Background<br>
+</h3>
+<p>The standard cosmological model, Cold Dark Matter plus Cosmolocical
+Constan ($\Lambda$CDM), consider that the&nbsp; energetic content of
+the Universe is dominated by dark energy followed by dark matter and
+ordinary matter (baryonic). Those components would be in a homogeneous
+Friedmann-Roberston-Walker metric and that the Universe expansion is
+determined by the scale factor $a$. The methods associated to this
+cosmology were implemented in the class <span style="font-weight: bold;">lcdmcosmology. </span>This class has the
+following input attributes: <br>
+<br>
+</p>
+<ol>
+  <li><span style="font-weight: bold;">omegam</span>: ($\Omega_{m}$,
+default 0.24) - The dark matter parameter;</li>
+  <li><span style="font-weight: bold;">omegab</span> : ($\Omega_{b}$,
+default 0.04) - The baryonic parameter;</li>
+  <li><span style="font-weight: bold;">omegal</span>:
+($\Omega_{\Lambda}$, default 0.73) - The dark energy parameter;</li>
+  <li><span style="font-weight: bold;">h</span>: (default, 0.7) - The h
+of the Hubble constant ($H_{0} = 100h$ ).</li>
+</ol>
+Its public methods are:<br>
+<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">dt_dz(z)</span> - time,
+$t$,&nbsp; and redshift, $z$, relation:</li>
+</ul>
+\begin{equation}<br>
+\frac{dt}{dz} = \frac{9.78 h^{-1}Gyr}{(1+z)\sqrt{\Omega_{\Lambda} +
+\Omega_{m}(1 + z)^{3}}};<br>
+\end{equation}<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">H(z)</span> - Hubble parameter
+as a function of $z$:<br>
+  </li>
+</ul>
+\begin{equation}<br>
+H(z) = 100 h \sqrt{\Omega_{\Lambda} + \Omega_{m}(1 + z)^{3}};<br>
+\end{equation}<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">dr_dz(z)</span> - Comove
+distance variation for flat Universe:<br>
+  </li>
+</ul>
+\begin{equation}<br>
+\frac{dr_{z}(z)}{dz} = \frac{c}{H_{0}}
+\frac{1}{\sqrt{(1+z)^{2}(1+\Omega_{m}z)- z(2+z)\Omega_{\Lambda}}},<br>
+\end{equation}<br>
+<br>
+<div style="text-align: justify; margin-left: 40px;">where $c$ is the
+speed of light.<br>
+</div>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">dV_dz(z)</span> - Comove volume
+variation:</li>
+</ul>
+\begin{equation}<br>
+\frac{dV}{dz}(z) = 4 \pi r_{z}^{2}(z)\left(\frac{dr_{z}(z)}{dz}\right);<br>
+\end{equation}<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">growthFunction(z)</span> -
+Growth Function of cosmological density perturbations - for the
+Universe with matter and a cosmological constant, the growth function
+is well approximated by:</li>
+</ul>
+\begin{equation}\label{eq:growth}<br>
+D(a)\approx \frac{5 \Omega_{\rm m}(a)\ a}{2[1-
+\Omega_{\Lambda}(a)+\Omega_{\rm m}^{4/7}+\frac{1}{2}\Omega_{\rm
+m}(a)]}, <br>
+\end{equation}<br>
+<br>
+<div style="text-align: justify; margin-left: 40px;">$a = 1 / (1 + z)$
+is the scale factor;<br>
+</div>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">dgrowth_dt(z)</span> -
+derivative of the growth function with respect to&nbsp; time.</li>
+</ul>
+<ul>
+  <li><span style="font-weight: bold;">dsigma2_dk(k)</span> -
+derivative of the variance of linear density field, $\sigma$ :</li>
+</ul>
+\begin{equation}<br>
+\frac{d \sigma}{dk} = \frac{1}{2\pi^{2}} k^{2}P(k)W^{2}(k,M),<br>
+\end{equation}<br>
+<br>
+<div style="text-align: justify; margin-left: 40px;">where $P(k)$ is
+the power spectrum smoothed with a spherical top-hat filter function of
+radius $R$, which on average encloses a mass $M$ $(R=[3M/4\pi\rho_{\rm
+B}(z)]^{1/3})$, namely:<br>
+</div>
+<br>
+\begin{equation}<br>
+P(k) = BkT(k),<br>
+\end{equation}<br>
+<div style="text-align: justify; margin-left: 40px;">where the
+normalization factor $B$ is determined observationally.<br>
+</div>
+<br>
+<div style="text-align: justify; margin-left: 40px;">For the transfer
+function, we consider :<br>
+</div>
+<br>
+\begin{equation}<br>
+T(k) = \frac{1}{\{1+[ak+(bk)^{3/2}+(ck)^{2}]^{\nu}\}^{2/\nu}},<br>
+\end{equation}<br>
+<br>
+<div style="text-align: justify; margin-left: 40px;">with $\nu = 1.13$,
+$a = (6.4 /\Gamma) h^{-1}\rm{Mpc}$, $b= (3.0/ \Gamma)h^{-1}\rm{Mpc}$,
+$c = (1.7 /\Gamma) h^{-1}\rm{Mpc}$, and $\Gamma = \Omega_{\rm m}
+h\,\,{\rm e}^{-\Omega_{\rm b}(1+\sqrt{2h}/\Omega_{\rm m})}$ is the
+so-called shape parameter of the power spectrum.<br>
+</div>
+<br>
+<div style="text-align: justify; margin-left: 40px;">The top-hat filter
+is:<br>
+</div>
+<br>
+\begin{equation}<br>
+W(k,M) = \frac{3}{(kR)^{3}}[\sin(kR)-k R\cos(kR)];<br>
+\end{equation}<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">sigma(kmass)</span> - variance
+of linear density field (\textbf{kmass} is the mass scale):<br>
+  </li>
+</ul>
+\begin{equation}\label{eq:sigma}<br>
+\sigma^{2}(M) =&nbsp; \int_{0}^{\infty}{\frac{d \sigma}{dk}dk};<br>
+\end{equation}<br>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">rodm(z)</span> - dark matter
+density:</li>
+</ul>
+\begin{equation}<br>
+\rho_{DM}(z) = \frac{\rho_{DM}^{0}}{a^{3}},<br>
+\end{equation}<br>
+<br>
+<div style="text-align: justify; margin-left: 40px;">where
+$\rho_{DM}^{0}$ is the present day dark matter density.<br>
+</div>
+<br>
+<ul>
+  <li><span style="font-weight: bold;">robr(z)</span> - baryonic
+matterdensity:</li>
+</ul>
+\begin{equation}<br>
+\rho_{b}(z) = \frac{\rho_{b}^{0}}{a^{3}},<br>
+\end{equation}<br>
+<br>
+<div style="text-align: justify; margin-left: 40px;">$\rho_{b}^{0}$ is
+the present day baryonic matter density.<br>
+</div>
+<br>
+<h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>The like Press-Schechter
+Formalism<br>
+</h3>
+<p>The core of the like Press-Schechter Formalism (PSF) is in define
+haloes as concentrations of mass that have already left the linear
+regime by crossing the threshold $\delta_{c}$ for non-linear collapse .
+In this case, knowing variance of linear density field and how the
+cosmological density perturbations grow it is possible to have the halo
+mass function. The functional form to describe the halo abundance is:<br>
+<br>
+\begin{equation}<br>
+\frac{dn}{dM} = f(\sigma, z)\frac{\rho_{DM}}{M^{2}}\frac{d
+\ln(\sigma)}{d\ln(M)},<br>
+\end{equation}<br>
+<br>
+\noindent being $f(\sigma, z)$ the $\sigma$-weighted distribution
+function. In the literature is possible to find different forms of
+$f(\sigma, z)$. In the class <span style="font-weight: bold;">structures</span>
+we have implemented the following distribution (we define $\nu \equiv
+\sigma(M) D(z)/\delta_{c}$):<br>
+<br>
+</p>
+<ul>
+  <li><br>
+  </li>
+</ul>
+<p>\begin{equation}<br>
+f(\sigma, z) = \sqrt{\frac{2}{\pi}} \nu \exp{\left(-
+\frac{\nu^{2}}{2}\right)};<br>
+\end{equation}<br>
+<br>
+<br>
+</p>
+<ul>
+  <li><br>
+  </li>
+</ul>
+<p>\begin{equation}<br>
+f(\sigma, z) = A \sqrt{\frac{2a}{\pi}} \left[1 +
+\left(\frac{\nu^{2}}{a}\right)^{p} \right]\exp{\left(-
+\frac{a\nu^{2}}{2}\right)},<br>
+\end{equation}<br>
+<br>
+</p>
+<div style="text-align: justify; margin-left: 40px;">&nbsp;where $A =
+0.3222$, $a= 0.707$ and $p=0.3$;<br>
+</div>
+<ul>
+  <li><br>
+  </li>
+</ul>
+<p><br>
+\begin{equation}<br>
+f(\sigma) = 0.315 \exp{\left( -|ln(\sigma^{-1}) + 0.61|^{3.8}\right)}<br>
+\end{equation}<br>
+<br>
+</p>
+<ul>
+  <li><br>
+  </li>
+</ul>
+<p><br>
+\begin{equation}<br>
+f(\sigma, z) = A \left[\left(\frac{b}{\sigma}\right)^{a} +&nbsp;
+1\right]\exp(-\frac{c}{\sigma^{2}}),<br>
+\end{equation}<br>
+<br>
+</p>
+<div style="text-align: justify; margin-left: 40px;">being:<br>
+</div>
+<p><br>
+\begin{equation}<br>
+A = 0.186(1+z)^{-0.14},<br>
+\end{equation}<br>
+<br>
+\begin{equation}<br>
+a = 1.47(1+z)^{0.06},<br>
+\end{equation}<br>
+<br>
+\begin{equation}<br>
+b = 2.57(1+z)^{\alpha},<br>
+\end{equation}<br>
+<br>
+\begin{equation}<br>
+c = 1.19,<br>
+\end{equation}<br>
+<br>
+\begin{equation}<br>
+\alpha =
+\exp{\left[-\left(\frac{0.75}{\log_{10}(\Delta_{h}/75)}\right)^{1.2}\right]}<br>
+\end{equation} <br>
+</p>
+<p style="text-align: justify; margin-left: 40px;">and $\Delta_{h}$ is
+a parameter that represent the overdensity within a sphere of radius
+$R$ with respect to the mean density of the Universe. This parameter is
+considered as an input parameter of the <span style="font-weight: bold;">structures</span> class,
+called <span style="font-weight: bold;">delta_halo</span>.<br>
+</p>
+
+<ul>
+  <li><br>
+  </li>
+</ul>
+<p>
+\begin{equation}<br>
+f(\sigma) = 0.7234(\sigma^{1.625} +&nbsp; 0.2538)\exp(-1.1982
+\sigma^{2})<br>
+\end{equation}<br>
+<br>
+<br>
+</p>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors
+and Contributors</h3>
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a>
+a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code>
+element will link to the contributor's GitHub Profile. For example: In
+2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>),
+and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a>
+or contact <a href="mailto:support@github.com">support@github.com</a>
+and we’ll help you sort it out.</p>
+<p><br>
+</p>
+<br>
+<p><br>
+</p>
+<br>
+<p><br>
+</p>
+<p><br>
+</p>
+<footer> <span class="ribbon-outer"> <span class="ribbon-inner">
+<p>this project by <a href="https://github.com/duducosmos">duducosmos</a>
+can be found on <a href="https://github.com/duducosmos/pycosmicstar">GitHub</a></p>
+</span> <span class="left-tail"></span> <span class="right-tail"></span>
+</span> </footer>
+<p>Generated with <a href="http://pages.github.com">GitHub Pages</a>
+using Merlot</p>
+<span class="octocat"></span> </div>
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+<script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41660294-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+</body></html>
