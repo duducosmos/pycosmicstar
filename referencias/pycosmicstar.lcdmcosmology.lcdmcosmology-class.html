@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pycosmicstar.lcdmcosmology.lcdmcosmology</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pycosmicstar-module.html">Package&nbsp;pycosmicstar</a> ::
+        <a href="pycosmicstar.lcdmcosmology-module.html">Module&nbsp;lcdmcosmology</a> ::
+        Class&nbsp;lcdmcosmology
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class lcdmcosmology</h1><p class="nomargin-top"><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_pycosmic_5" name="uml_class_diagram_for_pycosmic_5">
+<area shape="rect" id="node1_14" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#__init__" title="pycosmicstar.lcdmcosmology.lcdmcosmology.__init__" alt="" coords="17,104,401,124"/>
+<area shape="rect" id="node1_15" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dt_dz" title="Return the relation between the cosmic time and the redshift" alt="" coords="17,124,401,144"/>
+<area shape="rect" id="node1_16" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dr_dz" title="Return the comove&#45;radii" alt="" coords="17,144,401,164"/>
+<area shape="rect" id="node1_17" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#H" title="Return the Hubble parameter as a function of z." alt="" coords="17,164,401,184"/>
+<area shape="rect" id="node1_18" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dV_dz" title="Return the comove volume variation." alt="" coords="17,184,401,204"/>
+<area shape="rect" id="node1_19" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dgrowth_dt" title="Return the derivative of the growth function with respect to &#160;time." alt="" coords="17,204,401,224"/>
+<area shape="rect" id="node1_20" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#growthFunction" title="Return the growth function" alt="" coords="17,224,401,244"/>
+<area shape="rect" id="node1_21" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#sigma" title="Return the sigma." alt="" coords="17,244,401,264"/>
+<area shape="rect" id="node1_22" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dsigma2_dk" title="&quot;Return the integrating of sigma(M,z) for a top&#45;hat filtering." alt="" coords="17,264,401,284"/>
+<area shape="rect" id="node1_23" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#rodm" title="Return the dark matter density" alt="" coords="17,284,401,304"/>
+<area shape="rect" id="node1_24" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#robr" title="Return the barionic density." alt="" coords="17,304,401,324"/>
+<area shape="rect" id="node1_25" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#age" title="Return the age of the Universe for some redshift." alt="" coords="17,324,401,344"/>
+<area shape="rect" id="node1_26" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#setCosmologicalParameter" title="Set the cosmological parameters" alt="" coords="17,344,401,364"/>
+<area shape="rect" id="node1_27" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#getRodm0" title="Return the dark matter density at the present day." alt="" coords="17,384,401,404"/>
+<area shape="rect" id="node1" href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html" title="The Cold Dark Matter (CDM) plus Cosmolocical Constan (Lambda) &#45; lcdm" alt="" coords="5,70,413,410"/>
+<area shape="rect" id="node2" href="pycosmicstar.cosmology.cosmology-class.html" title="pycosmicstar.cosmology.cosmology" alt="" coords="130,5,286,51"/>
+</map>
+  <img src="uml_class_diagram_for_pycosmic_5.gif" alt='' usemap="#uml_class_diagram_for_pycosmic_5" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<pre class="literalblock">
+The Cold Dark Matter (CDM) plus Cosmolocical Constan (Lambda) -  lcdm
+
+Keyword arguments:
+    omegam -- (default 0.24) - The dark matter parameter
+
+    omegab -- (default 0.04) - The barionic parameter
+
+    omegal -- (default 0.73) - The dark energy parameter
+
+    h -- (default 0.7) - The h of the Hubble constant (H = h * 100)
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">omegam</span>=<span class="summary-sig-default">0.24</span>,
+        <span class="summary-sig-arg">omegab</span>=<span class="summary-sig-default">0.04</span>,
+        <span class="summary-sig-arg">omegal</span>=<span class="summary-sig-default">0.73</span>,
+        <span class="summary-sig-arg">h</span>=<span class="summary-sig-default">0.7</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dt_dz" class="summary-sig-name">dt_dz</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the relation between the cosmic time and the redshift</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dt_dz">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dr_dz" class="summary-sig-name">dr_dz</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the comove-radii</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dr_dz">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#H" class="summary-sig-name">H</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the Hubble parameter as a function of z.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.H">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dV_dz" class="summary-sig-name">dV_dz</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the comove volume variation.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dV_dz">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dgrowth_dt" class="summary-sig-name">dgrowth_dt</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the derivative of the growth function with
+respect to  time.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dgrowth_dt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#growthFunction" class="summary-sig-name">growthFunction</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the growth function</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.growthFunction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#sigma" class="summary-sig-name">sigma</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kmass</span>)</span><br />
+      Return the sigma.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.sigma">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#dsigma2_dk" class="summary-sig-name">dsigma2_dk</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kl</span>)</span><br />
+      &quot;Return the integrating of sigma(M,z) for a top-hat filtering.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dsigma2_dk">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__sigma"></a><span class="summary-sig-name">__sigma</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">kmass</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.__sigma">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#rodm" class="summary-sig-name">rodm</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the dark matter density</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.rodm">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#robr" class="summary-sig-name">robr</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the barionic density.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.robr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#age" class="summary-sig-name">age</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the age of the Universe for some redshift.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.age">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#setCosmologicalParameter" class="summary-sig-name">setCosmologicalParameter</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">omegam</span>,
+        <span class="summary-sig-arg">omegab</span>,
+        <span class="summary-sig-arg">omegal</span>,
+        <span class="summary-sig-arg">h</span>)</span><br />
+      Set the cosmological parameters</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.setCosmologicalParameter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#getCosmologicalParameter" class="summary-sig-name">getCosmologicalParameter</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the cosmological parameter</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getCosmologicalParameter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDeltaC"></a><span class="summary-sig-name">getDeltaC</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the critical density</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getDeltaC">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#getTilt" class="summary-sig-name">getTilt</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getTilt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#getRobr0" class="summary-sig-name">getRobr0</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the barionic matter density at the present day.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getRobr0">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.lcdmcosmology.lcdmcosmology-class.html#getRodm0" class="summary-sig-name">getRodm0</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the dark matter density at the present day.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getRodm0">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="dt_dz"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dt_dz</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dt_dz">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the relation between the cosmic time and the redshift</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#dt_dz">cosmology.cosmology.dt_dz</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="dr_dz"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dr_dz</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dr_dz">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the comove-radii</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#dr_dz">cosmology.cosmology.dr_dz</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="H"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">H</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.H">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the Hubble parameter as a function of z.
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#H">cosmology.cosmology.H</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="dV_dz"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dV_dz</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dV_dz">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the comove volume variation.
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#dV_dz">cosmology.cosmology.dV_dz</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="dgrowth_dt"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dgrowth_dt</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dgrowth_dt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the derivative of the growth function with
+respect to  time.
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#dgrowth_dt">cosmology.cosmology.dgrowth_dt</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="growthFunction"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">growthFunction</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.growthFunction">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the growth function
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#growthFunction">cosmology.cosmology.growthFunction</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sigma"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sigma</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">kmass</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.sigma">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the sigma.
+
+Keyword arguments:
+    kmass -- mass scale
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#sigma">cosmology.cosmology.sigma</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="dsigma2_dk"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">dsigma2_dk</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">kl</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.dsigma2_dk">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>&quot;Return the integrating of sigma(M,z) for a top-hat filtering. In
+  z = 0 return sigma_8, for z &gt; 0 return sigma(M,z)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#dsigma2_dk">cosmology.cosmology.dsigma2_dk</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="rodm"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">rodm</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.rodm">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the dark matter density
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#rodm">cosmology.cosmology.rodm</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="robr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">robr</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.robr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the barionic density.
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#robr">cosmology.cosmology.robr</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="age"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">age</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.age">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the age of the Universe for some redshift.
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#age">cosmology.cosmology.age</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setCosmologicalParameter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setCosmologicalParameter</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">omegam</span>,
+        <span class="sig-arg">omegab</span>,
+        <span class="sig-arg">omegal</span>,
+        <span class="sig-arg">h</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.setCosmologicalParameter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set the cosmological parameters</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#setCosmologicalParameter">cosmology.cosmology.setCosmologicalParameter</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCosmologicalParameter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCosmologicalParameter</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getCosmologicalParameter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the cosmological parameter</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#getCosmologicalParameter">cosmology.cosmology.getCosmologicalParameter</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getTilt"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTilt</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getTilt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#getTilt">cosmology.cosmology.getTilt</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getRobr0"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getRobr0</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getRobr0">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the barionic matter density at the present day.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#getRobr0">cosmology.cosmology.getRobr0</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getRodm0"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getRodm0</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.lcdmcosmology-pysrc.html#lcdmcosmology.getRodm0">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the dark matter density at the present day.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.cosmology.cosmology-class.html#getRodm0">cosmology.cosmology.getRodm0</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Aug 11 14:43:28 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

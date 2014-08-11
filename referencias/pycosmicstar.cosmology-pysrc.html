@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pycosmicstar.cosmology</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pycosmicstar-module.html">Package&nbsp;pycosmicstar</a> ::
+        Module&nbsp;cosmology
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pycosmicstar.cosmology-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="pycosmicstar.cosmology-module.html">Module pycosmicstar.cosmology</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/env python3</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># *-* Coding: UTF-8 *-*</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">__future__</tt> <tt class="py-keyword">import</tt> <tt class="py-name">division</tt><tt class="py-op">,</tt> <tt class="py-name">absolute_import</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Eduardo dos Santos Pereira"</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable pycosmicstar.__email__=pycosmicstar-module.html#__email__,Variable pycosmicstar.cosmicstarformation.__email__=pycosmicstar.cosmicstarformation-module.html#__email__,Variable pycosmicstar.cosmolib.__email__=pycosmicstar.cosmolib-module.html#__email__,Variable pycosmicstar.cosmology.__email__=pycosmicstar.cosmology-module.html#__email__,Variable pycosmicstar.csfrfromfit.__email__=pycosmicstar.csfrfromfit-module.html#__email__,Variable pycosmicstar.diferencial.__email__=pycosmicstar.diferencial-module.html#__email__,Variable pycosmicstar.lcdmcosmology.__email__=pycosmicstar.lcdmcosmology-module.html#__email__,Variable pycosmicstar.observationalCSFR.__email__=pycosmicstar.observationalCSFR-module.html#__email__,Variable pycosmicstar.paralleloverlist.__email__=pycosmicstar.paralleloverlist-module.html#__email__,Variable pycosmicstar.pylcdmlib.__email__=pycosmicstar.pylcdmlib-module.html#__email__,Variable pycosmicstar.run_kut4.__email__=pycosmicstar.run_kut4-module.html#__email__,Variable pycosmicstar.structures.__email__=pycosmicstar.structures-module.html#__email__,Variable pycosmicstar.structuresabstract.__email__=pycosmicstar.structuresabstract-module.html#__email__,Variable pycosmicstar.test_all.__email__=pycosmicstar.test_all-module.html#__email__,Variable pycosmicstar.test_cosmology.__email__=pycosmicstar.test_cosmology-module.html#__email__"><a title="pycosmicstar.__email__
+pycosmicstar.cosmicstarformation.__email__
+pycosmicstar.cosmolib.__email__
+pycosmicstar.cosmology.__email__
+pycosmicstar.csfrfromfit.__email__
+pycosmicstar.diferencial.__email__
+pycosmicstar.lcdmcosmology.__email__
+pycosmicstar.observationalCSFR.__email__
+pycosmicstar.paralleloverlist.__email__
+pycosmicstar.pylcdmlib.__email__
+pycosmicstar.run_kut4.__email__
+pycosmicstar.structures.__email__
+pycosmicstar.structuresabstract.__email__
+pycosmicstar.test_all.__email__
+pycosmicstar.test_cosmology.__email__" class="py-name" href="#" onclick="return doclink('link-0', '__email__', 'link-0');">__email__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"pereira.somoza@gmail.com"</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable pycosmicstar.__credits__=pycosmicstar-module.html#__credits__,Variable pycosmicstar.cosmicstarformation.__credits__=pycosmicstar.cosmicstarformation-module.html#__credits__,Variable pycosmicstar.cosmolib.__credits__=pycosmicstar.cosmolib-module.html#__credits__,Variable pycosmicstar.cosmology.__credits__=pycosmicstar.cosmology-module.html#__credits__,Variable pycosmicstar.csfrfromfit.__credits__=pycosmicstar.csfrfromfit-module.html#__credits__,Variable pycosmicstar.diferencial.__credits__=pycosmicstar.diferencial-module.html#__credits__,Variable pycosmicstar.lcdmcosmology.__credits__=pycosmicstar.lcdmcosmology-module.html#__credits__,Variable pycosmicstar.observationalCSFR.__credits__=pycosmicstar.observationalCSFR-module.html#__credits__,Variable pycosmicstar.paralleloverlist.__credits__=pycosmicstar.paralleloverlist-module.html#__credits__,Variable pycosmicstar.pylcdmlib.__credits__=pycosmicstar.pylcdmlib-module.html#__credits__,Variable pycosmicstar.run_kut4.__credits__=pycosmicstar.run_kut4-module.html#__credits__,Variable pycosmicstar.structures.__credits__=pycosmicstar.structures-module.html#__credits__,Variable pycosmicstar.structuresabstract.__credits__=pycosmicstar.structuresabstract-module.html#__credits__,Variable pycosmicstar.test_all.__credits__=pycosmicstar.test_all-module.html#__credits__,Variable pycosmicstar.test_cosmology.__credits__=pycosmicstar.test_cosmology-module.html#__credits__"><a title="pycosmicstar.__credits__
+pycosmicstar.cosmicstarformation.__credits__
+pycosmicstar.cosmolib.__credits__
+pycosmicstar.cosmology.__credits__
+pycosmicstar.csfrfromfit.__credits__
+pycosmicstar.diferencial.__credits__
+pycosmicstar.lcdmcosmology.__credits__
+pycosmicstar.observationalCSFR.__credits__
+pycosmicstar.paralleloverlist.__credits__
+pycosmicstar.pylcdmlib.__credits__
+pycosmicstar.run_kut4.__credits__
+pycosmicstar.structures.__credits__
+pycosmicstar.structuresabstract.__credits__
+pycosmicstar.test_all.__credits__
+pycosmicstar.test_cosmology.__credits__" class="py-name" href="#" onclick="return doclink('link-1', '__credits__', 'link-1');">__credits__</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">"Eduardo dos Santos Pereira"</tt><tt class="py-op">]</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-name">__license__</tt> <tt class="py-op">=</tt> <tt class="py-string">"GPLV3"</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">"1.0.1"</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable pycosmicstar.__maintainer__=pycosmicstar-module.html#__maintainer__,Variable pycosmicstar.cosmicstarformation.__maintainer__=pycosmicstar.cosmicstarformation-module.html#__maintainer__,Variable pycosmicstar.cosmolib.__maintainer__=pycosmicstar.cosmolib-module.html#__maintainer__,Variable pycosmicstar.cosmology.__maintainer__=pycosmicstar.cosmology-module.html#__maintainer__,Variable pycosmicstar.csfrfromfit.__maintainer__=pycosmicstar.csfrfromfit-module.html#__maintainer__,Variable pycosmicstar.diferencial.__maintainer__=pycosmicstar.diferencial-module.html#__maintainer__,Variable pycosmicstar.lcdmcosmology.__maintainer__=pycosmicstar.lcdmcosmology-module.html#__maintainer__,Variable pycosmicstar.observationalCSFR.__maintainer__=pycosmicstar.observationalCSFR-module.html#__maintainer__,Variable pycosmicstar.paralleloverlist.__maintainer__=pycosmicstar.paralleloverlist-module.html#__maintainer__,Variable pycosmicstar.pylcdmlib.__maintainer__=pycosmicstar.pylcdmlib-module.html#__maintainer__,Variable pycosmicstar.run_kut4.__maintainer__=pycosmicstar.run_kut4-module.html#__maintainer__,Variable pycosmicstar.structures.__maintainer__=pycosmicstar.structures-module.html#__maintainer__,Variable pycosmicstar.structuresabstract.__maintainer__=pycosmicstar.structuresabstract-module.html#__maintainer__,Variable pycosmicstar.test_all.__maintainer__=pycosmicstar.test_all-module.html#__maintainer__,Variable pycosmicstar.test_cosmology.__maintainer__=pycosmicstar.test_cosmology-module.html#__maintainer__"><a title="pycosmicstar.__maintainer__
+pycosmicstar.cosmicstarformation.__maintainer__
+pycosmicstar.cosmolib.__maintainer__
+pycosmicstar.cosmology.__maintainer__
+pycosmicstar.csfrfromfit.__maintainer__
+pycosmicstar.diferencial.__maintainer__
+pycosmicstar.lcdmcosmology.__maintainer__
+pycosmicstar.observationalCSFR.__maintainer__
+pycosmicstar.paralleloverlist.__maintainer__
+pycosmicstar.pylcdmlib.__maintainer__
+pycosmicstar.run_kut4.__maintainer__
+pycosmicstar.structures.__maintainer__
+pycosmicstar.structuresabstract.__maintainer__
+pycosmicstar.test_all.__maintainer__
+pycosmicstar.test_cosmology.__maintainer__" class="py-name" href="#" onclick="return doclink('link-2', '__maintainer__', 'link-2');">__maintainer__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Eduardo dos Santos Pereira"</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable pycosmicstar.__status__=pycosmicstar-module.html#__status__,Variable pycosmicstar.cosmicstarformation.__status__=pycosmicstar.cosmicstarformation-module.html#__status__,Variable pycosmicstar.cosmolib.__status__=pycosmicstar.cosmolib-module.html#__status__,Variable pycosmicstar.cosmology.__status__=pycosmicstar.cosmology-module.html#__status__,Variable pycosmicstar.csfrfromfit.__status__=pycosmicstar.csfrfromfit-module.html#__status__,Variable pycosmicstar.diferencial.__status__=pycosmicstar.diferencial-module.html#__status__,Variable pycosmicstar.lcdmcosmology.__status__=pycosmicstar.lcdmcosmology-module.html#__status__,Variable pycosmicstar.observationalCSFR.__status__=pycosmicstar.observationalCSFR-module.html#__status__,Variable pycosmicstar.paralleloverlist.__status__=pycosmicstar.paralleloverlist-module.html#__status__,Variable pycosmicstar.pylcdmlib.__status__=pycosmicstar.pylcdmlib-module.html#__status__,Variable pycosmicstar.run_kut4.__status__=pycosmicstar.run_kut4-module.html#__status__,Variable pycosmicstar.structures.__status__=pycosmicstar.structures-module.html#__status__,Variable pycosmicstar.structuresabstract.__status__=pycosmicstar.structuresabstract-module.html#__status__,Variable pycosmicstar.test_all.__status__=pycosmicstar.test_all-module.html#__status__,Variable pycosmicstar.test_cosmology.__status__=pycosmicstar.test_cosmology-module.html#__status__"><a title="pycosmicstar.__status__
+pycosmicstar.cosmicstarformation.__status__
+pycosmicstar.cosmolib.__status__
+pycosmicstar.cosmology.__status__
+pycosmicstar.csfrfromfit.__status__
+pycosmicstar.diferencial.__status__
+pycosmicstar.lcdmcosmology.__status__
+pycosmicstar.observationalCSFR.__status__
+pycosmicstar.paralleloverlist.__status__
+pycosmicstar.pylcdmlib.__status__
+pycosmicstar.run_kut4.__status__
+pycosmicstar.structures.__status__
+pycosmicstar.structuresabstract.__status__
+pycosmicstar.test_all.__status__
+pycosmicstar.test_cosmology.__status__" class="py-name" href="#" onclick="return doclink('link-3', '__status__', 'link-3');">__status__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Stable"</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-string">"""Abstract Class of cosmological models.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-string">This file is part of pystar.</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-string">copyright : Eduardo dos Santos Pereira</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-string">pystar is free software: you can redistribute it and/or modify</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-string">it under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-string">the Free Software Foundation, either version 3 of the License.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-string">pystar is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-string">but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-string">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-string">GNU General Public License for more details.</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-string">You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-string">along with Foobar.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="cosmology"></a><div id="cosmology-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="cosmology-toggle" onclick="return toggle('cosmology');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html">cosmology</a><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="cosmology-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.dt_dz"></a><div id="cosmology.dt_dz-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="cosmology.dt_dz-toggle" onclick="return toggle('cosmology.dt_dz');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#dt_dz">dt_dz</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.dt_dz-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.dt_dz-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the relation between the cosmic time and the redshift</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.dr_dz"></a><div id="cosmology.dr_dz-def"><a name="L40"></a><tt class="py-lineno"> 40</tt> <a class="py-toggle" href="#" id="cosmology.dr_dz-toggle" onclick="return toggle('cosmology.dr_dz');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#dr_dz">dr_dz</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.dr_dz-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.dr_dz-expanded"><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the comove-radii"""</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.dV_dz"></a><div id="cosmology.dV_dz-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="cosmology.dV_dz-toggle" onclick="return toggle('cosmology.dV_dz');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#dV_dz">dV_dz</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.dV_dz-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.dV_dz-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the comove volume"""</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.rodm"></a><div id="cosmology.rodm-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="cosmology.rodm-toggle" onclick="return toggle('cosmology.rodm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#rodm">rodm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.rodm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.rodm-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the Dark Matter Density"""</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.robr"></a><div id="cosmology.robr-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="cosmology.robr-toggle" onclick="return toggle('cosmology.robr');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#robr">robr</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.robr-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.robr-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the Barionic Matter Density"""</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.H"></a><div id="cosmology.H-def"><a name="L56"></a><tt class="py-lineno"> 56</tt> <a class="py-toggle" href="#" id="cosmology.H-toggle" onclick="return toggle('cosmology.H');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#H">H</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.H-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.H-expanded"><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the Hubble Parameter"""</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.dgrowth_dt"></a><div id="cosmology.dgrowth_dt-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="cosmology.dgrowth_dt-toggle" onclick="return toggle('cosmology.dgrowth_dt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#dgrowth_dt">dgrowth_dt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.dgrowth_dt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.dgrowth_dt-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the derivative of growth function of the</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">         primordial perturbations"""</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.growthFunction"></a><div id="cosmology.growthFunction-def"><a name="L65"></a><tt class="py-lineno"> 65</tt> <a class="py-toggle" href="#" id="cosmology.growthFunction-toggle" onclick="return toggle('cosmology.growthFunction');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#growthFunction">growthFunction</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.growthFunction-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.growthFunction-expanded"><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the growth function of the primordial perturbations"""</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.dsigma2_dk"></a><div id="cosmology.dsigma2_dk-def"><a name="L69"></a><tt class="py-lineno"> 69</tt> <a class="py-toggle" href="#" id="cosmology.dsigma2_dk-toggle" onclick="return toggle('cosmology.dsigma2_dk');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#dsigma2_dk">dsigma2_dk</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">kl</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.dsigma2_dk-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.dsigma2_dk-expanded"><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-docstring">""""Return the integrating of sigma(M,z) for a top-hat filtering.</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">        In z = 0 return sigma_8, for z &gt; 0 return sigma(M,z)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.sigma"></a><div id="cosmology.sigma-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="cosmology.sigma-toggle" onclick="return toggle('cosmology.sigma');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#sigma">sigma</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.sigma-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.sigma-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return  the variance of the linear density field.</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">        As pointed out by Jenkis et al. (2001),</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        this definition of the mass function has the advantage that it does</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        not explicitly depend on redshift, power spectrum or cosmology.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.age"></a><div id="cosmology.age-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="cosmology.age-toggle" onclick="return toggle('cosmology.age');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#age">age</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">z</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.age-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.age-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the age of the Universe for a given z</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.setCosmologicalParameter"></a><div id="cosmology.setCosmologicalParameter-def"><a name="L88"></a><tt class="py-lineno"> 88</tt> <a class="py-toggle" href="#" id="cosmology.setCosmologicalParameter-toggle" onclick="return toggle('cosmology.setCosmologicalParameter');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#setCosmologicalParameter">setCosmologicalParameter</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.setCosmologicalParameter-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.setCosmologicalParameter-expanded"><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.getCosmologicalParameter"></a><div id="cosmology.getCosmologicalParameter-def"><a name="L91"></a><tt class="py-lineno"> 91</tt> <a class="py-toggle" href="#" id="cosmology.getCosmologicalParameter-toggle" onclick="return toggle('cosmology.getCosmologicalParameter');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#getCosmologicalParameter">getCosmologicalParameter</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.getCosmologicalParameter-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.getCosmologicalParameter-expanded"><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.getTilt"></a><div id="cosmology.getTilt-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="cosmology.getTilt-toggle" onclick="return toggle('cosmology.getTilt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#getTilt">getTilt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.getTilt-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.getTilt-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.getRobr0"></a><div id="cosmology.getRobr0-def"><a name="L97"></a><tt class="py-lineno"> 97</tt> <a class="py-toggle" href="#" id="cosmology.getRobr0-toggle" onclick="return toggle('cosmology.getRobr0');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#getRobr0">getRobr0</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.getRobr0-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.getRobr0-expanded"><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="cosmology.getRodm0"></a><div id="cosmology.getRodm0-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="cosmology.getRodm0-toggle" onclick="return toggle('cosmology.getRodm0');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="pycosmicstar.cosmology.cosmology-class.html#getRodm0">getRodm0</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="cosmology.getRodm0-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="cosmology.getRodm0-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplementedError</tt><tt class="py-op">(</tt><tt class="py-string">'I need to be implemented!'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Aug 11 14:43:29 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

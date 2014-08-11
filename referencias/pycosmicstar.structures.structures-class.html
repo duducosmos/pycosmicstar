@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pycosmicstar.structures.structures</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pycosmicstar-module.html">Package&nbsp;pycosmicstar</a> ::
+        <a href="pycosmicstar.structures-module.html">Module&nbsp;structures</a> ::
+        Class&nbsp;structures
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pycosmicstar.structures.structures-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class structures</h1><p class="nomargin-top"><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_pycosmic_6" name="uml_class_diagram_for_pycosmic_6">
+<area shape="rect" id="node1_15" href="pycosmicstar.structures.structures-class.html#__init__" title="pycosmicstar.structures.structures.__init__" alt="" coords="21,139,265,159"/>
+<area shape="rect" id="node1_16" href="pycosmicstar.structures.structures-class.html#abt" title="Return the accretion rate of barionic matter, as a function of scala factor, into strutures." alt="" coords="21,159,265,179"/>
+<area shape="rect" id="node1_17" href="pycosmicstar.structures.structures-class.html#fbstruc" title="Return the faction of barions into structures" alt="" coords="21,179,265,199"/>
+<area shape="rect" id="node1_18" href="pycosmicstar.structures.structures-class.html#fstm" title="Numerical function that return the value of sigm that will be used by dfridr to calculate d_sigma_dlog10(m)." alt="" coords="21,199,265,219"/>
+<area shape="rect" id="node1_19" href="pycosmicstar.structures.structures-class.html#getCacheDir" title="Return True and cache name if the cache directory existe and false else." alt="" coords="21,219,265,239"/>
+<area shape="rect" id="node1_20" href="pycosmicstar.structures.structures-class.html#getDeltaHTinker" title="pycosmicstar.structures.structures.getDeltaHTinker" alt="" coords="21,239,265,259"/>
+<area shape="rect" id="node1_21" href="pycosmicstar.structures.structures-class.html#getmassFunctionDict" title="Return a list with key and function of implemented dark haloes mass &#160;function" alt="" coords="21,259,265,279"/>
+<area shape="rect" id="node1_22" href="pycosmicstar.structures.structures-class.html#halos_n" title="Return the integral of the mass function of dark halos multiplied by mass in the range of log(M_min) a log(M_max)" alt="" coords="21,279,265,299"/>
+<area shape="rect" id="node1_23" href="pycosmicstar.structures.structures-class.html#massFunction" title="Return the mass function of dark halos." alt="" coords="21,299,265,319"/>
+<area shape="rect" id="node1_24" href="pycosmicstar.structures.structures-class.html#numerical_density_halos" title="Return the numerial density of dark halos within the comove volume" alt="" coords="21,319,265,339"/>
+<area shape="rect" id="node1_25" href="pycosmicstar.structures.structures-class.html#setDeltaHTinker" title="pycosmicstar.structures.structures.setDeltaHTinker" alt="" coords="21,339,265,359"/>
+<area shape="rect" id="node1_26" href="pycosmicstar.structures.structures-class.html#setMassFunctionDict" title="Add a new key and function in the dark haloes mass function dictionary" alt="" coords="21,359,265,379"/>
+<area shape="rect" id="node1_27" href="pycosmicstar.structures.structures-class.html#setQBurrFunction" title="Set the q value of dark haloes mass function derived from Burr &#160;distribuction." alt="" coords="21,379,265,399"/>
+<area shape="rect" id="node1" href="pycosmicstar.structures.structures-class.html" title="This class was contructed based in the like Press&#45;Schechter formalism that provides characteristis like numerical density of dark matter halos into the range m_h, m_h + dm_h, the fraction of barionic matter, and, the accretion rate of barions into structures and the total number of dark halos." alt="" coords="9,105,277,405"/>
+<area shape="rect" id="node3" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html" title="The Cosmic Star Formation rate The model used to develop this class was presented by the first time in the article of Pereira and Miranda (2010) &#45; (MNRAS, 401, 1924, 2010)." alt="" coords="5,424,283,464"/>
+<area shape="rect" id="node2_28" href="pycosmicstar.structuresabstract.structuresabstract-class.html#cosmicStarFormationRate" title="pycosmicstar.structuresabstract.structuresabstract.cosmicStarFormationRate" alt="" coords="36,39,252,59"/>
+<area shape="rect" id="node2_29" href="pycosmicstar.structuresabstract.structuresabstract-class.html#gasDensityInStructures" title="pycosmicstar.structuresabstract.structuresabstract.gasDensityInStructures" alt="" coords="36,59,252,79"/>
+<area shape="rect" id="node2" href="pycosmicstar.structuresabstract.structuresabstract-class.html" title="pycosmicstar.structuresabstract.structuresabstract" alt="" coords="24,5,264,85"/>
+</map>
+  <img src="uml_class_diagram_for_pycosmic_6.gif" alt='' usemap="#uml_class_diagram_for_pycosmic_6" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<pre class="literalblock">
+This class was contructed based in the like Press-Schechter formalism
+that provides characteristis like numerical density of dark matter halos
+into the range m_h, m_h + dm_h, the fraction of barionic matter,
+and,  the accretion rate of barions into structures and the total number
+of dark halos.
+
+The models used to develop this class was presented for the first time
+in the article of Pereira and Miranda (2010) - (MNRAS, 401, 1924, 2010).
+
+The cosmologic background model is passed as a instance parameter:
+    cosmology
+
+Keyword arguments:
+    lmin -- (default 6.0) log10 of the minal mass of the dark halo
+                        where it is possible to have star formation.
+
+    zmax -- (defaul 20.0) - the maximum redshift to be considered
+
+    omegam -- (default 0.24) - The dark matter parameter
+
+    omegab -- (default 0.04) - The barionic parameter
+
+    omegal -- (default 0.73) - The dark energy parameter
+
+    h -- (default 0.7) - The h of the Hubble constant (H = h * 100)
+
+    massFunctionType:
+        (Dark Haloes Mass Function)
+        default 'ST' - Sheth et al. (2001) - z=[0,2]
+        'TK' - Tinker et al. (2008) - z=[0,2.5]
+        'PS' - Press and Schechter (1974) - z=-
+        'JK' - Jenkins et al. (2001) z=[0,5]
+        'W' - Warren et al. (2006) z=0
+        'WT1' - Watson et al. (2013) - Tinker Modified - z=[0,30]
+        'WT2' - Watson et al. (2013) - Gamma times times Tinker Modified
+                                            z=[0,30]
+        'B' - Burr Distribuction. Marassi and Lima (2006) - Press Schechter
+                                modified.
+    qBurr:
+        (default 1) - The q value of Burr Distribuction.
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__cachingAtribut"></a><span class="summary-sig-name">__cachingAtribut</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Caching the values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__cachingAtribut">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__creatCachDiretory"></a><span class="summary-sig-name">__creatCachDiretory</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__creatCachDiretory">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__deltaCz"></a><span class="summary-sig-name">__deltaCz</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__deltaCz">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__fmassM"></a><span class="summary-sig-name">__fmassM</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the mass function of dark halos multiplied by Mass - Sheth e 
+      Tormen (MNRAS 308, 119, 1999).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__fmassM">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__ifSigmaNotInCache"></a><span class="summary-sig-name">__ifSigmaNotInCache</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Calculate the values necessaries to initialize the numerical function
+      of sigma</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__ifSigmaNotInCache">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cosmology</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionBurr" class="summary-sig-name" onclick="show_private();">__massFunctionBurr</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the value of the Burr Distribution (Marassi and Lima (2006))
+ - Press Schechter modified, mass function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionBurr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionJenkins" class="summary-sig-name" onclick="show_private();">__massFunctionJenkins</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the mass function of Jenkins et al.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionJenkins">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionPressSchechter" class="summary-sig-name" onclick="show_private();">__massFunctionPressSchechter</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the value of Press-Schechter (1974) mass function.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionPressSchechter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionST" class="summary-sig-name" onclick="show_private();">__massFunctionST</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the mass function of dark halos of
+Sheth e Tormen (MNRAS 308, 119, 1999).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionST">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionTinker" class="summary-sig-name" onclick="show_private();">__massFunctionTinker</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the mass function of dark halos of
+Tinker mass function (Tinker et al.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionTinker">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__massFunctionW"></a><span class="summary-sig-name">__massFunctionW</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionW">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionWT1" class="summary-sig-name" onclick="show_private();">__massFunctionWT1</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the value of Watson et al.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionWT1">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#__massFunctionWT2" class="summary-sig-name" onclick="show_private();">__massFunctionWT2</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the value of Watson et al.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionWT2">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__rodmz"></a><span class="summary-sig-name">__rodmz</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__rodmz">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__startBarionicAccretionRate"></a><span class="summary-sig-name">__startBarionicAccretionRate</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__startBarionicAccretionRate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__startingSigmaAccretion"></a><span class="summary-sig-name">__startingSigmaAccretion</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Verify if the values are in cache</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__startingSigmaAccretion">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_burrBq"></a><span class="summary-sig-name">_burrBq</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures._burrBq">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_masFunctionWT0"></a><span class="summary-sig-name">_masFunctionWT0</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>,
+        <span class="summary-sig-arg">A</span>,
+        <span class="summary-sig-arg">a</span>,
+        <span class="summary-sig-arg">b</span>,
+        <span class="summary-sig-arg">c</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures._masFunctionWT0">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#abt" class="summary-sig-name">abt</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">a</span>)</span><br />
+      Return the accretion rate of barionic matter, as
+a function of scala factor, into strutures.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.abt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#fbstruc" class="summary-sig-name">fbstruc</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the faction of barions into structures</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.fbstruc">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#fstm" class="summary-sig-name">fstm</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>)</span><br />
+      Numerical function that return the value of sigm that
+will be used by dfridr to calculate d_sigma_dlog10(m).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.fstm">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#getCacheDir" class="summary-sig-name">getCacheDir</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return True and cache name if the cache directory existe and false 
+      else.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.getCacheDir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDeltaHTinker"></a><span class="summary-sig-name">getDeltaHTinker</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.getDeltaHTinker">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getmassFunctionDict"></a><span class="summary-sig-name">getmassFunctionDict</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a list with key and function of implemented dark haloes mass 
+      function</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.getmassFunctionDict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#halos_n" class="summary-sig-name">halos_n</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the integral of the mass function of dark halos multiplied
+by mass in the range of log(M_min) a log(M_max)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.halos_n">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#massFunction" class="summary-sig-name">massFunction</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">lm</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the mass function of dark halos.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.massFunction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.structures.structures-class.html#numerical_density_halos" class="summary-sig-name">numerical_density_halos</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the numerial density of dark halos
+within the comove volume</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.numerical_density_halos">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setDeltaHTinker"></a><span class="summary-sig-name">setDeltaHTinker</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">delta_halo</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.setDeltaHTinker">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setMassFunctionDict"></a><span class="summary-sig-name">setMassFunctionDict</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">function</span>)</span><br />
+      Add a new key and function in the dark haloes mass function 
+      dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.setMassFunctionDict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setQBurrFunction"></a><span class="summary-sig-name">setQBurrFunction</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">q</span>)</span><br />
+      Set the q value of dark haloes mass function derived from Burr 
+      distribuction.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.setQBurrFunction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pycosmicstar.structuresabstract.structuresabstract-class.html">structuresabstract.structuresabstract</a></code></b>:
+      <code><a href="pycosmicstar.structuresabstract.structuresabstract-class.html#cosmicStarFormationRate">cosmicStarFormationRate</a></code>,
+      <code><a href="pycosmicstar.structuresabstract.structuresabstract-class.html#gasDensityInStructures">gasDensityInStructures</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__massFunctionBurr"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionBurr</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionBurr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Return the value of the Burr Distribution (Marassi and Lima (2006))
+ - Press Schechter modified, mass function.
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__massFunctionJenkins"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionJenkins</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionJenkins">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the mass function of Jenkins et al. (2003).
+Keyword arguments:
+   lm -- log10 of the mass of the dark halo
+   z -- redshift
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__massFunctionPressSchechter"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionPressSchechter</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionPressSchechter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the value of Press-Schechter (1974) mass function.
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__massFunctionST"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionST</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionST">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the mass function of dark halos of
+Sheth e Tormen (MNRAS 308, 119, 1999).
+
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__massFunctionTinker"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionTinker</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionTinker">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the mass function of dark halos of
+Tinker mass function (Tinker et al. 2008)
+
+This function was adapted from the work of:
+    S.G. Murray et al. 2013. Astronomy and Computing. 3-4. 23-34.
+    source of the original (https://github.com/steven-murray/hmf)
+
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+    
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__massFunctionWT1"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionWT1</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionWT1">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Return the value of Watson et al. (2013) (- Tinker Modified - z=[0,30])
+mass function
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__massFunctionWT2"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__massFunctionWT2</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.__massFunctionWT2">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+
+Return the value of Watson et al. (2013) (Gamma times
+Tinker Modified z=[0,30]) mass function
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="abt"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">abt</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">a</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.abt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the accretion rate of barionic matter, as
+a function of scala factor, into strutures.
+
+Keyword arguments:
+    a -- scala factor (1.0 / (1.0 + z))
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#abt">structuresabstract.structuresabstract.abt</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fbstruc"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fbstruc</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.fbstruc">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the faction of barions into structures
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#fbstruc">structuresabstract.structuresabstract.fbstruc</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fstm"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fstm</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.fstm">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Numerical function that return the value of sigm that
+will be used by dfridr to calculate d_sigma_dlog10(m).
+
+Keyword arguments:
+    lm -- log10 of the mass of dark halo
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#fstm">structuresabstract.structuresabstract.fstm</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCacheDir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCacheDir</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.getCacheDir">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return True and cache name if the cache directory existe and false 
+  else.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#getCacheDir">structuresabstract.structuresabstract.getCacheDir</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="halos_n"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">halos_n</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.halos_n">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the integral of the mass function of dark halos multiplied
+by mass in the range of log(M_min) a log(M_max)
+
+Keyword arguments:
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#halos_n">structuresabstract.structuresabstract.halos_n</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="massFunction"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">massFunction</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">lm</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.massFunction">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the mass function of dark halos.
+
+Keyword arguments:
+    lm -- log10 of the mass of the dark halo
+    z -- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#massFunction">structuresabstract.structuresabstract.massFunction</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="numerical_density_halos"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">numerical_density_halos</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.structures-pysrc.html#structures.numerical_density_halos">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return the numerial density of dark halos
+within the comove volume
+
+Keyword arguments:
+    z- redshift
+
+</pre>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#numerical_density_halos">structuresabstract.structuresabstract.numerical_density_halos</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Aug 11 14:43:28 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
