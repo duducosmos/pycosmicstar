@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html><head>
+
   
   <meta charset="utf-8">
 
@@ -29,8 +30,8 @@
       $(document).ready(function () {
         $('#main_content').headsmart()
       })
-    </script>
-  <title>Pycosmicstar by duducosmos</title>
+    </script><title>Pycosmicstar by duducosmos</title>
+  
 
   
   
@@ -49,9 +50,7 @@ MathJax.Hub.Config({
   <link rel="stylesheet" type="text/css" href="horizontalmenu.css">
 
   
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-</head><body>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"></head><body>
 <a id="forkme_banner" href="https://github.com/duducosmos/pycosmicstar">View
 on GitHub</a>
 <div style="outline-color: navy ! important; outline-style: dashed ! important; outline-width: 2px ! important;" class="shell"> <header> <span class="ribbon-outer"> <span class="ribbon-inner">
@@ -159,14 +158,17 @@ Creating a new structure object, given a dark halo mass function:<br>
 <br>
 <br>
 <pre><code>from pycosmicstar.structures import structures<br>from pycosmicstar.lcdmcosmology import lcdmcosmology<br><br>import matplotlib.pyplot as plt<br>from numpy import arange, log<br><br>#Creating a object considering the<br>#Sheth &amp; Tormen (1999) mass function.<br>stUniverser = structures(cosmology=lcdmcosmology, omegam=0.24,<br>omegab=0.04, omegal=0.73, h=0.7, massFunctionType="ST")<br><br>#Creating a object considering the<br>#Tinker et al. (2010) mass function.<br>tkUniverser = structures(cosmology=lcdmcosmology, omegam=0.24,<br>omegab=0.04, omegal=0.73, h=0.7, massFunctionType="TK", delta_halo=200)<br><br>z = arange(0, 10.5, 0.1)<br><br>#Plotting the fraction of baryons into structures<br>plt.plot(z, [stUniverser.fbstruc(zi) for zi in z], label="ST")<br>plt.plot(z, [tkUniverser.fbstruc(zi) for zi in z], label="TK")<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$f_{b}$")<br>plt.legend()<br>plt.show()<br><br>#plotting the accretion rate of baryons into structure<br>plt.plot(z, [stUniverser.abt(1.0 / (1.0 + zi)) for zi in z],<br>label="ST")<br>plt.plot(z, [tkUniverser.abt(1.0 / (1.0 + zi)) for zi in z],<br>label="TK")<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$a_{b}$")<br>plt.legend()<br>plt.show()<br><br>#Plotting the numerical density of dark haloes.<br>plt.plot(z, [stUniverser.numerical_density_halos(zi) for zi in z],<br>label="ST")<br>plt.plot(z, [tkUniverser.numerical_density_halos(zi) for zi in z],<br>label="TK")<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"numerical density of halos")<br>plt.legend()<br>plt.show()</code><br></pre>
-<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/fb.png"><br>
+<div style="text-align: center;">
+<div style="text-align: center;"><a href="examples/example2.py" target="_blank">Download the source code of example 2.</a><br>
+</div>
+<br>
+<img style="width: 500px; height: 350px;" alt="" src="images/fb.png"><br>
 Figure 4: The fraction of baryons into structures according to <br>
 dark haloes mass function.<br>
 </div>
 <br>
 <div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/ab.png"><br>
 Figure 5: The accretion rate of baryons into structures according to <br>
-
 dark haloes mass function.</div>
 <br>
 <br>
@@ -174,7 +176,7 @@ dark haloes mass function.</div>
 Figure 6: Numerical density of dark haloes.<br>
 </div>
 <br>
-<div style="text-align: center;"><a href="examples/example2.py" target="_blank">Download the source code of example 2.</a><br>
+<div style="text-align: center;"><br>
 </div>
 <br>
 The attributes and public methods:<br>
@@ -251,7 +253,67 @@ baryons in structures. </li>
     </ol>
   </ol>
 </ol>
+<h4 style="text-align: center;">The Cosmic Star Formation Rate</h4>
 <br>
+Instancing cosmic star formation rate using differents dark haloes mass
+function:<br>
+<br>
+<br>
+<pre><code>from pycosmicstar.cosmicstarformation import cosmicstarformation<br>from pycosmicstar.lcdmcosmology import lcdmcosmology<br>from pycosmicstar.observationalCSFR import ObservationalCSFR<br><br>import matplotlib.pyplot as plt<br>from numpy import arange, array<br><br>z = arange(0, 20, 0.1)<br><br>#Cosmic Star Formation Rate using Tinker et al. dark haloes mass function<br>myCSFR_TK = cosmicstarformation(cosmology=lcdmcosmology,<br>                                massFunctionType="TK",<br>                                delta_halo=200)<br><br>#Cosmic Star Formation Rate using Press and Schechter dark haloes mass function<br>myCSFR_PS = cosmicstarformation(cosmology=lcdmcosmology,<br>                                massFunctionType="PS")<br><br>#Cosmic Star Formation Rate using Seth et al. dark haloes mass function<br>myCSFR_ST = cosmicstarformation(cosmology=lcdmcosmology)<br><br><br>csfrTK = array([myCSFR_TK.cosmicStarFormationRate(zi) for zi in z])<br><br>csfrPS = array([myCSFR_PS.cosmicStarFormationRate(zi) for zi in z])<br>csfrST = array([myCSFR_ST.cosmicStarFormationRate(zi) for zi in z])<br><br>obsCSFR = ObservationalCSFR()<br>x, y = obsCSFR.csfredshift()<br>xerr, yerr = obsCSFR.errorData()<br>plt.errorbar(x, y, yerr=yerr, xerr=xerr, fmt='.')<br>plt.plot(z, csfrTK, label="TK")<br>plt.plot(z, csfrST, label="ST")<br>plt.plot(z, csfrPS, label="PS")<br>plt.legend(loc=4)<br>plt.yscale('log')<br>plt.ylabel(r'$\dot{\rho}_{*}$( M$_{\odot}$Mpc$^{-3}$yr$^{-1}$)')<br>plt.xlabel(r'$z$')<br>plt.show()</code>
+</pre>
+<div style="text-align: center;">
+<div style="text-align: center;"><a href="examples/example3.py" target="_blank">Download the example 3.</a><br>
+</div>
+
+<br>
+<br>
+<img style="width: 500px; height: 350px;" alt="" src="images/csfr.png"><br>
+Figure 7: The Cosmic Star Formation Rate.<br>
+</div>
+<br>
+The attributes and Public methods:<br>
+<ul>
+  <li>Attributes:</li>
+</ul>
+<ol>
+  <ol>
+    <ol>
+      <li>The attributes of structure;</li>
+      <li><span style="font-weight: bold;">tau&nbsp;</span> (default
+2.5 ):
+time scale, in Gyr, of the CSFR.</li>
+      <li><span style="font-weight: bold;">eimf</span> (default 1.35):
+exponent of the Initial Mass Function.</li>
+      <li><span style="font-weight: bold;">nsch</span> (default 1): the
+normalization factor in the CSFR model.</li>
+      <li><span style="font-weight: bold;">lmin</span> (default 6.0):
+log10
+of the minal mass of the dark halo where it is possible to have star
+formation.</li>
+      <li><span style="font-weight: bold;">zmax</span> (default
+20.0):&nbsp; redshift that start the star formation.</li>
+    </ol>
+  </ol>
+</ol>
+<ul>
+  <li>Public Methods:</li>
+</ul>
+<ol>
+  <ol>
+    <ol>
+      <li><span style="font-weight: bold;">cosmicStarFormationRate(z)</span>
+- returns the cosmic star formation rate, $\dot{\rho}_{*}(z)$, in
+M$_{\odot}$yr$^{-1}$Mpc$^{-3}$;</li>
+      <li><span style="font-weight: bold;">gasDensityInStructures(z)</span>
+- returns the density of gas in structures, $\rho_{g}(z)$, in
+M$_{\odot}$Mpc$^{-3}$;</li>
+      <li><span style="font-weight: bold;">phi(m)</span> - returns the
+Initial Mass Function (IMF), $\Phi(m)$, which gives the distribution of
+the stellar mass. <br>
+      </li>
+    </ol>
+  </ol>
+</ol>
 <br>
 <br>
 <br>
