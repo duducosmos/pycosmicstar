@@ -77,9 +77,8 @@ App</span></a></li>
 </pre>
 To verify if the package was correctely installed run:<br>
 <br>
-<pre><code>python test_all.py</code><br><br></pre>
-<h3><br>
-</h3>
+<pre><code>python test_all.py</code>
+</pre>
 <h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Usage.</h3>
 <br>
 <h4 style="text-align: center;">The cosmological background</h4>
@@ -156,75 +155,102 @@ matterdensity.</li>
 <br>
 <h4 style="text-align: center;">The Hierarchical Scenario of Structure
 Formation</h4>
+Creating a new structure object, given a dark halo mass function:<br>
+<br>
+<br>
+<pre><code>from pycosmicstar.structures import structures<br>from pycosmicstar.lcdmcosmology import lcdmcosmology<br><br>import matplotlib.pyplot as plt<br>from numpy import arange, log<br><br>#Creating a object considering the<br>#Sheth &amp; Tormen (1999) mass function.<br>stUniverser = structures(cosmology=lcdmcosmology, omegam=0.24,<br>omegab=0.04, omegal=0.73, h=0.7, massFunctionType="ST")<br><br>#Creating a object considering the<br>#Tinker et al. (2010) mass function.<br>tkUniverser = structures(cosmology=lcdmcosmology, omegam=0.24,<br>omegab=0.04, omegal=0.73, h=0.7, massFunctionType="TK", delta_halo=200)<br><br>z = arange(0, 10.5, 0.1)<br><br>#Plotting the fraction of baryons into structures<br>plt.plot(z, [stUniverser.fbstruc(zi) for zi in z], label="ST")<br>plt.plot(z, [tkUniverser.fbstruc(zi) for zi in z], label="TK")<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$f_{b}$")<br>plt.legend()<br>plt.show()<br><br>#plotting the accretion rate of baryons into structure<br>plt.plot(z, [stUniverser.abt(1.0 / (1.0 + zi)) for zi in z],<br>label="ST")<br>plt.plot(z, [tkUniverser.abt(1.0 / (1.0 + zi)) for zi in z],<br>label="TK")<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$a_{b}$")<br>plt.legend()<br>plt.show()<br><br>#Plotting the numerical density of dark haloes.<br>plt.plot(z, [stUniverser.numerical_density_halos(zi) for zi in z],<br>label="ST")<br>plt.plot(z, [tkUniverser.numerical_density_halos(zi) for zi in z],<br>label="TK")<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"numerical density of halos")<br>plt.legend()<br>plt.show()</code><br></pre>
+<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/fb.png"><br>
+Figure 4: The fraction of baryons into structures according to <br>
+dark haloes mass function.<br>
+</div>
+<br>
+<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/ab.png"><br>
+Figure 5: The accretion rate of baryons into structures according to <br>
+
+dark haloes mass function.</div>
+<br>
+<br>
+<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/numerical_density_halos.png"><br>
+Figure 6: Numerical density of dark haloes.<br>
+</div>
+<br>
+<div style="text-align: center;"><a href="examples/example2.py" target="_blank">Download the source code of example 2.</a><br>
+</div>
 <br>
 The attributes and public methods:<br>
 <ul>
   <li>Attributes (Keys): <br>
-</li></ul>
+  </li>
+</ul>
 <ol>
   <ol>
     <ol>
-      <li><span style="font-weight: bold;">cosmology</span> : A class&nbsp; that implements the methods of the abstract class <span style="font-weight: bold;">cosmology;</span><br>
+      <li><span style="font-weight: bold;">cosmology</span> : A
+class&nbsp; that implements the methods of the abstract class <span style="font-weight: bold;">cosmology;</span><br>
       </li>
-      <li><span style="font-weight: bold;">lmin</span> (default - 6.0): $\log_{10}$ of the minimal mass of dark haloes where it is possible to start the star formation.<br>
+      <li><span style="font-weight: bold;">lmin</span> (default - 6.0):
+$\log_{10}$ of the minimal mass of dark haloes where it is possible to
+start the star formation.<br>
       </li>
-      <li><span style="font-weight: bold;">zmax</span> (default - 20.0): the redshift where the star formation starts.<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">zmax</span> (default -
+20.0): the redshift where the star formation starts.<span style="font-weight: bold;"></span></li>
       <li><span style="font-weight: bold;">omegam</span>:
 ($\Omega_{m}$,
 default 0.24) - The dark matter parameter; <br>
       </li>
-      <li><span style="font-weight: bold;">omegab</span> : ($\Omega_{b}$,
+      <li><span style="font-weight: bold;">omegab</span> :
+($\Omega_{b}$,
 default 0.04) - The baryonic parameter;&nbsp;<span style="font-weight: bold;"></span></li>
       <li><span style="font-weight: bold;">omegal</span>:
 ($\Omega_{\Lambda}$, default 0.73) - The dark energy parameter;&nbsp;<span style="font-weight: bold;"></span></li>
-      <li><span style="font-weight: bold;">h</span>: (default, 0.7) - The h
+      <li><span style="font-weight: bold;">h</span>: (default, 0.7) -
+The h
 of the Hubble constant ($H_{0} = 100h$ ).</li>
-      <li><span style="font-weight: bold;">cacheDir</span> (default None):&nbsp; The directory where the cache file will be storaged; <br>
+      <li><span style="font-weight: bold;">cacheDir</span> (default
+None):&nbsp; The directory where the cache file will be storaged; <br>
       </li>
-      <li><span style="font-weight: bold;">cacheFile </span>(default<span style="font-weight: bold;"> </span>None): Name of the database for caching;<br>
+      <li><span style="font-weight: bold;">cacheFile </span>(default<span style="font-weight: bold;"> </span>None): Name of the database for
+caching;<br>
       </li>
-      <li><span style="font-weight: bold;">massFunctionType</span> (default "ST"): the dark haloes mass function type<br>
+      <li><span style="font-weight: bold;">massFunctionType</span>
+(default "ST"): the dark haloes mass function type<br>
       </li>
-      <li><span style="font-weight: bold;">delta_halo </span>(default 200): The $\Delta_{h}$ of Tinker et al. mass function;<br>
+      <li><span style="font-weight: bold;">delta_halo </span>(default
+200): The $\Delta_{h}$ of Tinker et al. mass function;<br>
       </li>
-      <li><span style="font-weight: bold;">qBurr</span> (default 1): The Coeficienty of Burr Distribution;<br>
+      <li><span style="font-weight: bold;">qBurr</span> (default 1):
+The Coeficienty of Burr Distribution;<br>
       </li>
     </ol>
   </ol>
 </ol>
 <ul>
-
 </ul>
-
-<ul><li>Public Methods:</li></ul>
+<ul>
+  <li>Public Methods:</li>
+</ul>
 <ol>
   <ol>
     <ol>
       <li><span style="font-weight: bold;">massFunction(lm, z)</span>
 -&nbsp; Return the dark haloes mass function, lm is the $\log_{10}$ of
 the mass of the dark halo;</li>
-      <li><span style="font-weight: bold;">fbstruc(z)</span> - Return the
+      <li><span style="font-weight: bold;">fbstruc(z)</span> - Return
+the
 faction of barions into structures;<br>
       </li>
-
-  
-      <li><span style="font-weight: bold;">halos_n(z)</span> - return the
+      <li><span style="font-weight: bold;">halos_n(z)</span> - return
+the
 integral of the mass function of dark halos multiplied by mass in the
 range of $\log(M_{min})$ a $\log(M_{max})$;</li>
-
-  
       <li><span style="font-weight: bold;">numerical_density_halos(z)</span>
 - Return the numerial density of dark halos within the comove volume;</li>
-
-  
       <li><span style="font-weight: bold;">abt(z)</span> - return the
 accretion rate which accounts for the increase in the fraction of
 baryons in structures. </li>
-
     </ol>
   </ol>
 </ol>
-
 <br>
 <br>
 <br>
