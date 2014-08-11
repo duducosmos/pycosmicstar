@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/theory.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/manual.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/index.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/index.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-everything.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.cosmicstarformation-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.cosmolib-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.cosmolib.lcdmlib-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.cosmology-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.csfrfromfit-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.diferencial-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.filedict-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.filedict_old-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.lcdmcosmology-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.observationalCSFR-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.parallellistcompreension-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.paralleloverlist-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.pylcdmlib-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.run_kut4-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.structures-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.structuresabstract-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.test_all-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/toc-pycosmicstar.test_cosmology-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/exceptions.AssertionError-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmicstarformation.cosmicstarformation-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmology.cosmology-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict.FileDict-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict.FileDict._Batch-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict.Solutions-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict_old.DefaultArg-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict_old.FileDict-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict_old.FileDict._Batch-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict_old.Solutions-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.lcdmcosmology.lcdmcosmology-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.observationalCSFR.ObservationalCSFR-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.paralleloverlist.paralleloverlist-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.structures.structures-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.structuresabstract.structuresabstract-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.test_cosmology.test_lcdmcosmology-class.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.csfrfromfit-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.diferencial-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.parallellistcompreension-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.paralleloverlist-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.run_kut4-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.test_all-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmicstarformation-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmolib-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmolib.lcdmlib-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmology-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict_old-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.lcdmcosmology-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.observationalCSFR-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.pylcdmlib-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.structures-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.structuresabstract-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.test_cosmology-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/module-tree.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/identifier-index.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/help.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/frames.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict-module.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmicstarformation-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmology-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.filedict_old-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.lcdmcosmology-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.observationalCSFR-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.paralleloverlist-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.structures-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.structuresabstract-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.csfrfromfit-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.diferencial-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.parallellistcompreension-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.run_kut4-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.cosmolib-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/pycosmicstar.pylcdmlib-pysrc.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>http://duducosmos.github.io/pycosmicstar/referencias/class-tree.html</loc>
+  <lastmod>2014-08-11T19:11:59+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+</urlset>
