@@ -30,6 +30,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import unittest
+
 from pycosmicstar.cosmicstarformation import cosmicstarformation
 from pycosmicstar.lcdmcosmology import lcdmcosmology
 

@@ -1,1 +1,0 @@
-A primeira coluna do arquivo hopkins_2004.dat representa o redshift, a colunas 3 e 4 representam o redshit subratido e somado  os erros, respectivamente. na coluna 2 está a taxa cósmica de formação estelar, enquato as colunas 5 e 6 representam a taxa cósmica subratido e somado  os erros, respectivamente.

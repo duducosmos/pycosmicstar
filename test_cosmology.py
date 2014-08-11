@@ -28,6 +28,8 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import unittest
+
+
 from pycosmicstar.lcdmcosmology import lcdmcosmology
 from numpy import array
 

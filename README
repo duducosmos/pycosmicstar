@@ -9,6 +9,10 @@ in the article of Pereira and Miranda (2010) - (MNRAS, 401, 1924, 2010)
 
 To install:
 
+        pip install pycosmicstar
+
+or Download and:
+
 	python setup.py install
 
 cosmicstarformation is a free software: you can redistribute it and/or modify
