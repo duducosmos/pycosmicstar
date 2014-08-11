@@ -86,30 +86,12 @@ class cosmicstarformation(structures):
     """
 
     def __init__(self, cosmology,
-                     tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
-                     omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
-                     cacheDir=None, cacheFile=None, massFunctionType="ST",
-                     delta_halo=200, imfType="S"
-                ):
+                       tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
+                       imfType="S", **kwargs):
 
-        if(cacheFile is None):
-            if(massFunctionType == "TK"):
-                cacheFile = "/structures_cache_" + \
-                        massFunctionType + "_" + str(delta_halo) + "_"\
-                        + "_" + str(omegab) + "_" \
-                        + str(omegam) + "_" + str(omegal) + "_" \
-                        + str(h) + "_" + str(lmin) + "_" + str(zmax)
-            else:
-                cacheFile = "/structures_cache_" + massFunctionType + "_"\
-                        + "_" + str(omegab) + "_" \
-                        + str(omegam) + "_" + str(omegal) + "_" \
-                        + str(h) + "_" + str(lmin) + "_" + str(zmax)
+        structures.__init__(self, cosmology, **kwargs)
 
-        structures.__init__(self, cosmology, lmin, zmax,
-                            omegam, omegab, omegal, h,
-                            cacheDir, cacheFile, massFunctionType)
-
-        cacheFile = self._cacheDir + cacheFile + "_CSFR_" + str(tau)\
+        cacheFile = self._cacheFIle + "_CSFR_" + str(tau)\
                  + "_" + str(eimf) + "_" + str(nsch) + "_" + imfType
 
         self._cache_dictS = filedict.FileDict(filename=cacheFile + ".cache")

@@ -99,15 +99,91 @@ class structures(structuresabstract):
             'WT1' - Watson et al. (2013) - Tinker Modified - z=[0,30]
             'WT2' - Watson et al. (2013) - Gamma times times Tinker Modified
                                                 z=[0,30]
-            'B' - Burr Distribution. Marassi and Lima (2006) - Press Schechter
+            'B' - Burr Distribuction. Marassi and Lima (2006) - Press Schechter
                                     modified.
+        qBurr:
+            (default 1) - The q value of Burr Distribuction.
 
     """
 
-    def __init__(self, cosmology, lmin=6.0, zmax=20.0,
-                omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
-                cacheDir=None, cacheFile=None, massFunctionType="ST",
-                delta_halo=200):
+    def __init__(self, cosmology, **kwargs):
+
+        listParameters = ["lmin", "zmax",
+                      "omegam", "omegab", "omegal", "h",
+                      "cacheDir", "cacheFile", "massFunctionType",
+                      "delta_halo", "qBurr"]
+
+        testeKeysArgs = [Ki for Ki in list(kwargs.keys())
+                            if Ki not in  listParameters]
+
+        if(len(testeKeysArgs) >= 1):
+            nameError = "The key args are not defined:"
+            for i in range(len(testeKeysArgs)):
+                nameError += testeKeysArgs[i]
+            raise NameError(nameError)
+
+        #lmin=6.0, zmax=20.0,
+
+        if 'lmin' in list(kwargs.keys()):
+            lmin = kwargs['lmin']
+        else:
+            lmin = 6.0
+
+        if 'zmax' in list(kwargs.keys()):
+            zmax = kwargs['zmax']
+        else:
+            zmax = 20.0
+
+        #omegam=0.24, omegab=0.04, omegal=0.73, h=0.7,
+
+        if 'omegam' in list(kwargs.keys()):
+            omegam = kwargs['omegam']
+        else:
+            omegam = 0.24
+
+        if 'omegab' in list(kwargs.keys()):
+            omegab = kwargs['omegab']
+        else:
+            omegab = 0.04
+
+        if 'omegal' in list(kwargs.keys()):
+            omegal = kwargs['omegal']
+        else:
+            omegal = 0.73
+
+        if 'h' in list(kwargs.keys()):
+            h = kwargs['h']
+        else:
+            h = 0.7
+
+        #cacheDir=None, cacheFile=None,
+
+        if 'cacheDir' in list(kwargs.keys()):
+            cacheDir = kwargs['cacheDir']
+        else:
+            cacheDir = None
+
+        if 'cacheFile' in list(kwargs.keys()):
+            cacheFile = kwargs['cacheFile']
+        else:
+            cacheFile = None
+
+        #massFunctionType="ST", delta_halo=200, qBurr=1
+
+        if 'massFunctionType' in list(kwargs.keys()):
+            massFunctionType = kwargs['massFunctionType']
+        else:
+            massFunctionType = "ST"
+
+        if 'delta_halo' in list(kwargs.keys()):
+            delta_halo = kwargs['delta_halo']
+        else:
+            delta_halo = 200
+
+        if 'qBurr' in list(kwargs.keys()):
+            qBurr = kwargs['qBurr']
+        else:
+            qBurr = 1
 
         self._cosmology = cosmology(omegam, omegab, omegal, h)
 
@@ -134,6 +210,8 @@ class structures(structuresabstract):
         else:
             cacheFile = str(self._cacheDir) + cacheFile
 
+        self._cacheFIle = cacheFile
+
         self._cache_dict = filedict.FileDict(filename=cacheFile + ".cache")
 
         self.__mmin = 1.0e+4
@@ -159,7 +237,7 @@ class structures(structuresabstract):
         self.__ctst = self.__ast1 * sqrt(2.0 * self.__ast2 / pi)
 
         #Burr q coeficiente
-        self.__qBurr = None
+        self.__qBurr = qBurr
 
         self.__massFunctionType = massFunctionType
         self.__delta_halo = delta_halo
@@ -258,7 +336,7 @@ class structures(structuresabstract):
             self._ascale = self._cache_dict['ascale']
             self._tck_ab = self._cache_dict['tck_ab']
 
-            print("Data in Cache")
+            print("\nStructures Data in Cache\n")
 
         except:
             self.__ifSigmaNotInCache()
