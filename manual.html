@@ -48,6 +48,9 @@ MathJax.Hub.Config({
   
   <link rel="stylesheet" type="text/css" href="horizontalmenu.css">
 
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
 </head><body>
 <a id="forkme_banner" href="https://github.com/duducosmos/pycosmicstar">View
 on GitHub</a>
@@ -68,18 +71,175 @@ App</span></a></li>
 </ul>
 </div>
 <h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Instalation.</h3>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<pre style="border: 0px none ; margin: 0px 0px 10px; padding: 5px; overflow: auto; font-size: 14px; vertical-align: baseline; background-color: rgb(238, 238, 238); font-family: Consolas,Menlo,Monaco,'Lucida Console','Liberation Mono','DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier New',monospace,serif; width: auto; max-height: 600px; color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 17.8048px; text-align: left; text-indent: 0px; text-transform: none; word-spacing: 0px;"><code style="border: 0px none ; margin: 0px; padding: 0px; font-size: 14px; vertical-align: baseline; background-color: rgb(238, 238, 238); font-family: Consolas,Menlo,Monaco,'Lucida Console','Liberation Mono','DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier New',monospace,serif; white-space: inherit;">{% highlight python %}<br></code>sudo python setup.py install<code style="border: 0px none ; margin: 0px; padding: 0px; font-size: 14px; vertical-align: baseline; background-color: rgb(238, 238, 238); font-family: Consolas,Menlo,Monaco,'Lucida Console','Liberation Mono','DejaVu Sans Mono','Bitstream Vera Sans Mono','Courier New',monospace,serif; white-space: inherit;"><br>{% endhighlight %}</code></pre>
+<br>
+<br>
+<pre><code>$sudo apt-get install python-pytools <br>$sudo python setup.py install</code>
+</pre>
+To verify if the package was correctely installed run:<br>
+<br>
+<pre><code>python test_all.py</code><br><br></pre>
+<h3><br>
+</h3>
+<h3><a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Usage.</h3>
+<br>
+<h4 style="text-align: center;">The cosmological background</h4>
+<ul>
+  <li>The&nbsp; $\Lambda$CDM cosmology class can be instanced as:<br>
+  </li>
+</ul>
+<pre><code>from pycosmicstar.lcdmcosmology import lcdmcosmology<br><br>#Instancing a LCDM Object.<br>lcdmUniverser = lcdmcosmology(omegam=0.24,<br>                              omegab=0.04, <br>                              omegal=0.73,<br>                               h=0.7)</code></pre>
+The attributes are the cosmological parameters.<br>
+<br>
+Plotting the time variation with redshift, the age of the Universe as a
+function of the redshift and the Hubble parameter.<br>
+<pre><code>z = arange(0, 10.5, 0.1)<br><br>#The time variation with redshift<br>plt.plot(z, log([lcdmUniverser.dt_dz(zi) for zi in z]))<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$\log(\frac{\frac{dt}{dz}}{yr})$")<br>plt.show()<br><br># The age of the Universe as a function of the redshift<br>plt.plot(z, [lcdmUniverser.age(zi) for zi in z])<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$t$ (yr)")<br>plt.show()<br><br>#The Hubble parameter<br>plt.plot(z, [lcdmUniverser.H(zi) for zi in z])<br>plt.xlabel(r"$z$ - Redshift")<br>plt.ylabel(r"$H(z)$ ")<br>plt.show()<br></code><br><br><br></pre>
+<div style="text-align: center;"><a href="examples/example1.py" target="_blank">Download the example 1.</a><br>
+</div>
+<br>
+<br>
+<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/dtdz.png"><br>
+Figure 1. $\frac{dt}{dz}$ x $z$<br>
+</div>
+<br>
+<br>
+<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/age.png"><br>
+Figure 2. Age of the Universe.<br>
+</div>
+<br>
+<div style="text-align: center;"><img style="width: 500px; height: 350px;" alt="" src="images/H.png"><br>
+Figure 3. Hubble Parameter.<br>
+</div>
+<br>
+The attributes and public methods of lcdmcosmology class:<br>
+<br>
+<ul>
+  <li>Attributes: <span style="font-weight: bold;">omegam</span>:
+($\Omega_{m}$,
+default 0.24) - The dark matter parameter; <span style="font-weight: bold;">omegab</span> : ($\Omega_{b}$,
+default 0.04) - The baryonic parameter; <span style="font-weight: bold;">omegal</span>:
+($\Omega_{\Lambda}$, default 0.73) - The dark energy parameter; <span style="font-weight: bold;">h</span>: (default, 0.7) - The h
+of the Hubble constant ($H_{0} = 100h$ ).</li>
+</ul>
+<ul>
+  <li>&nbsp; Public methods: <br>
+  </li>
+</ul>
+<ol>
+  <ol>
+    <ol>
+      <li><span style="font-weight: bold;">dt_dz(z)</span> - time,
+$t$,&nbsp; and redshift, $z$, relation;</li>
+      <li><span style="font-weight: bold;">H(z)</span> - Hubble
+parameter
+as a function of $z$;<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">dr_dz(z)</span> - Comove
+distance variation for flat Universe;<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">dV_dz(z)</span> - Comove
+volume
+variation;</li>
+      <li><span style="font-weight: bold;">growthFunction(z)</span> -
+Growth Function of cosmological density perturbations;</li>
+      <li><span style="font-weight: bold;">dgrowth_dt(z)</span> -
+derivative of the growth function with respect to&nbsp; time;</li>
+      <li><span style="font-weight: bold;">dsigma2_dk(k)</span> -
+derivative of the variance of linear density field, $\sigma$ ; </li>
+      <li><span style="font-weight: bold;">sigma(kmass)</span> -
+variance
+of linear density field (\textbf{kmass} is the mass scale);<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">rodm(z)</span> - dark matter
+density;</li>
+      <li><span style="font-weight: bold;">robr(z)</span> - baryonic
+matterdensity.</li>
+    </ol>
+  </ol>
+</ol>
+<br>
+<h4 style="text-align: center;">The Hierarchical Scenario of Structure
+Formation</h4>
+<br>
+The attributes and public methods:<br>
+<ul>
+  <li>Attributes (Keys): <br>
+</li></ul>
+<ol>
+  <ol>
+    <ol>
+      <li><span style="font-weight: bold;">cosmology</span> : A class&nbsp; that implements the methods of the abstract class <span style="font-weight: bold;">cosmology;</span><br>
+      </li>
+      <li><span style="font-weight: bold;">lmin</span> (default - 6.0): $\log_{10}$ of the minimal mass of dark haloes where it is possible to start the star formation.<br>
+      </li>
+      <li><span style="font-weight: bold;">zmax</span> (default - 20.0): the redshift where the star formation starts.<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">omegam</span>:
+($\Omega_{m}$,
+default 0.24) - The dark matter parameter; <br>
+      </li>
+      <li><span style="font-weight: bold;">omegab</span> : ($\Omega_{b}$,
+default 0.04) - The baryonic parameter;&nbsp;<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">omegal</span>:
+($\Omega_{\Lambda}$, default 0.73) - The dark energy parameter;&nbsp;<span style="font-weight: bold;"></span></li>
+      <li><span style="font-weight: bold;">h</span>: (default, 0.7) - The h
+of the Hubble constant ($H_{0} = 100h$ ).</li>
+      <li><span style="font-weight: bold;">cacheDir</span> (default None):&nbsp; The directory where the cache file will be storaged; <br>
+      </li>
+      <li><span style="font-weight: bold;">cacheFile </span>(default<span style="font-weight: bold;"> </span>None): Name of the database for caching;<br>
+      </li>
+      <li><span style="font-weight: bold;">massFunctionType</span> (default "ST"): the dark haloes mass function type<br>
+      </li>
+      <li><span style="font-weight: bold;">delta_halo </span>(default 200): The $\Delta_{h}$ of Tinker et al. mass function;<br>
+      </li>
+      <li><span style="font-weight: bold;">qBurr</span> (default 1): The Coeficienty of Burr Distribution;<br>
+      </li>
+    </ol>
+  </ol>
+</ol>
+<ul>
+
+</ul>
+
+<ul><li>Public Methods:</li></ul>
+<ol>
+  <ol>
+    <ol>
+      <li><span style="font-weight: bold;">massFunction(lm, z)</span>
+-&nbsp; Return the dark haloes mass function, lm is the $\log_{10}$ of
+the mass of the dark halo;</li>
+      <li><span style="font-weight: bold;">fbstruc(z)</span> - Return the
+faction of barions into structures;<br>
+      </li>
+
+  
+      <li><span style="font-weight: bold;">halos_n(z)</span> - return the
+integral of the mass function of dark halos multiplied by mass in the
+range of $\log(M_{min})$ a $\log(M_{max})$;</li>
+
+  
+      <li><span style="font-weight: bold;">numerical_density_halos(z)</span>
+- Return the numerial density of dark halos within the comove volume;</li>
+
+  
+      <li><span style="font-weight: bold;">abt(z)</span> - return the
+accretion rate which accounts for the increase in the fraction of
+baryons in structures. </li>
+
+    </ol>
+  </ol>
+</ol>
+
 <br>
 <br>
 <br>
 <br>
-<p><br>
-</p>
-<p><br>
-</p>
+<br>
+<br>
+<br>
+<br>
 <footer> <span class="ribbon-outer"> <span class="ribbon-inner">
-<p>this project by <a href="https://github.com/duducosmos">duducosmos</a>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+this project by <a href="https://github.com/duducosmos">duducosmos</a>
 can be found on <a href="https://github.com/duducosmos/pycosmicstar">GitHub</a></p>
 </span> <span class="left-tail"></span> <span class="right-tail"></span></span></footer><span class="octocat"></span> </div>
 
