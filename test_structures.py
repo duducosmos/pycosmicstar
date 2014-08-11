@@ -32,7 +32,7 @@ from pycosmicstar.lcdmcosmology import lcdmcosmology
 
 class test_structures(unittest.TestCase):
 
-    myStructures = structures(lcdmcosmology)
+    myStructures = structures(cosmology=lcdmcosmology)
 
     def test_massFunction(self):
         self.assertEqual(round(self.myStructures.massFunction(9.0, 1.0), 11),
@@ -64,7 +64,8 @@ class test_structures(unittest.TestCase):
         "The directory not Exist")
 
     def test_setDeltaHTinker(self):
-        self.myStructures = structures(lcdmcosmology, massFunctionType="TK")
+        self.myStructures = structures(cosmology=lcdmcosmology,
+                                       massFunctionType="TK")
         self.assertTrue(self.myStructures.setDeltaHTinker(200))
 
 if(__name__ == "__main__"):

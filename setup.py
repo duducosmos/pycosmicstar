@@ -15,7 +15,8 @@ __prj__ = " pystar "
 
 
 # imports
-import os,glob
+import os
+import glob
 from setuptools import setup, find_packages
 from numpy.distutils.core import setup, Extension
 
@@ -32,10 +33,12 @@ def read(fname):
 Extensions = [Extension(name="lcdmlib",
                         sources=["pycosmicstar/lcdmlib.f"],)]
 
+datadir = os.path.join('data')
+datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
 
 setup(
     name="pycosmicstar",
-    version="1.0",
+    version="1.5",
     url="http://www.cosmicstarformation.com",
     download_url="http://www.cosmicstarformation.com",
     license="GNU GENERAL PUBLIC LICENSE V3",
@@ -46,8 +49,8 @@ setup(
     description="""The Cosmic Start Formation Rate is a software to study the
     star formation history for diferents cosmological models""",
     packages=find_packages(),
-    package_data={'': ['*.so']},
-    #data_files=datafiles,
+    package_data={'': ['*.so', "*.ctl", "*.dat"]},
+    data_files=datafiles,
     install_requires=['numpy', 'scipy'],
     long_description=read('README'),
     ext_modules=Extensions,
