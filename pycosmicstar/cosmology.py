@@ -30,7 +30,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-class cosmology:
+class Cosmology:
 
     def dt_dz(self, z):
         """Return the relation between the cosmic time and the redshift
@@ -83,6 +83,9 @@ class cosmology:
     def age(self, z):
         """Return the age of the Universe for a given z
         """
+        raise NotImplementedError('I need to be implemented!')
+
+    def omegamz(self, z):
         raise NotImplementedError('I need to be implemented!')
 
     def setCosmologicalParameter(self):

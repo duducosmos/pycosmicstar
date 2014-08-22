@@ -46,7 +46,7 @@ import scipy.interpolate as spint
 from scipy.interpolate import InterpolatedUnivariateSpline as spline
 from scipy.special import gamma
 
-from .structuresabstract import structuresabstract
+from .structuresabstract import Structuresabstract
 
 import sys
 pyversion = sys.version_info
@@ -62,7 +62,7 @@ from .diferencial import dfridr, locate
 from .paralleloverlist import parallel_list
 
 
-class structures(structuresabstract):
+class Structures(Structuresabstract):
     """This class was contructed based in the like Press-Schechter formalism
     that provides characteristis like numerical density of dark matter halos
     into the range m_h, m_h + dm_h, the fraction of barionic matter,
@@ -91,14 +91,14 @@ class structures(structuresabstract):
 
         massFunctionType:
             (Dark Haloes Mass Function)
-            default 'ST' - Sheth et al. (2001) - z=[0,2]
+            default 'ST' - Sheth et al. (2001)
+            'R' - Reed et al. (2007).
             'TK' - Tinker et al. (2008) - z=[0,2.5]
-            'PS' - Press and Schechter (1974) - z=-
+            'PS' - Press and Schechter (1974)
             'JK' - Jenkins et al. (2001) z=[0,5]
             'W' - Warren et al. (2006) z=0
-            'WT1' - Watson et al. (2013) - Tinker Modified - z=[0,30]
+            'WT1' - Watson et al. (2013) - Tinker Modified
             'WT2' - Watson et al. (2013) - Gamma times times Tinker Modified
-                                                z=[0,30]
             'B' - Burr Distribuction. Marassi and Lima (2006) - Press Schechter
                                     modified.
         qBurr:
@@ -111,7 +111,7 @@ class structures(structuresabstract):
         listParameters = ["lmin", "zmax",
                       "omegam", "omegab", "omegal", "h",
                       "cacheDir", "cacheFile", "massFunctionType",
-                      "delta_halo", "qBurr"]
+                      "delta_halo", "qBurr", "deltaWT"]
 
         testeKeysArgs = [Ki for Ki in list(kwargs.keys())
                             if Ki not in  listParameters]
@@ -185,6 +185,11 @@ class structures(structuresabstract):
         else:
             qBurr = 1
 
+        if "deltaWT" in list(kwargs.keys()):
+            self.__deltaWT = kwargs["deltaWT"]
+        else:
+            self.__deltaWT = 178.0
+
         self._cosmology = cosmology(omegam, omegab, omegal, h)
 
         if(cacheDir is None):
@@ -249,7 +254,8 @@ class structures(structuresabstract):
                                    "W": self.__massFunctionW,
                                    "WT1": self.__massFunctionWT1,
                                    "WT2": self.__massFunctionWT2,
-                                   "B": self.__massFunctionBurr
+                                   "B": self.__massFunctionBurr,
+                                   "R": self.__massFunctionRedd
                                    }
 
         self.__startingSigmaAccretion()
@@ -377,19 +383,19 @@ class structures(structuresabstract):
             z -- redshift
         """
 
-        gte = self._cosmology.growthFunction(z)
+        #gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
-        sigma1 = self.__deltac / (sgm * gte)
+        #sigma1 = self.__deltac / (sgm * gte)
         #sigma2 = sigma1 ** 2.0
 
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
-        fst = 0.315 * exp(- abs(log(sigma1) + 0.61) ** 3.8)
+        fst = 0.315 * exp(- abs(log(1.0 / sgm) + 0.61) ** 3.8)
 
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
@@ -417,16 +423,16 @@ class structures(structuresabstract):
         return dn_dm
 
     def _masFunctionWT0(self, lm, z, A, a, b, c):
+
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
-        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
-        fst = A * ((sgm / b) ** (-a) + 1) * exp(-c / sgm ** 2.0)
+        fst = A * (((b / sgm) ** a) + 1.0) * exp(-c / sgm ** 2.0)
 
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
@@ -444,7 +450,20 @@ class structures(structuresabstract):
         a = 2.163
         b = 1.406
         c = 1.21
-        return self._masFunctionWT0(lm, z, A, a, b, c)
+
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        fst = A * (((b / sgm) ** a) + 1.0) * exp(-c / sgm ** 2.0)
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
 
     def __massFunctionWT2(self, lm, z):
         """
@@ -455,7 +474,24 @@ class structures(structuresabstract):
             z -- redshift
         """
 
-        raise NameError("Not implemented yet")
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        p = 0.072
+        q = 2.130
+
+        cDelta = lambda delta: exp(0.023 * ((delta / 178.0) - 1.0))
+        dZ = lambda z: -0.456 * self._cosmology.omegamz(z) - 0.139
+
+        gammaDSZ = lambda delta, sig, z: cDelta(delta) * \
+                                         ((delta / 178.0) ** dZ(z)) * \
+                                         exp(p * (1.0 - delta / 178)
+                                             * (1.0 / sig ** q))
 
         if(z < 0):
             raise NameError("z lower than zero.")
@@ -472,9 +508,19 @@ class structures(structuresabstract):
             c = 1.453
 
         else:
-            pass
+            A = self._cosmology.omegamz(z) * (1.907 * (1.0 + z) ** (-3.216)) \
+                + 0.074
+            a = 3.136 * ((1.0 + z) ** (-3.058)) + 2.349
+            b = 5.907 * ((1.0 + z) ** (-3.599)) + 2.344
+            c = 1.318
 
-        return self._masFunctionWT0(lm, z, A, a, b, c)
+        fst = A * (((b / sgm) ** a) + 1.0) * exp(-c / sgm ** 2.0)
+
+        fst = gammaDSZ(self.__deltaWT, sgm, z) * fst
+
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
 
     def _burrBq(self):
         if(self.__qBurr > 0.0 and self.__qBurr < 1.0):
@@ -654,6 +700,44 @@ class structures(structuresabstract):
         expn = exp(-self.__ast2 * sigma2 / 2.0)
         fst = self.__ctst * sigma1 * \
             (1.0 + (1.0 / (sigma2 * self.__ast2)) ** self.__pst) * expn
+        frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
+        dn_dm = frst
+        return dn_dm
+
+    def __massFunctionRedd(self, lm, z):
+        """Return the mass function of dark halos of
+        Reed et al. (MNRAS 374, 2, 2007).
+        Based in the genmf.f.
+        Reed, Bower, Frenk, Jenkins, and Theuns 2007, MNRAS, 374, 2
+        (arXiv:astro-ph/0607150)
+
+        Keyword arguments:
+            lm -- log10 of the mass of the dark halo
+            z -- redshift
+        """
+        gte = self._cosmology.growthFunction(z)
+        rdmt, drdmt = self._cosmology.rodm(z)
+        step = lm / 2.0e+1
+        kmsgm = lm
+        kmass = 10.0 ** (kmsgm)
+        sgm = self.fstm(lm)
+        dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
+
+        sigma1 = self.__deltac / (sgm * gte)
+
+        neff = ((6.0 / sgm) * abs(dsgm_dlgm) + 3.0)
+
+        sqrt_two_over_pi = 0.79788456
+        nu_prime = sqrt(0.707) * sigma1
+        lnsigmainv = log(1.0 / sgm)
+        lngauss1 = exp(- (lnsigmainv - 0.4) ** 2.0 / 2.0 / 0.6 ** 2.0)
+        lngauss2 = exp(- (lnsigmainv - 0.75) ** 2.0 / 2.0 / 0.2 ** 2.0)
+        fst = 0.3222 * sqrt_two_over_pi * nu_prime \
+                * exp(-1.08 * nu_prime ** 2.0 / 2.0) \
+                * (1.0 + 1.0 / nu_prime ** 0.6 +
+                    0.6 * lngauss1 + 0.4 * lngauss2) \
+                * exp(- 0.03 / (neff + 3.0) ** 2.0 * (sigma1) ** 0.6)
+
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
         return dn_dm

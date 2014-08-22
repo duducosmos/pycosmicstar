@@ -31,13 +31,13 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 import unittest
 
-from pycosmicstar.cosmicstarformation import cosmicstarformation
-from pycosmicstar.lcdmcosmology import lcdmcosmology
+from pycosmicstar.cosmicstarformation import Cosmicstarformation
+from pycosmicstar.lcdmcosmology import Lcdmcosmology
 
 
 class test_cosmicstarformation(unittest.TestCase):
 
-    myCosmicStar = cosmicstarformation(cosmology=lcdmcosmology, tau=2.5)
+    myCosmicStar = Cosmicstarformation(cosmology=Lcdmcosmology, tau=2.5)
 
     def test_cosmicStarsDensity(self):
         self.assertEqual(

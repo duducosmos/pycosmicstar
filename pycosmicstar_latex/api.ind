@@ -1,0 +1,95 @@
+\begin{theindex}
+
+  \item pycosmicstar \textit{(package)}, \hyperpage{2}
+    \subitem pycosmicstar.cosmicstarformation \textit{(module)}, 
+		\hyperpage{3--5}
+      \subsubitem pycosmicstar.cosmicstarformation.cosmicstarformation \textit{(class)}, 
+		\hyperpage{3--5}
+    \subitem pycosmicstar.cosmolib \textit{(package)}, \hyperpage{6}
+      \subsubitem pycosmicstar.cosmolib.lcdmlib \textit{(module)}, 
+		\hyperpage{7--8}
+    \subitem pycosmicstar.cosmology \textit{(module)}, 
+		\hyperpage{9--11}
+      \subsubitem pycosmicstar.cosmology.cosmology \textit{(class)}, 
+		\hyperpage{9--11}
+    \subitem pycosmicstar.csfrfromfit \textit{(module)}, \hyperpage{12}
+      \subsubitem pycosmicstar.csfrfromfit.rho\_starF \textit{(function)}, 
+		\hyperpage{12}
+      \subsubitem pycosmicstar.csfrfromfit.rho\_starHB \textit{(function)}, 
+		\hyperpage{12}
+      \subsubitem pycosmicstar.csfrfromfit.rho\_starSH \textit{(function)}, 
+		\hyperpage{12}
+    \subitem pycosmicstar.diferencial \textit{(module)}, 
+		\hyperpage{13--14}
+      \subsubitem pycosmicstar.diferencial.dfridr \textit{(function)}, 
+		\hyperpage{13}
+      \subsubitem pycosmicstar.diferencial.locate \textit{(function)}, 
+		\hyperpage{13}
+    \subitem pycosmicstar.filedict \textit{(module)}, 
+		\hyperpage{15--16}
+      \subsubitem pycosmicstar.filedict.FileDict \textit{(class)}, 
+		\hyperpage{15--16}
+      \subsubitem pycosmicstar.filedict.Solutions \textit{(class)}, 
+		\hyperpage{15}
+    \subitem pycosmicstar.filedict\_old \textit{(module)}, 
+		\hyperpage{17--19}
+      \subsubitem pycosmicstar.filedict\_old.DefaultArg \textit{(class)}, 
+		\hyperpage{17}
+      \subsubitem pycosmicstar.filedict\_old.FileDict \textit{(class)}, 
+		\hyperpage{17--19}
+      \subsubitem pycosmicstar.filedict\_old.Solutions \textit{(class)}, 
+		\hyperpage{17}
+    \subitem pycosmicstar.lcdmcosmology \textit{(module)}, 
+		\hyperpage{20--25}
+      \subsubitem pycosmicstar.lcdmcosmology.lcdmcosmology \textit{(class)}, 
+		\hyperpage{21--25}
+    \subitem pycosmicstar.observationalCSFR \textit{(module)}, 
+		\hyperpage{26--27}
+      \subsubitem pycosmicstar.observationalCSFR.ObservationalCSFR \textit{(class)}, 
+		\hyperpage{26--27}
+    \subitem pycosmicstar.parallellistcompreension \textit{(module)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.delayed \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.parallelized \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.pool\_map \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.pool\_map\_seq \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.pool\_parallelize \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.pool\_sequentialize \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.pool\_zipped\_map \textit{(function)}, 
+		\hyperpage{28}
+      \subsubitem pycosmicstar.parallellistcompreension.pool\_zipped\_map\_seq \textit{(function)}, 
+		\hyperpage{28}
+    \subitem pycosmicstar.paralleloverlist \textit{(module)}, 
+		\hyperpage{29--30}
+      \subsubitem pycosmicstar.paralleloverlist.parallel\_list \textit{(function)}, 
+		\hyperpage{29}
+      \subsubitem pycosmicstar.paralleloverlist.paralleloverlist \textit{(class)}, 
+		\hyperpage{29--30}
+    \subitem pycosmicstar.pylcdmlib \textit{(module)}, \hyperpage{31}
+    \subitem pycosmicstar.run\_kut4 \textit{(module)}, 
+		\hyperpage{32--33}
+      \subsubitem pycosmicstar.run\_kut4.rk4\_int \textit{(function)}, 
+		\hyperpage{32}
+    \subitem pycosmicstar.structures \textit{(module)}, 
+		\hyperpage{34--38}
+      \subsubitem pycosmicstar.structures.structures \textit{(class)}, 
+		\hyperpage{35--38}
+    \subitem pycosmicstar.structuresabstract \textit{(module)}, 
+		\hyperpage{39--40}
+      \subsubitem pycosmicstar.structuresabstract.structuresabstract \textit{(class)}, 
+		\hyperpage{39--40}
+    \subitem pycosmicstar.test\_all \textit{(module)}, \hyperpage{41}
+      \subsubitem pycosmicstar.test\_all.main \textit{(function)}, 
+		\hyperpage{41}
+    \subitem pycosmicstar.test\_cosmology \textit{(module)}, 
+		\hyperpage{42--44}
+      \subsubitem pycosmicstar.test\_cosmology.test\_lcdmcosmology \textit{(class)}, 
+		\hyperpage{42--44}
+
+\end{theindex}

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>pycosmicstar.cosmicstarformation.cosmicstarformation</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="pycosmicstar-module.html">Package&nbsp;pycosmicstar</a> ::
+        <a href="pycosmicstar.cosmicstarformation-module.html">Module&nbsp;cosmicstarformation</a> ::
+        Class&nbsp;cosmicstarformation
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class cosmicstarformation</h1><p class="nomargin-top"><span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_pycosmic" name="uml_class_diagram_for_pycosmic">
+<area shape="rect" id="node1_19" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#__init__" title="pycosmicstar.cosmicstarformation.cosmicstarformation.__init__" alt="" coords="16,403,613,423"/>
+<area shape="rect" id="node1_20" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#getIMFDict" title="Return a list with keys and functions of IMF&#39;s" alt="" coords="16,423,613,443"/>
+<area shape="rect" id="node1_21" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#putIMFDict" title="Put a new term in the imf Dictionary" alt="" coords="16,443,613,463"/>
+<area shape="rect" id="node1_22" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#remnant" title="Return the remnant mass of the object after the colapse of the star with &#160;mass m" alt="" coords="16,463,613,483"/>
+<area shape="rect" id="node1_23" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#phi" title="Return the Initial Mass Function" alt="" coords="16,483,613,503"/>
+<area shape="rect" id="node1_24" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#cosmicStarFormationRate" title="Return the Cosmic Star Formation rate as a function of z" alt="" coords="16,503,613,523"/>
+<area shape="rect" id="node1_25" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#gasDensityInStructures" title="Return the barionic gas density into structures" alt="" coords="16,523,613,543"/>
+<area shape="rect" id="node1" href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html" title="The Cosmic Star Formation rate The model used to develop this class was presented by the first time in the article of Pereira and Miranda (2010) &#45; (MNRAS, 401, 1924, 2010)." alt="" coords="4,369,625,549"/>
+<area shape="rect" id="node2_26" href="pycosmicstar.structures.structures-class.html#abt" title="Return the accretion rate of barionic matter, as a function of scala factor, into strutures." alt="" coords="192,103,436,123"/>
+<area shape="rect" id="node2_27" href="pycosmicstar.structures.structures-class.html#fbstruc" title="Return the faction of barions into structures" alt="" coords="192,123,436,143"/>
+<area shape="rect" id="node2_28" href="pycosmicstar.structures.structures-class.html#fstm" title="Numerical function that return the value of sigm that will be used by dfridr to calculate d_sigma_dlog10(m)." alt="" coords="192,143,436,163"/>
+<area shape="rect" id="node2_29" href="pycosmicstar.structures.structures-class.html#getCacheDir" title="Return True and cache name if the cache directory existe and false else." alt="" coords="192,163,436,183"/>
+<area shape="rect" id="node2_30" href="pycosmicstar.structures.structures-class.html#getDeltaHTinker" title="pycosmicstar.structures.structures.getDeltaHTinker" alt="" coords="192,183,436,203"/>
+<area shape="rect" id="node2_31" href="pycosmicstar.structures.structures-class.html#getmassFunctionDict" title="Return a list with key and function of implemented dark haloes mass &#160;function" alt="" coords="192,203,436,223"/>
+<area shape="rect" id="node2_32" href="pycosmicstar.structures.structures-class.html#halos_n" title="Return the integral of the mass function of dark halos multiplied by mass in the range of log(M_min) a log(M_max)" alt="" coords="192,223,436,243"/>
+<area shape="rect" id="node2_33" href="pycosmicstar.structures.structures-class.html#massFunction" title="Return the mass function of dark halos." alt="" coords="192,243,436,263"/>
+<area shape="rect" id="node2_34" href="pycosmicstar.structures.structures-class.html#numerical_density_halos" title="Return the numerial density of dark halos within the comove volume" alt="" coords="192,263,436,283"/>
+<area shape="rect" id="node2_35" href="pycosmicstar.structures.structures-class.html#setDeltaHTinker" title="pycosmicstar.structures.structures.setDeltaHTinker" alt="" coords="192,283,436,303"/>
+<area shape="rect" id="node2_36" href="pycosmicstar.structures.structures-class.html#setMassFunctionDict" title="Add a new key and function in the dark haloes mass function dictionary" alt="" coords="192,303,436,323"/>
+<area shape="rect" id="node2_37" href="pycosmicstar.structures.structures-class.html#setQBurrFunction" title="Set the q value of dark haloes mass function derived from Burr &#160;distribuction." alt="" coords="192,323,436,343"/>
+<area shape="rect" id="node2" href="pycosmicstar.structures.structures-class.html" title="This class was contructed based in the like Press&#45;Schechter formalism that provides characteristis like numerical density of dark matter halos into the range m_h, m_h + dm_h, the fraction of barionic matter, and, the accretion rate of barions into structures and the total number of dark halos." alt="" coords="179,69,447,349"/>
+<area shape="rect" id="node3" href="pycosmicstar.structuresabstract.structuresabstract-class.html" title="pycosmicstar.structuresabstract.structuresabstract" alt="" coords="195,5,435,51"/>
+</map>
+  <img src="uml_class_diagram_for_pycosmic.gif" alt='' usemap="#uml_class_diagram_for_pycosmic" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<pre class="literalblock">
+The Cosmic Star Formation rate
+The model used to develop this class was presented by the first time
+in the article of Pereira and Miranda (2010) - (MNRAS, 401, 1924, 2010).
+
+The cosmologic background model is passed as a instance parameter:
+    cosmology
+
+Keyword arguments:
+    tau -- (default - 2.5) time scale, in Gyr, of the CSFR.
+
+    eimf -- (default 1.35) exponent of the Initial Mass Function
+
+    nsch -- (default 1) the normalization factor in the CSFR model
+
+    imfType -- (default S - Salpeter) the Initial Mass Function Type.
+               Possible values:
+                   S: Salpeter
+                   K: Kroupa
+
+    lmin -- (default 6.0) log10 of the minal mass of the dark halo
+                        where it is possible to have star formation.
+
+    zmax -- (defaul 20.0) - the maximum redshift to be considered
+
+    omegam -- (default 0.24) - The dark matter parameter
+
+    omegab -- (default 0.04) - The barionic parameter
+
+    omegal -- (default 0.73) - The dark energy parameter
+
+    h -- (default 0.7) - The h of the Hubble constant (H = h * 100)
+
+    massFunctionType -- (default &quot;ST&quot;) The type of mass
+    function of dark matter halos used. Possibles values:
+         &quot;ST&quot; for Seth and Thormen mass function.
+         &quot;TK&quot; for Tinker et al. mass function.
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cosmology</span>,
+        <span class="summary-sig-arg">tau</span>=<span class="summary-sig-default">2.29</span>,
+        <span class="summary-sig-arg">eimf</span>=<span class="summary-sig-default">1.35</span>,
+        <span class="summary-sig-arg">nsch</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">lmin</span>=<span class="summary-sig-default">6.0</span>,
+        <span class="summary-sig-arg">zmax</span>=<span class="summary-sig-default">20.0</span>,
+        <span class="summary-sig-arg">imfType</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">S</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getIMFDict"></a><span class="summary-sig-name">getIMFDict</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a list with keys and functions of IMF's</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.getIMFDict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="putIMFDict"></a><span class="summary-sig-name">putIMFDict</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Put a new term in the imf Dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.putIMFDict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__spn"></a><span class="summary-sig-name">__spn</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">a</span>)</span><br />
+      Return the interpolated, by cubi-spline, barionic accretion rate into
+      structures</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__spn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__fcn"></a><span class="summary-sig-name">__fcn</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">a</span>,
+        <span class="summary-sig-arg">rho_g</span>)</span><br />
+      Return the numerical function to be integrated to calculate the mass 
+      density of barions into structures.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__fcn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__csfr_gas"></a><span class="summary-sig-name">__csfr_gas</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">rg</span>)</span><br />
+      Return the Cosmic Star Formation Rate from the barionic gas into 
+      structures</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__csfr_gas">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__sfr"></a><span class="summary-sig-name">__sfr</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the Cosmic Star Formation rate, density of barionic gas into 
+      structures</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__sfr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__massEjectedSalpeter"></a><span class="summary-sig-name">__massEjectedSalpeter</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m_min</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__massEjectedSalpeter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__massEjected"></a><span class="summary-sig-name">__massEjected</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m_min</span>)</span><br />
+      Return the mass integration of the mass ejected by the collapse of 
+      the star</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__massEjected">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__mPhi"></a><span class="summary-sig-name">__mPhi</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__mPhi">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__mrPhi"></a><span class="summary-sig-name">__mrPhi</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__mrPhi">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="remnant"></a><span class="summary-sig-name">remnant</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m</span>)</span><br />
+      Return the remnant mass of the object after the colapse of the star 
+      with mass m</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.remnant">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__imfKroupa"></a><span class="summary-sig-name">__imfKroupa</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__imfKroupa">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__imfSalpeter"></a><span class="summary-sig-name">__imfSalpeter</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__imfSalpeter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="phi"></a><span class="summary-sig-name">phi</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">m</span>)</span><br />
+      Return the Initial Mass Function</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.phi">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#cosmicStarFormationRate" class="summary-sig-name">cosmicStarFormationRate</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the Cosmic Star Formation rate as a function of z</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.cosmicStarFormationRate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="pycosmicstar.cosmicstarformation.cosmicstarformation-class.html#gasDensityInStructures" class="summary-sig-name">gasDensityInStructures</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">z</span>)</span><br />
+      Return the barionic gas density into structures</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.gasDensityInStructures">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pycosmicstar.structures.structures-class.html">structures.structures</a></code></b>:
+      <code><a href="pycosmicstar.structures.structures-class.html#abt">abt</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#fbstruc">fbstruc</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#fstm">fstm</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#getCacheDir">getCacheDir</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#getDeltaHTinker">getDeltaHTinker</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#getmassFunctionDict">getmassFunctionDict</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#halos_n">halos_n</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#massFunction">massFunction</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#numerical_density_halos">numerical_density_halos</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#setDeltaHTinker">setDeltaHTinker</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#setMassFunctionDict">setMassFunctionDict</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#setQBurrFunction">setQBurrFunction</a></code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="pycosmicstar.structures.structures-class.html">structures.structures</a></code></b> (private):
+      <code><a href="pycosmicstar.structures.structures-class.html#_burrBq" onclick="show_private();">_burrBq</a></code>,
+      <code><a href="pycosmicstar.structures.structures-class.html#_masFunctionWT0" onclick="show_private();">_masFunctionWT0</a></code>
+      </p></div>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">cosmology</span>,
+        <span class="sig-arg">tau</span>=<span class="sig-default">2.29</span>,
+        <span class="sig-arg">eimf</span>=<span class="sig-default">1.35</span>,
+        <span class="sig-arg">nsch</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">lmin</span>=<span class="sig-default">6.0</span>,
+        <span class="sig-arg">zmax</span>=<span class="sig-default">20.0</span>,
+        <span class="sig-arg">imfType</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">S</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structures.structures-class.html#__init__">structures.structures.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cosmicStarFormationRate"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cosmicStarFormationRate</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.cosmicStarFormationRate">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the Cosmic Star Formation rate as a function of z</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#cosmicStarFormationRate">structuresabstract.structuresabstract.cosmicStarFormationRate</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="gasDensityInStructures"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">gasDensityInStructures</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">z</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="pycosmicstar.cosmicstarformation-pysrc.html#cosmicstarformation.gasDensityInStructures">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the barionic gas density into structures</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="pycosmicstar.structuresabstract.structuresabstract-class.html#gasDensityInStructures">structuresabstract.structuresabstract.gasDensityInStructures</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="pycosmicstar-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Mon Aug 11 14:43:28 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

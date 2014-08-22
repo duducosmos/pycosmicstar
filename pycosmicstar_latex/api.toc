@@ -1,0 +1,73 @@
+\contentsline {section}{Contents}{1}{section*.1}
+\contentsline {section}{\numberline {1}Package pycosmicstar}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Modules}{3}{subsection.1.1}
+\contentsline {section}{\numberline {2}Module pycosmicstar.cosmicstarformation}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Variables}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Class cosmicstarformation}{4}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Methods}{5}{subsubsection.2.2.1}
+\contentsline {section}{\numberline {3}Package pycosmicstar.cosmolib}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Modules}{7}{subsection.3.1}
+\contentsline {section}{\numberline {4}Module pycosmicstar.cosmolib.lcdmlib}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Variables}{8}{subsection.4.1}
+\contentsline {section}{\numberline {5}Module pycosmicstar.cosmology}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Variables}{10}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Class cosmology}{10}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Methods}{11}{subsubsection.5.2.1}
+\contentsline {section}{\numberline {6}Module pycosmicstar.csfrfromfit}{13}{section.6}
+\contentsline {subsection}{\numberline {6.1}Functions}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Variables}{13}{subsection.6.2}
+\contentsline {section}{\numberline {7}Module pycosmicstar.diferencial}{14}{section.7}
+\contentsline {subsection}{\numberline {7.1}Functions}{14}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Variables}{14}{subsection.7.2}
+\contentsline {section}{\numberline {8}Module pycosmicstar.filedict}{16}{section.8}
+\contentsline {subsection}{\numberline {8.1}Class Solutions}{16}{subsection.8.1}
+\contentsline {subsubsection}{\numberline {8.1.1}Class Variables}{16}{subsubsection.8.1.1}
+\contentsline {subsection}{\numberline {8.2}Class FileDict}{16}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {8.2.1}Methods}{16}{subsubsection.8.2.1}
+\contentsline {section}{\numberline {9}Module pycosmicstar.filedict\_old}{18}{section.9}
+\contentsline {subsection}{\numberline {9.1}Variables}{18}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Class DefaultArg}{18}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Class Solutions}{18}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Class Variables}{18}{subsubsection.9.3.1}
+\contentsline {subsection}{\numberline {9.4}Class FileDict}{18}{subsection.9.4}
+\contentsline {subsubsection}{\numberline {9.4.1}Methods}{18}{subsubsection.9.4.1}
+\contentsline {subsubsection}{\numberline {9.4.2}Properties}{19}{subsubsection.9.4.2}
+\contentsline {section}{\numberline {10}Module pycosmicstar.lcdmcosmology}{21}{section.10}
+\contentsline {subsection}{\numberline {10.1}Variables}{21}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Class lcdmcosmology}{23}{subsection.10.2}
+\contentsline {subsubsection}{\numberline {10.2.1}Methods}{23}{subsubsection.10.2.1}
+\contentsline {section}{\numberline {11}Module pycosmicstar.observationalCSFR}{27}{section.11}
+\contentsline {subsection}{\numberline {11.1}Variables}{27}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Class ObservationalCSFR}{27}{subsection.11.2}
+\contentsline {subsubsection}{\numberline {11.2.1}Methods}{27}{subsubsection.11.2.1}
+\contentsline {section}{\numberline {12}Module pycosmicstar.parallellistcompreension}{29}{section.12}
+\contentsline {subsection}{\numberline {12.1}Functions}{29}{subsection.12.1}
+\contentsline {subsection}{\numberline {12.2}Variables}{29}{subsection.12.2}
+\contentsline {section}{\numberline {13}Module pycosmicstar.paralleloverlist}{30}{section.13}
+\contentsline {subsection}{\numberline {13.1}Functions}{30}{subsection.13.1}
+\contentsline {subsection}{\numberline {13.2}Variables}{30}{subsection.13.2}
+\contentsline {subsection}{\numberline {13.3}Class paralleloverlist}{30}{subsection.13.3}
+\contentsline {subsubsection}{\numberline {13.3.1}Methods}{30}{subsubsection.13.3.1}
+\contentsline {section}{\numberline {14}Module pycosmicstar.pylcdmlib}{32}{section.14}
+\contentsline {subsection}{\numberline {14.1}Variables}{32}{subsection.14.1}
+\contentsline {section}{\numberline {15}Module pycosmicstar.run\_kut4}{33}{section.15}
+\contentsline {subsection}{\numberline {15.1}Functions}{33}{subsection.15.1}
+\contentsline {subsection}{\numberline {15.2}Variables}{33}{subsection.15.2}
+\contentsline {section}{\numberline {16}Module pycosmicstar.structures}{35}{section.16}
+\contentsline {subsection}{\numberline {16.1}Variables}{35}{subsection.16.1}
+\contentsline {subsection}{\numberline {16.2}Class structures}{36}{subsection.16.2}
+\contentsline {subsubsection}{\numberline {16.2.1}Methods}{38}{subsubsection.16.2.1}
+\contentsline {section}{\numberline {17}Module pycosmicstar.structuresabstract}{40}{section.17}
+\contentsline {subsection}{\numberline {17.1}Variables}{40}{subsection.17.1}
+\contentsline {subsection}{\numberline {17.2}Class structuresabstract}{40}{subsection.17.2}
+\contentsline {subsubsection}{\numberline {17.2.1}Methods}{41}{subsubsection.17.2.1}
+\contentsline {section}{\numberline {18}Module pycosmicstar.test\_all}{42}{section.18}
+\contentsline {subsection}{\numberline {18.1}Functions}{42}{subsection.18.1}
+\contentsline {subsection}{\numberline {18.2}Variables}{42}{subsection.18.2}
+\contentsline {section}{\numberline {19}Module pycosmicstar.test\_cosmology}{43}{section.19}
+\contentsline {subsection}{\numberline {19.1}Variables}{43}{subsection.19.1}
+\contentsline {subsection}{\numberline {19.2}Class test\_lcdmcosmology}{43}{subsection.19.2}
+\contentsline {subsubsection}{\numberline {19.2.1}Methods}{43}{subsubsection.19.2.1}
+\contentsline {subsubsection}{\numberline {19.2.2}Properties}{44}{subsubsection.19.2.2}
+\contentsline {subsubsection}{\numberline {19.2.3}Class Variables}{45}{subsubsection.19.2.3}
+\contentsline {section}{Index}{46}{section*.2}

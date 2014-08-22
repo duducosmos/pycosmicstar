@@ -43,7 +43,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-from .cosmology import cosmology
+from .cosmology import Cosmology
 from numpy import sqrt, pi, log, log10, exp, sin, cos
 from numpy.numarray import zeros, Float64
 from scipy.integrate import romberg
@@ -58,7 +58,7 @@ except:
     print('lcdmlib not imported, using pure python version of sigma')
 
 
-class lcdmcosmology(cosmology):
+class Lcdmcosmology(Cosmology):
     """The Cold Dark Matter (CDM) plus Cosmolocical Constan (Lambda) -  lcdm
 
     Keyword arguments:
@@ -304,6 +304,13 @@ class lcdmcosmology(cosmology):
             ascale3 = ascale ** 3.0
             fct = self.__omegalm * ascale3
             return 6.522916e+09 * log(sqrt(fct) + sqrt(fct + 1.0)) / self.__hsl
+
+    def omegamz(self, z):
+        om = (self.H(z) / self.H(0)) ** 2.0 - self.__omegal
+
+        om = om * (1.0 / (1.0 + z))
+
+        return om
 
     def setCosmologicalParameter(self, omegam, omegab, omegal, h):
         """Set the cosmological parameters

@@ -30,13 +30,13 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 import unittest
 
 
-from pycosmicstar.lcdmcosmology import lcdmcosmology
+from pycosmicstar.lcdmcosmology import Lcdmcosmology
 from numpy import array
 
 
 class test_lcdmcosmology(unittest.TestCase):
 
-    myUniverse = lcdmcosmology()
+    myUniverse = Lcdmcosmology()
 
     def test_dtdz(self):
         self.assertEqual(self.myUniverse.dt_dz(0.0), 14185836421.438278)

@@ -29,7 +29,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 
-class structuresabstract:
+class Structuresabstract:
 
     def massFunction(self, lm, z):
         """Return the mass function of dark halos

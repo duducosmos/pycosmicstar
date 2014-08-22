@@ -32,7 +32,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 from numpy import log10, sqrt, array
 from numpy.numarray import zeros, Float64
-from .structures import structures
+from .structures import Structures
 import scipy.interpolate as spint
 from scipy.integrate import romberg
 from .run_kut4 import rk4_int
@@ -46,7 +46,7 @@ else:
     from . import filedict_old as filedict
 
 
-class cosmicstarformation(structures):
+class Cosmicstarformation(Structures):
     """The Cosmic Star Formation rate
     The model used to develop this class was presented by the first time
     in the article of Pereira and Miranda (2010) - (MNRAS, 401, 1924, 2010).
@@ -89,7 +89,7 @@ class cosmicstarformation(structures):
                        tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
                        imfType="S", **kwargs):
 
-        structures.__init__(self, cosmology, **kwargs)
+        Structures.__init__(self, cosmology, **kwargs)
 
         cacheFile = self._cacheFIle + "_CSFR_" + str(tau)\
                  + "_" + str(eimf) + "_" + str(nsch) + "_" + imfType
