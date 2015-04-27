@@ -86,7 +86,7 @@ class Cosmicstarformation(Structures):
     """
 
     def __init__(self, cosmology,
-                       tau=2.29, eimf=1.35, nsch=1, lmin=6.0, zmax=20.0,
+                       tau=2.29, eimf=1.35, nsch=1, zmax=20.0,
                        imfType="S", **kwargs):
 
         Structures.__init__(self, cosmology, **kwargs)
@@ -100,7 +100,13 @@ class Cosmicstarformation(Structures):
         self._cc = self._tck_ab[1]
 
         #Cosmic Star Formation Rate normalization
-        self.__esnor = 1.0
+        lmin, lmax = self.getIntegralLimitsFb()
+        self._globalNormalization = True
+        if(lmax - lmin <= 2):
+            self._globalNormalization = False
+            self.__esnor = 1.0
+        else:
+            self.__esnor = 1.0
         self.__nsch = nsch
         self.__tau = tau
 
@@ -123,6 +129,7 @@ class Cosmicstarformation(Structures):
             self.__astar = self._cache_dictS['astar']
             self.__csfr = self._cache_dictS['csfr']
             self.__rho_gas = self._cache_dictS['rho_gas']
+            self.__esnor = self._cache_dictS["esnor"]
             print("Data CSFR in Cache")
 
         except:
@@ -133,6 +140,9 @@ class Cosmicstarformation(Structures):
 
         tck_sg = spint.splrep(self.__astar, self.__rho_gas)
         self.__cs2 = tck_sg[1]
+
+    def gasStarInfallEffi(self, lnM):
+        raise NameError("Not implemented yet")
 
     def getIMFDict(self):
         """
@@ -208,10 +218,10 @@ class Cosmicstarformation(Structures):
              self._cosmology.getRobr0() ** (self.__nsch - 1.0)
 
         F = zeros(1, type=Float64)
-        F[0] = (-sexp * (rho_g[0]) ** self.__nsch
-                + self.__esnor * self.__spn(a) /
-                self._cosmology.getRobr0()) \
-                * self._cosmology.dt_dz(z) / a ** 2.0
+        F[0] = (- sexp * (rho_g[0]) ** self.__nsch
+                + self.__esnor * self.__spn(a)
+                # / self._cosmology.getRobr0()
+                ) * self._cosmology.dt_dz(z) / a ** 2.0
         return F
 
     def __csfr_gas(self, rg):
@@ -247,20 +257,21 @@ class Cosmicstarformation(Structures):
             roes = (R_g[ng] ** self.__nsch) / self.__tau /\
             self._cosmology.getRobr0() ** (self.__nsch - 1.0)
 
-        self.__esnor = 1.62593696e-2 / roes
-
-        rho_g0 = array([1.0e-9])
-        a0 = 1.0 / (self._zmax + 1.0)
-        nf = len(self._ascale) - 1
-        af = self._ascale[nf]
-        step = (af - a0) / 5000.
-        A, R_g = rk4_int(self.__fcn, a0, rho_g0, af, step)
+        if(self._globalNormalization):
+            self.__esnor = 1.62593696e-2 / roes
+            rho_g0 = array([1.0e-9])
+            a0 = 1.0 / (self._zmax + 1.0)
+            nf = len(self._ascale) - 1
+            af = self._ascale[nf]
+            step = (af - a0) / 5000.
+            A, R_g = rk4_int(self.__fcn, a0, rho_g0, af, step)
 
         rho_s = self.__csfr_gas(R_g)
 
         self._cache_dictS['astar'] = A
         self._cache_dictS['csfr'] = rho_s
         self._cache_dictS['rho_gas'] = R_g
+        self._cache_dictS["esnor"] = self.__esnor
 
         return rho_s, R_g, A
 
@@ -409,6 +420,9 @@ class Cosmicstarformation(Structures):
             elif(a < self.__astar[0]):
                 raise NameError("Error in spline csfr")
                 break
+
+    def getEfficiency(self):
+        return self.__esnor
 
     def gasDensityInStructures(self, z):
         """Return the barionic gas density into structures

@@ -102,19 +102,19 @@ class test_structures(unittest.TestCase):
         self.myStructures = Structures(cosmology=Lcdmcosmology,
                                        massFunctionType="WT1")
         self.assertEqual(round(self.myStructures.fbstruc(0.0), 2),
-                          1.31)
+                          1.15)
 
     def test_massfunctioWT2(self):
         self.myStructures = Structures(cosmology=Lcdmcosmology,
                                        massFunctionType="WT2")
         self.assertEqual(round(self.myStructures.massFunction(9.0, 1.0), 10),
-                          2.56e-08)
+                          1.76e-08)
 
     def test_fbstrucWT2(self):
         self.myStructures = Structures(cosmology=Lcdmcosmology,
                                        massFunctionType="WT2")
         self.assertEqual(round(self.myStructures.fbstruc(0.0), 2),
-                          0.92)
+                          0.87)
 
     #def test_massfunctioJK(self):
         #self.myStructures = Structures(cosmology=Lcdmcosmology,

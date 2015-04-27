@@ -99,6 +99,9 @@ class Lcdmcosmology(Cosmology):
         h2 = h * h
         h2om = h2 * omegam
         h2br = h2 * omegab
+        #m3 kg-1 s-2
+        self.G = 6.67e-11
+        self.__roc0 = 2.76e+11 * h2
         self.__rodm0 = 2.76e+11 * h2om
         self.__robr0 = 2.76e+11 * h2br
         self.__deltac = 1.686
@@ -289,6 +292,10 @@ class Lcdmcosmology(Cosmology):
         ascale = 1.0 / z1
         ascale3 = ascale ** 3.0
         return self.__robr0 / ascale3
+
+    def roc(self, z):
+
+        return (self.__roc0 / self.H(0) ** 2.0) * self.H(z) ** 2.0
 
     def age(self, z):
         """Return the age of the Universe for some redshift.

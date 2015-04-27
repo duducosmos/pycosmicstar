@@ -63,6 +63,11 @@ class Structuresabstract:
         """
         raise NotImplementedError('I need to be implemented!')
 
+    def massRangeSigma(self, sigMin, sigMax):
+        """Return the mass down and up for a sigma range
+        """
+        raise NotImplementedError("I need to be implemented!")
+
     def cosmicStarFormationRate(self, z):
         raise NotImplementedError("I need to be implemented!")
 

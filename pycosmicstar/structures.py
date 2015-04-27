@@ -108,7 +108,7 @@ class Structures(Structuresabstract):
 
     def __init__(self, cosmology, **kwargs):
 
-        listParameters = ["lmin", "zmax",
+        listParameters = ["lmin", 'lmax', "zmax",
                       "omegam", "omegab", "omegal", "h",
                       "cacheDir", "cacheFile", "massFunctionType",
                       "delta_halo", "qBurr", "deltaWT"]
@@ -128,6 +128,13 @@ class Structures(Structuresabstract):
             lmin = kwargs['lmin']
         else:
             lmin = 6.0
+
+        if('lmax' in list(kwargs.keys())):
+            self.__lmax = kwargs['lmax']
+            self.__mmax = 10.0 ** kwargs['lmax']
+        else:
+            self.__mmax = 1.0e+18
+            self.__lmax = log10(self.__mmax)
 
         if 'zmax' in list(kwargs.keys()):
             zmax = kwargs['zmax']
@@ -205,27 +212,53 @@ class Structures(Structuresabstract):
                    str(omegab) + "_" \
                   + str(omegam) + "_" +\
                    str(omegal) + "_ " \
-                  + str(h) + "_" + str(lmin) + "_" + str(zmax)
+                  + str(h) + "_" + str(lmin) \
+                  + "_" + str(self.__lmax) \
+                  + "_" + str(zmax)
 
             else:
                 cacheFile = str(self._cacheDir) + "/structures_cache_"\
                       + massFunctionType + "_" + str(omegab) + "_" \
                       + str(omegam) + "_" + str(omegal) + "_ " \
-                      + str(h) + "_" + str(lmin) + "_" + str(zmax)
+                      + str(h) + "_" + str(lmin) \
+                      + "_" + str(self.__lmax) \
+                      + "_" + str(zmax)
         else:
             cacheFile = str(self._cacheDir) + cacheFile
+
+        self.__rangeMassFunction = {"ST": None,
+                                   "TK": [-1.7, 0.9],
+                                   "PS": None,
+                                   "JK": [-1.2, 1.05],
+                                   "W": [10, 15],
+                                   "WT1": [-0.55, 1.31],
+                                   "WT2": [-0.06, 1.024],
+                                   "B": None,
+                                   "R": [-1.7, 0.9]
+                                   }
+
+        self.__massFunctionDict = {"ST": self.__massFunctionST,
+                                   "TK": self.__massFunctionTinker,
+                                   "PS": self.__massFunctionPressSchechter,
+                                   "JK": self.__massFunctionJenkins,
+                                   "W": self.__massFunctionW,
+                                   "WT1": self.__massFunctionWT1,
+                                   "WT2": self.__massFunctionWT2,
+                                   "B": self.__massFunctionBurr,
+                                   "R": self.__massFunctionRedd
+                                   }
 
         self._cacheFIle = cacheFile
 
         self._cache_dict = filedict.FileDict(filename=cacheFile + ".cache")
 
         self.__mmin = 1.0e+4
-        self.__mmax = 1.0e+18
-        self.__lmax = log10(self.__mmax / 10.0)
+
         self._zmax = zmax
         self.__lmin = lmin
         self.__deltac = self._cosmology.getDeltaC()
         self.__pst = 0.3
+        self.__dinamicLimits = False
 
         h2 = h * h
         h2om = h2 * omegam
@@ -247,18 +280,27 @@ class Structures(Structuresabstract):
         self.__massFunctionType = massFunctionType
         self.__delta_halo = delta_halo
 
-        self.__massFunctionDict = {"ST": self.__massFunctionST,
-                                   "TK": self.__massFunctionTinker,
-                                   "PS": self.__massFunctionPressSchechter,
-                                   "JK": self.__massFunctionJenkins,
-                                   "W": self.__massFunctionW,
-                                   "WT1": self.__massFunctionWT1,
-                                   "WT2": self.__massFunctionWT2,
-                                   "B": self.__massFunctionBurr,
-                                   "R": self.__massFunctionRedd
-                                   }
-
+        self.__lmInf, self.__lmSup = None, None
         self.__startingSigmaAccretion()
+
+    def integrationLimitsMassFunction(self):
+        if(self.__dinamicLimits is False):
+            return [self.__lmin, self.__lmax]
+        lnsgm = self.__rangeMassFunction[self.__massFunctionType]
+        if(lnsgm is None):
+            return [self.__lmin, self.__lmax]
+
+        if(self.__massFunctionType == "W"):
+            return lnsgm
+
+        #if(self.__massFunctionType == "TK"):
+        sgmMin = 10 ** (- lnsgm[0])
+        sgmMax = 10 ** (- lnsgm[1])
+        #else:
+            #sgmMin = exp(- lnsgm[0])
+            #sgmMax = exp(- lnsgm[1])
+
+        return self.massRangeSigma(sgmMin, sgmMax)
 
     def __creatCachDiretory(self):
         HOME = os.path.expanduser('~')
@@ -317,6 +359,8 @@ class Structures(Structuresabstract):
         #self.__rbr2 = array([self._cosmology.robr(zi)
                                 #for zi in self.__zred])
 
+        self.__lmInf, self.__lmSup = self.integrationLimitsMassFunction()
+
     def __rodmz(self, z):
         return self._cosmology.rodm(z)[0]
 
@@ -349,6 +393,12 @@ class Structures(Structuresabstract):
             self.__startBarionicAccretionRate()
             self.__cachingAtribut()
 
+        self.__lmInf, self.__lmSup = self.integrationLimitsMassFunction()
+
+        print(("The valid log(mass) range for the %s mass function is: "
+                % self.__massFunctionType))
+        print((self.__lmInf, self.__lmSup))
+
     def __cachingAtribut(self):
         """Caching the values
         """
@@ -376,6 +426,10 @@ class Structures(Structuresabstract):
         except:
             raise NameError("No Defined Mass Function")
 
+    def validadeMassRange(self, sgm, lnMin, lnMax):
+        if(log(sgm) < -1.2 or - log(sgm) > 1.05):
+            raise NameError("Mass of dark Halo outside of the valid range")
+
     def __massFunctionJenkins(self, lm, z):
         """Return the mass function of Jenkins et al. (2003).
          Keyword arguments:
@@ -383,12 +437,13 @@ class Structures(Structuresabstract):
             z -- redshift
         """
 
+        sgm = self.fstm(lm)
+        self.validadeMassRange(sgm, -1.2, 1.05)
         #gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
-        sgm = self.fstm(lm)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
         #sigma1 = self.__deltac / (sgm * gte)
         #sigma2 = sigma1 ** 2.0
@@ -451,15 +506,20 @@ class Structures(Structuresabstract):
         b = 1.406
         c = 1.21
 
+        gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
 
+        self.validadeMassRange(sgm, -0.55, 1.31)
+
+        sgmD = sgm * gte
+
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
-        fst = A * (((b / sgm) ** a) + 1.0) * exp(-c / sgm ** 2.0)
+        fst = A * (((b / sgmD) ** a) + 1.0) * exp(-c / sgmD ** 2.0)
 
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
@@ -474,19 +534,24 @@ class Structures(Structuresabstract):
             z -- redshift
         """
 
+        gte = self._cosmology.growthFunction(z)
         rdmt, drdmt = self._cosmology.rodm(z)
         step = lm / 2.0e+1
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
 
+        sgmD = sgm * gte
+
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
         p = 0.072
         q = 2.130
 
+        omz = self._cosmology.omegamz(z)
+
         cDelta = lambda delta: exp(0.023 * ((delta / 178.0) - 1.0))
-        dZ = lambda z: -0.456 * self._cosmology.omegamz(z) - 0.139
+        dZ = lambda z: -0.456 * omz - 0.139
 
         gammaDSZ = lambda delta, sig, z: cDelta(delta) * \
                                          ((delta / 178.0) ** dZ(z)) * \
@@ -497,26 +562,32 @@ class Structures(Structuresabstract):
             raise NameError("z lower than zero.")
 
         if(z == 0):
+            self.validadeMassRange(sgm, -0.55, 1.05)
+        else:
+            self.validadeMassRange(sgm, -0.06, 1.024)
+
+        if(z == 0):
             A = 0.194
             a = 2.267
             b = 1.805
-            c = 1.287
-        elif(z > 6):
+            gm = 1.287
+
+        elif(z >= 6):
             A = 0.563
-            a = 0.874
-            b = 3.874
-            c = 1.453
+            a = 3.810
+            b = 0.874
+            gm = 1.453
 
         else:
-            A = self._cosmology.omegamz(z) * (1.907 * (1.0 + z) ** (-3.216)) \
-                + 0.074
-            a = 3.136 * ((1.0 + z) ** (-3.058)) + 2.349
-            b = 5.907 * ((1.0 + z) ** (-3.599)) + 2.344
-            c = 1.318
 
-        fst = A * (((b / sgm) ** a) + 1.0) * exp(-c / sgm ** 2.0)
+            A = omz * (1.097 * (1.0 + z) ** (-3.216) + 0.074)
+            a = omz * (5.907 * ((1.0 + z) ** (-3.058)) + 2.349)
+            b = omz * (3.136 * ((1.0 + z) ** (-3.599)) + 2.344)
+            gm = 1.318
 
-        fst = gammaDSZ(self.__deltaWT, sgm, z) * fst
+        fst = A * (((b / sgmD) ** a) + 1.0) * exp(-gm / sgmD ** 2.0)
+
+        fst = gammaDSZ(self.__deltaWT, sgmD, z) * fst
 
         frst = (rdmt / kmass ** 2.0) * fst * abs(dsgm_dlgm) / sgm
         dn_dm = frst
@@ -642,6 +713,9 @@ class Structures(Structuresabstract):
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
+
+        self.validadeMassRange(sgm, -0.6, 0.4)
+
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
         #sigma1 = self.__deltac / (sgm * gte)
         #sigma2 = sigma1 ** 2.0
@@ -667,6 +741,10 @@ class Structures(Structuresabstract):
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
+
+        if(lm < 10 or lm > 15):
+            raise NameError("Mass of dark Halo outside of the valid range")
+
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
         sigma1 = self.__deltac / (sgm * gte)
         sigma2 = sigma1 ** 2.0
@@ -721,6 +799,7 @@ class Structures(Structuresabstract):
         kmsgm = lm
         kmass = 10.0 ** (kmsgm)
         sgm = self.fstm(lm)
+        self.validadeMassRange(sgm, -1.7, 0.9)
         dsgm_dlgm = dfridr(self.fstm, lm, step, err=0.0)
 
         sigma1 = self.__deltac / (sgm * gte)
@@ -752,6 +831,23 @@ class Structures(Structuresabstract):
         j = locate(self.__km, len(self.__km) - 1, lm)
         return self.__sg[j]
 
+    def massRangeSigma(self, sgmMin, sgmMax):
+        """Return the mass down and up for a sigma range
+        """
+
+        nElementos = len(self.__sg) - 1
+
+        jmin = locate(self.__sg[::-1], nElementos, sgmMin)
+        jmax = locate(self.__sg[::-1], nElementos, sgmMax)
+
+        jmin = (nElementos) - jmin
+        jmax = (nElementos) - jmax
+
+        massMin = self.__km[jmin]
+        massMax = self.__km[jmax]
+
+        return [massMin, massMax]
+
     def __fmassM(self, lm, z):
         """Return the mass function of dark halos multiplied by Mass -
         Sheth e Tormen (MNRAS 308, 119, 1999).
@@ -771,16 +867,19 @@ class Structures(Structuresabstract):
             z -- redshift
         """
 
+        lmInf = self.__lmInf
+        lmSup = self.__lmSup
+
         fmassM = lambda lm: self.__fmassM(lm, z)
 
-        deltal = (self.__lmax - self.__lmin) / 50.0
+        deltal = (lmSup - lmInf) / 50.0
 
-        Lm = [self.__lmin + i * deltal for i in range(50)]
+        Lm = [lmInf + i * deltal for i in range(50)]
 
         Fm = [fmassM(lm) for lm in Lm]
 
         tck = spint.splrep(Lm, Fm)
-        Inte = spint.splint(self.__lmin, self.__lmax, tck)
+        Inte = spint.splint(lmInf, lmSup, tck)
         return Inte
 
     def fbstruc(self, z):
@@ -855,6 +954,12 @@ class Structures(Structuresabstract):
             return True, self._cacheDir
         else:
             return False
+
+    def getIntegralLimitsFb(self):
+        """Return the valid range of mass for a given mass function"""
+        lmInf = self.__lmInf
+        lmSup = self.__lmSup
+        return [lmInf, lmSup]
 
     def setDeltaHTinker(self, delta_halo):
         if(self.__massFunctionType == "TK"):
