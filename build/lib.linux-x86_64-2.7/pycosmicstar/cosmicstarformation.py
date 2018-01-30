@@ -218,7 +218,7 @@ class Cosmicstarformation(Structures):
             sexp = (1.0 - yr) / self.__tau /\
              self._cosmology.getRobr0() ** (self.__nsch - 1.0)
 
-        F = zeros(1)
+        F = zeros(1, type=Float64)
         F[0] = (- sexp * (rho_g[0]) ** self.__nsch
                 + self.__esnor * self.__spn(a)
                 # / self._cosmology.getRobr0()

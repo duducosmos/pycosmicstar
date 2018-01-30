@@ -68,7 +68,7 @@ def dfridr(func, x, h, err):
     NTAB = 10
     #SAFE = 2.0
     dfit = 0.0
-    a = zeros((NTAB, NTAB))
+    a = zeros((NTAB, NTAB), type=Float64)
     if(h == 0):
         print('h tem que ser diferente de zero')
         return

@@ -182,7 +182,6 @@ class Structures(Structuresabstract):
         else:
             massFunctionType = "ST"
 
-
         if 'delta_halo' in list(kwargs.keys()):
             delta_halo = kwargs['delta_halo']
         else:
@@ -279,7 +278,6 @@ class Structures(Structuresabstract):
         self.__qBurr = qBurr
 
         self.__massFunctionType = massFunctionType
-        print(self.__massFunctionType )
         self.__delta_halo = delta_halo
 
         self.__lmInf, self.__lmSup = None, None
@@ -423,8 +421,10 @@ class Structures(Structuresabstract):
             lm -- log10 of the mass of the dark halo
             z -- redshift
         """
-        return self.__massFunctionDict[self.__massFunctionType](lm, z)
-        
+        try:
+            return self.__massFunctionDict[self.__massFunctionType](lm, z)
+        except:
+            raise NameError("No Defined Mass Function")
 
     def validadeMassRange(self, sgm, lnMin, lnMax):
         if(log(sgm) < -1.2 or - log(sgm) > 1.05):
@@ -997,3 +997,4 @@ class Structures(Structuresabstract):
         """
 
         self.__massFunctionDict[key] = function
+

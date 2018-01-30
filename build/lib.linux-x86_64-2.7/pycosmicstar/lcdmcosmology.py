@@ -250,8 +250,8 @@ class Lcdmcosmology(Cosmology):
     def __sigma(self, kmass):
 
         n = kmass.size
-        km = zeros(n)
-        sg = zeros(n)
+        km = zeros(n, type=Float64)
+        sg = zeros(n, type=Float64)
 
         for i in range(0, n):
             self.__escala = (kmass[i] / self.__ct2) ** (1.0 / 3.0)
