@@ -31,7 +31,7 @@ def read(fname):
 
 
 Extensions = [Extension(name="lcdmlib",
-                        sources=["pycosmicstar/lcdmlib.f"],)]
+                        sources=["pycosmicstar/pycosmicstar/cosmolib/lcdmlib.f"],)]
 
 datadir = os.path.join('data')
 datafiles = [(datadir, [f for f in glob.glob(os.path.join(datadir, '*'))])]
